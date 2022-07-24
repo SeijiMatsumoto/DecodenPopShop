@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: -28px;
+
+  .titleWrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    font-size: 30px;
+
+    .arrow {
+      margin-right: 10px;
+    }
+
+    .title {
+    }
+  }
+
+  .subWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+
+    .title {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+  }
+}
