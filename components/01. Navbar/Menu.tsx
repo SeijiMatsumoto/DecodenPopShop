@@ -11,7 +11,7 @@ const MenuWrapper = styled.div`
   left: 100vw;
   background-color: #d6ecff;
   z-index: 100;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 875px) {
     width: 100vw;
   }
 `;
