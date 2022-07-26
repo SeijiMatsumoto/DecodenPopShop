@@ -53,7 +53,7 @@ const ListLink = styled.a`
 `;
 
 const Logo = styled.img`
-  height: 40px;
+  height: 50px;
   cursor: pointer;
   object-fit: contain;
   margin-bottom: 15px;
@@ -94,7 +94,7 @@ const Footer = () => {
           </List>
         </Column>
         <Column>
-          <Logo src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRApl5VEAGK3p1A3FB5D11ek5Gx2tYUzOIkOQ&usqp=CAU" alt='Logo' onClick={() => window.open("/", "_self")} />
+          <Logo src="https://seeklogo.com/images/D/duck-logo-9E556EEECA-seeklogo.com.png" alt='Logo' onClick={() => window.open("/", "_self")} />
           <SocialIcons>
             <Icon src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-512.png" alt="icon" />
             <Icon src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter2_colored_svg-512.png" alt="icon" />
