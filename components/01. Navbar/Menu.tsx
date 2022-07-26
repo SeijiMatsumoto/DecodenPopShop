@@ -46,7 +46,7 @@ const Menu = ({ setOpenMenu }) => {
         <LinksWrapper>
           <Link href="/"><LinkText onClick={() => setOpenMenu(false)}>Link1</LinkText></Link>
           <ExpandList mainItem='Link2' subItems={[{ title: 'Sublink1', url: '/' }, { title: 'Sublink2', url: '/' }]} callback={() => setOpenMenu(false)} />
-          <Link href="/Page3"><LinkText onClick={() => setOpenMenu(false)}>Link3</LinkText></Link>
+          <Link href="/"><LinkText onClick={() => setOpenMenu(false)}>Link3</LinkText></Link>
         </LinksWrapper>
       </InnerWrapper>
     </MenuWrapper>
