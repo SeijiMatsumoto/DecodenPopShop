@@ -5,6 +5,7 @@ import MiniNav from './MiniNav';
 import Link from 'next/link';
 import Menu from './Menu';
 import { FaShoppingCart } from 'react-icons/fa';
+import { categories } from '../../data/categories';
 
 const Wrapper = styled.nav`
   z-index: 5;
@@ -17,7 +18,7 @@ const NavWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 350ms ease;
+  transition: 200ms ease;
 `;
 
 const NavInnerWrapper = styled.div`
@@ -44,7 +45,7 @@ const Logo = styled.img`
   margin: 20px 10px;
   cursor: pointer;
   object-fit: contain;
-  transition: 350ms ease;
+  transition: 200ms ease;
 `;
 
 const LinksWrapper = styled.div`
@@ -147,12 +148,13 @@ const CatInnerWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   overflow: hidden;
-  transition: 350ms ease;
+  transition: 200ms ease;
 `;
 
 const CatTitle = styled.span`
   color: white;
-  margin-right: 30px;
+  margin-right: 10px;
+  cursor: default;
 `;
 
 const CategoriesWrapper = styled.div`
@@ -162,6 +164,11 @@ const CategoriesWrapper = styled.div`
 const CategoriesText = styled.span`
   padding: 10px;
   cursor: pointer;
+  transition: 200ms ease;
+
+  &:hover {
+    color: white;
+  }
 `;
 
 const Navbar = () => {
@@ -193,8 +200,8 @@ const Navbar = () => {
     const nav = document.getElementById('navwrapper') || undefined;
     const catNav = document.getElementById('catNav') || undefined;
 
-    if (scrollTop > 0) {
-      if (logo) logo.style.height = '45px';
+    if (scrollTop > 40) {
+      if (logo) logo.style.height = '40px';
       if (nav) nav.style.backgroundColor = 'white';
       if (catNav) catNav.style.display = 'flex';
     } else if (scrollTop === 0) {
@@ -231,9 +238,9 @@ const Navbar = () => {
           <CatInnerWrapper>
             <CatTitle>Shop by category:</CatTitle>
             <CategoriesWrapper>
-              <CategoriesText>Abc</CategoriesText>
-              <CategoriesText>Abc</CategoriesText>
-              <CategoriesText>Abc</CategoriesText>
+              {categories.map(category => (
+                <Link key={category} href={`/products/${category.toLowerCase()}`}><CategoriesText>{category}</CategoriesText></Link>
+              ))}
             </CategoriesWrapper>
           </CatInnerWrapper>
         </CatWrapper>
