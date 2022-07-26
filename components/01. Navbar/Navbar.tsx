@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Button } from '../UILibrary';
+import MiniNav from './MiniNav';
 import Link from 'next/link';
 import Menu from './Menu';
+import { FaShoppingCart } from 'react-icons/fa';
 
-const NavWrapper = styled.nav`
-  background-color: #ffffff;
+const Wrapper = styled.nav`
+  z-index: 5;
+  width: 100%;
+  position: fixed;
+`;
+
+const NavWrapper = styled.div`
+  background-color: transparent;
   display: flex;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  align-items: center;
+  transition: 350ms ease;
 `;
 
 const NavInnerWrapper = styled.div`
-  padding: 20px;
+  padding: 0 20px;
   width: 1320px;
   display: flex;
   flex-direction: row;
@@ -31,9 +40,11 @@ const LogoLinkWrapper = styled.div`
 `;
 
 const Logo = styled.img`
-  height: 40px;
+  height: 50px;
+  margin: 20px 10px;
   cursor: pointer;
   object-fit: contain;
+  transition: 350ms ease;
 `;
 
 const LinksWrapper = styled.div`
@@ -42,16 +53,42 @@ const LinksWrapper = styled.div`
   margin: 0 0 0 30px;
 	padding: 0;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 875px) {
     display: none;
   }
 `;
 
 const LinkText = styled.span`
-  margin-right: 30px;
-  font-size: 20px;
+  margin: 5px 25px 0 0;
+  font-size: 18px;
   cursor: pointer;
   overflow: hidden;
+	position: relative;
+  color: #5a5a5a;
+
+  font-family: 'Mali', cursive;
+
+  text-transform: uppercase;
+  letter-spacing: -1px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -1px;
+    width: 100%;
+    height: 0.1em;
+    background-color: #fa741a;
+    transition: opacity 300ms, transform 300ms;
+    opacity: 1;
+    transform: translate3d(-100%, 0, 0);
+}
+
+  &:hover::after,
+  &:focus::after {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 `;
 
 const ButtonsWrapper = styled.div`
@@ -63,7 +100,7 @@ const ButtonsWrapper = styled.div`
     margin-left: 10px;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 875px) {
     display: none;
   }
 `;
@@ -74,7 +111,7 @@ const HamburgerMenu = styled.img`
   cursor: pointer;
   display: none;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 875px) {
     display: block;
   }
 `;
@@ -82,20 +119,57 @@ const HamburgerMenu = styled.img`
 const MenuWrapper = styled.div`
   display: none;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 875px) {
     display: block;
   }
 `;
 
+const Cart = styled(FaShoppingCart)`
+  margin-left:20px;
+  font-size: 20px;
+`;
+
+const CatWrapper = styled.div`
+  display: none;
+  padding: 10px;
+  width: 100%;
+  background-color: #719abe;
+  justify-content: center;
+
+  * {
+    font-family: "Roboto", sans-serif;
+  }
+`;
+
+const CatInnerWrapper = styled.div`
+  width: 1320px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  transition: 350ms ease;
+`;
+
+const CatTitle = styled.span`
+  color: white;
+  margin-right: 30px;
+`;
+
+const CategoriesWrapper = styled.div`
+  color: #c5c5c5;
+`;
+
+const CategoriesText = styled.span`
+  padding: 10px;
+  cursor: pointer;
+`;
+
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [scrollTop, setScrollTop] = useState<number>(0);
 
   const clickHandler = () => {
     window.alert("Action");
-  }
-
-  const toggleMenu = () => {
-    setOpenMenu(!openMenu);
   }
 
   useEffect(() => {
@@ -106,25 +180,64 @@ const Navbar = () => {
       if (menu) menu.style.left = "100vw";
     }
   }, [openMenu]);
+
+  const handleScroll = (e) => { setScrollTop(e.path[0].scrollTop) };
+
+  useEffect(() => {
+    document.body.addEventListener('scroll', handleScroll);
+    return () => document.body.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const logo = document.getElementById('logo') || undefined;
+    const nav = document.getElementById('navwrapper') || undefined;
+    const catNav = document.getElementById('catNav') || undefined;
+
+    if (scrollTop > 0) {
+      if (logo) logo.style.height = '45px';
+      if (nav) nav.style.backgroundColor = 'white';
+      if (catNav) catNav.style.display = 'flex';
+    } else if (scrollTop === 0) {
+      if (logo) logo.style.height = '50px';
+      if (nav) nav.style.backgroundColor = 'transparent';
+      if (catNav) catNav.style.display = 'none';
+    }
+
+  }, [scrollTop])
+
   return (
     <div>
-      <NavWrapper>
-        <NavInnerWrapper>
-          <LogoLinkWrapper>
-            <Logo src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRApl5VEAGK3p1A3FB5D11ek5Gx2tYUzOIkOQ&usqp=CAU" alt='Logo' onClick={() => window.open("/", "_self")} />
-            <LinksWrapper>
-              <Link href="/"><LinkText>Link1</LinkText></Link>
-              <Link href="/Page2"><LinkText>Link2</LinkText></Link>
-              <Link href="/Page3"><LinkText>Link3</LinkText></Link>
-            </LinksWrapper>
-          </LogoLinkWrapper>
-          <ButtonsWrapper>
-            <Button action={clickHandler} buttonText={'Button'} />
-            <Button action={clickHandler} buttonText={'Button'} />
-          </ButtonsWrapper>
-          <HamburgerMenu src="https://cdn-icons.flaticon.com/png/512/4889/premium/4889159.png?token=exp=1658543209~hmac=10015bef171b4cf8294d6124e9fe4f37" onClick={toggleMenu} />
-        </NavInnerWrapper>
-      </NavWrapper>
+      <Wrapper id="navbar">
+        <MiniNav />
+        <NavWrapper id="navwrapper">
+          <NavInnerWrapper>
+            <LogoLinkWrapper>
+              <Link href="/"><Logo id='logo' src="/Logos/QuackGoods-logos_transparent.png" alt='Logo' /></Link>
+              <LinksWrapper>
+                <Link href="/"><LinkText>Home</LinkText></Link>
+                <Link href="/products/all-products"><LinkText>Shop All</LinkText></Link>
+                <Link href="/about"><LinkText>About</LinkText></Link>
+                <Link href="/contact"><LinkText>Contact</LinkText></Link>
+              </LinksWrapper>
+            </LogoLinkWrapper>
+            <ButtonsWrapper>
+              <Button action={clickHandler} buttonText={'My Account'} />
+              <Cart />
+            </ButtonsWrapper>
+            <HamburgerMenu src="https://cdn-icons.flaticon.com/png/512/4889/premium/4889159.png?token=exp=1658543209~hmac=10015bef171b4cf8294d6124e9fe4f37" onClick={() => setOpenMenu(!openMenu)} />
+          </NavInnerWrapper>
+        </NavWrapper>
+        <CatWrapper id="catNav">
+          <CatInnerWrapper>
+            <CatTitle>Shop by category:</CatTitle>
+            <CategoriesWrapper>
+              <CategoriesText>Abc</CategoriesText>
+              <CategoriesText>Abc</CategoriesText>
+              <CategoriesText>Abc</CategoriesText>
+            </CategoriesWrapper>
+          </CatInnerWrapper>
+        </CatWrapper>
+      </Wrapper>
       <MenuWrapper><Menu setOpenMenu={setOpenMenu} /></MenuWrapper>
     </div>
   );
