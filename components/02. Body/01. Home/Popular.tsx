@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 50px 0;
+  margin: 40px 0 80px;
   display: flex;
   justify-content: center;
   * {
@@ -27,6 +27,7 @@ const TitleWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   margin-bottom: 15px;
+  text-align: center;
 `;
 
 const BarAroundTitle = styled.span`
@@ -43,11 +44,18 @@ const CardsWrapper = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 20px;
+
+  @media screen and (max-width: 1320px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 95%;
+  }
 `;
 
 const CardWrapper = styled.div`
   width: 380px;
-  /* margin: 35px; */
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -56,6 +64,10 @@ const CardWrapper = styled.div`
   &:active {
     transform: scale(0.99);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  @media screen and (max-width: 1320px) {
+    margin-bottom: 50px;
   }
 `;
 

@@ -24,12 +24,19 @@ const InnerWrapper = styled.div`
   align-items: center;
   flex-direction: row;
   margin-top: 20px;
+
+  @media screen and (max-width: 1320px) {
+    width: 90%;
+  }
 `;
 
 const DuckImg = styled.img`
   height: 200px;
   margin: 30px;
   position: relative;
+  @media screen and (max-width: 1320px) {
+    height: 100px;
+  }
 `;
 
 const Bubble = styled.div`
@@ -105,6 +112,10 @@ const Refresh = styled.button`
   &:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  @media screen and (max-width: 1320px) {
+    width: 70%;
   }
 `;
 

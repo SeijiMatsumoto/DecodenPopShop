@@ -1,14 +1,19 @@
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
+import { MdAlternateEmail, MdPhone, } from "react-icons/md";
+import { BsTwitter, BsInstagram } from "react-icons/bs";
 
 const FooterWrapper = styled.div`
   display: flex;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   justify-content: center;
-  background-color: white;
+  background-color: #FFF5F0;
   margin-top: auto;
+  * {
+    font-family: 'Mali', cursive;
+  }
 `;
 
 const InnerWrapper = styled.div`
@@ -21,9 +26,12 @@ const InnerWrapper = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 570px) {
     width: 100%;
     margin: 5px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 `;
 
@@ -32,6 +40,15 @@ const Column = styled.div`
   flex-direction: column;
   padding: 20px;
   min-width: 100px;
+
+  &:nth-child(3) {
+    justify-content: center;
+
+    @media screen and (max-width: 1000px) {
+      justify-content: flex-start;
+    }
+  }
+
 `;
 
 const ColHeader = styled.span`
@@ -44,31 +61,27 @@ const List = styled.ul`
   margin: 5px 0 0 -40px;
 `;
 
-const ListItem = styled.li``;
+const ListItem = styled.li`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Icon = styled.span`
+  position: relative;
+  top: 3px;
+`;
 
 const ListLink = styled.a`
   text-decoration: none;
   color: black;
   cursor: pointer;
+  margin-left: 5px;
 `;
 
 const Logo = styled.img`
   height: 50px;
   cursor: pointer;
   object-fit: contain;
-  margin-bottom: 15px;
-`;
-
-const SocialIcons = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-`;
-
-const Icon = styled.img`
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
 `;
 
 const Footer = () => {
@@ -76,30 +89,26 @@ const Footer = () => {
     <FooterWrapper>
       <InnerWrapper>
         <Column>
-          <ColHeader>Header1</ColHeader>
+          <ColHeader>Products</ColHeader>
           <List>
-            <ListItem><Link href="/"><ListLink>List Link Item</ListLink></Link></ListItem>
-            <ListItem><Link href="/"><ListLink>List Link Item</ListLink></Link></ListItem>
-            <ListItem><Link href="/"><ListLink>List Link Item</ListLink></Link></ListItem>
-            <ListItem><Link href="/"><ListLink>List Link Item</ListLink></Link></ListItem>
+            <ListItem><Link href="/"><ListLink>All Products</ListLink></Link></ListItem>
+            <ListItem><Link href="/"><ListLink>Cases</ListLink></Link></ListItem>
+            <ListItem><Link href="/"><ListLink>Clothing</ListLink></Link></ListItem>
+            <ListItem><Link href="/"><ListLink>Toys</ListLink></Link></ListItem>
+            <ListItem><Link href="/"><ListLink>Other</ListLink></Link></ListItem>
           </List>
         </Column>
         <Column>
-          <ColHeader>Header2</ColHeader>
+          <ColHeader>Contact Us</ColHeader>
           <List>
-            <ListItem><Link href="/"><ListLink>List Link Item</ListLink></Link></ListItem>
-            <ListItem><Link href="/"><ListLink>List Link Item</ListLink></Link></ListItem>
-            <ListItem><Link href="/"><ListLink>List Link Item</ListLink></Link></ListItem>
-            <ListItem><Link href="/"><ListLink>List Link Item</ListLink></Link></ListItem>
+            <ListItem><Icon><MdAlternateEmail /></Icon><Link href="/"><ListLink>Email: support@quackgoods.com</ListLink></Link></ListItem>
+            <ListItem><Icon><MdPhone /></Icon><Link href="/"><ListLink>Phone: 999-999-9999</ListLink></Link></ListItem>
+            <ListItem><Icon><BsInstagram /></Icon><Link href="/"><ListLink>Instagram: @QuackGoods</ListLink></Link></ListItem>
+            <ListItem><Icon><BsTwitter /></Icon><Link href="/"><ListLink>Twitter: @QuackGoods</ListLink></Link></ListItem>
           </List>
         </Column>
         <Column>
-          <Logo src="https://seeklogo.com/images/D/duck-logo-9E556EEECA-seeklogo.com.png" alt='Logo' onClick={() => window.open("/", "_self")} />
-          <SocialIcons>
-            <Icon src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-512.png" alt="icon" />
-            <Icon src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter2_colored_svg-512.png" alt="icon" />
-            <Icon src="https://cdn0.iconfinder.com/data/icons/education-127/128/92-256.png" alt="icon" />
-          </SocialIcons>
+          <Logo src="/Logos/QuackGoods-logos_transparent.png" alt='Logo' onClick={() => window.open("/", "_self")} />
         </Column>
       </InnerWrapper>
     </FooterWrapper>

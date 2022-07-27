@@ -3,6 +3,7 @@ import DuckFacts from './DuckFacts';
 import Categories from './Categories';
 import Splash from './Splash';
 import Popular from './Popular';
+import Details from './Details';
 
 const Body = () => {
   return (
@@ -11,6 +12,7 @@ const Body = () => {
       <Categories />
       <Popular />
       <DuckFacts />
+      <Details />
     </div>
   );
 };

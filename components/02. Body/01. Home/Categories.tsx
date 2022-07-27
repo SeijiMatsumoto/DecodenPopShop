@@ -12,7 +12,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 10px 0;
+  padding: 10px 0;
+  background-color: #f5f5f5;
   * {
     font-family: 'Roboto Flex', sans-serif;
   }
