@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 const SplashWrapper = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
