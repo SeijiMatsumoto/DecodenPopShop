@@ -1,30 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { FaLongArrowAltRight } from "react-icons/fa";
+import Link from 'next/link';
+import { categories } from '../../../data/categories';
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-
-  margin: 0 50px;
+  width: 100%;
+  margin: 10px 0;
   * {
     font-family: 'Roboto Flex', sans-serif;
   }
 `;
 
 const InnerWrapper = styled.div`
-  width: 80%;
-  margin: 30px 0;
+  width: 95%;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin: 15px;
+  margin-right: 25px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #fa741a;
+`;
+
 const Title = styled.span`
   font-size: 25px;
-  margin: 15px;
   text-transform: uppercase;
   font-weight: bold;
-  text-decoration: underline;
 `;
 
 const CardsWrapper = styled.div`
@@ -32,64 +41,81 @@ const CardsWrapper = styled.div`
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  width: 100%;
-  margin: 30px;
-  overflow: hidden;
-`;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #FFF5F0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
-const CardImageWrapper = styled.div`
-  height: 400px;
   width: 100%;
-  margin-bottom: 10px;
-  overflow: hidden;
-`;
-
-const CardImage = styled.img`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+  margin: 10px;
+  padding: 50px 20px;
   cursor: pointer;
-  transition: 0.5s ease-in;
+  transition: 500ms ease;
 
+  color: black;
   &:hover {
-    transform: scale(1.05);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #ffefe8;
+
+    h4 {
+      color: #fa741a;
+    }
+    h5 {
+      left: 3px;
+    }
   }
 `;
 
-const CardTitle = styled.div`
-    font-size: 20px;
-    margin-bottom: 10px;
+const CardTitle = styled.span`
+    font-size: 25px;
+    font-weight: bold;
+`;
+
+const SubWrapper = styled.h4`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+`;
+
+const SubText = styled.span`
+  font-size: 16px;
+  transition: 500ms ease;
+`;
+
+const SubArrow = styled.h5`
+  position: relative;
+  margin: 5px 0 0 5px;
+  position: relative;
+  transition: 300ms ease;
+  left: 0;
 `;
 
 const Categories = () => {
   return (
     <Wrapper>
       <InnerWrapper>
-        <Title>Categories</Title>
         <CardsWrapper>
-          <Card>
-            <CardImageWrapper><CardImage src="https://helios-i.mashable.com/imagery/articles/048dzEVk1D9pERrbtV3HyCb/hero-image.fill.size_1200x1200.v1614273991.png" alt="cases" /></CardImageWrapper>
-            <CardTitle>Cases</CardTitle>
-          </Card>
-          <Card>
-            <CardImageWrapper><CardImage src="https://t4.ftcdn.net/jpg/00/53/91/69/360_F_53916978_qItbOtWpD4VYA3t5RKPuEs09Ev7jXNzE.jpg" alt="cases" /></CardImageWrapper>
-            <CardTitle>Clothing</CardTitle>
-          </Card>
-          <Card>
-            <CardImageWrapper><CardImage src="https://m.media-amazon.com/images/I/71IQNKHeT8L._AC_SL1200_.jpg" alt="cases" /></CardImageWrapper>
-            <CardTitle>Other</CardTitle>
-          </Card>
-          <Card>
-            <CardImageWrapper><CardImage src="https://ih1.redbubble.net/image.1629387948.4585/flat,750x,075,f-pad,750x1000,f8f8f8.jpg" alt="cases" /></CardImageWrapper>
-            <CardTitle>Sale</CardTitle>
-          </Card>
+          <TitleWrapper><Title>Popular Categories:</Title></TitleWrapper>
+          {categories.slice(0, 4).map(category => {
+            return (
+              <Link key={category + 'component'} href={`/products/${category.toLowerCase()}`}>
+                <Card>
+                  <CardTitle>{category}</CardTitle>
+                  <SubWrapper>
+                    <SubText>Shop category</SubText>
+                    <SubArrow><FaLongArrowAltRight /></SubArrow>
+                  </SubWrapper>
+                </Card>
+              </Link>
+            )
+          })}
         </CardsWrapper>
       </InnerWrapper>
     </Wrapper>
