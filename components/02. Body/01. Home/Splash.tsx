@@ -30,9 +30,6 @@ const Column = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  &:first-child {
-    margin-top: -5vh;
-  }
   @media screen and (max-width: 1000px) {
     margin: 15px;
   }
@@ -60,7 +57,6 @@ const TextWrapper = styled.div`
 const BigText = styled.span`
   font-size: 75px;
   font-weight: bold;
-  /* text-shadow: 3px 3px #000000; */
 
   @media screen and (max-width: 500px) {
     font-size: 12vw;
@@ -69,7 +65,7 @@ const BigText = styled.span`
 
 const SubText = styled.span`
   font-size: 20px;
-  /* text-shadow: 1px 1px #000000; */
+  color: black;
 
   @media screen and (max-width: 700px) {
     font-size: 4vw;
@@ -125,8 +121,8 @@ const Splash = () => {
       <InnerWrapper>
         <Column>
           <TextWrapper>
-            <BigText>Quack Quack Goods</BigText>
-            <SubText>For your duck obsession</SubText>
+            <BigText>Quack Goods</BigText>
+            <SubText>One-stop shop for your duck obession</SubText>
           </TextWrapper>
           <ButtonsWrapper>
             <Button onClick={clickHandler}>Shop All Products</Button>
