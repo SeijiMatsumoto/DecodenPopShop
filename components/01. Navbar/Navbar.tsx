@@ -5,7 +5,7 @@ import MiniNav from './MiniNav';
 import Link from 'next/link';
 import Menu from './Menu';
 import { FaShoppingCart } from 'react-icons/fa';
-import { categories } from '../../data/categories';
+import CategoryBar from './CategoryBar';
 
 const Wrapper = styled.nav`
   z-index: 5;
@@ -18,7 +18,7 @@ const NavWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 200ms ease;
+  transition: 100ms ease;
 `;
 
 const NavInnerWrapper = styled.div`
@@ -45,7 +45,7 @@ const Logo = styled.img`
   margin: 20px 10px;
   cursor: pointer;
   object-fit: contain;
-  transition: 200ms ease;
+  transition: 400ms ease;
 `;
 
 const LinksWrapper = styled.div`
@@ -130,46 +130,6 @@ const Cart = styled(FaShoppingCart)`
   font-size: 20px;
 `;
 
-const CatWrapper = styled.div`
-  display: none;
-  padding: 10px;
-  width: 100%;
-  background-color: #719abe;
-  justify-content: center;
-
-  * {
-    font-family: "Roboto", sans-serif;
-  }
-`;
-
-const CatInnerWrapper = styled.div`
-  width: 1320px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  overflow: hidden;
-  transition: 200ms ease;
-`;
-
-const CatTitle = styled.span`
-  color: white;
-  margin-right: 10px;
-  cursor: default;
-`;
-
-const CategoriesWrapper = styled.div`
-  color: #c5c5c5;
-`;
-
-const CategoriesText = styled.span`
-  padding: 10px;
-  cursor: pointer;
-  transition: 200ms ease;
-
-  &:hover {
-    color: white;
-  }
-`;
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
@@ -180,34 +140,40 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    const menu = document.getElementById('menuWrapper') || undefined;
-    if (openMenu) {
-      if (menu) menu.style.left = "0px";
-    } else {
-      if (menu) menu.style.left = "100vw";
+    if (document) {
+      const menu = document.getElementById('menuWrapper') || undefined;
+      if (openMenu) {
+        if (menu) menu.style.left = "0px";
+      } else {
+        if (menu) menu.style.left = "100vw";
+      }
     }
   }, [openMenu]);
 
   const handleScroll = (e) => { setScrollTop(e.path[0].scrollTop) };
 
   useEffect(() => {
-    document.body.addEventListener('scroll', handleScroll);
-    return () => document.body.removeEventListener('scroll', handleScroll);
+    if (document) {
+      document.body.addEventListener('scroll', handleScroll);
+      return () => document.body.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
   useEffect(() => {
-    const logo = document.getElementById('logo') || undefined;
-    const nav = document.getElementById('navwrapper') || undefined;
-    const catNav = document.getElementById('catNav') || undefined;
+    if (document) {
+      const logo = document.getElementById('logo') || undefined;
+      const nav = document.getElementById('navwrapper') || undefined;
+      const catNav = document.getElementById('catNav') || undefined;
 
-    if (scrollTop > 40) {
-      if (logo) logo.style.height = '40px';
-      if (nav) nav.style.backgroundColor = 'white';
-      if (catNav) catNav.style.display = 'flex';
-    } else if (scrollTop === 0) {
-      if (logo) logo.style.height = '50px';
-      if (nav) nav.style.backgroundColor = 'transparent';
-      if (catNav) catNav.style.display = 'none';
+      if (scrollTop > 40) {
+        if (logo) logo.style.height = '40px';
+        if (nav) nav.style.backgroundColor = 'white';
+        if (catNav) catNav.style.display = 'flex';
+      } else if (scrollTop === 0) {
+        if (logo) logo.style.height = '50px';
+        if (nav) nav.style.backgroundColor = 'transparent';
+        if (catNav) catNav.style.display = 'none';
+      }
     }
 
   }, [scrollTop])
@@ -234,16 +200,7 @@ const Navbar = () => {
             <HamburgerMenu src="https://cdn-icons.flaticon.com/png/512/4889/premium/4889159.png?token=exp=1658543209~hmac=10015bef171b4cf8294d6124e9fe4f37" onClick={() => setOpenMenu(!openMenu)} />
           </NavInnerWrapper>
         </NavWrapper>
-        <CatWrapper id="catNav">
-          <CatInnerWrapper>
-            <CatTitle>Shop by category:</CatTitle>
-            <CategoriesWrapper>
-              {categories.map(category => (
-                <Link key={category} href={`/products/${category.toLowerCase()}`}><CategoriesText>{category}</CategoriesText></Link>
-              ))}
-            </CategoriesWrapper>
-          </CatInnerWrapper>
-        </CatWrapper>
+        <CategoryBar />
       </Wrapper>
       <MenuWrapper><Menu setOpenMenu={setOpenMenu} /></MenuWrapper>
     </div>
