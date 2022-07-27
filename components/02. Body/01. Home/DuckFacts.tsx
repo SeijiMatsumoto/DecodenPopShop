@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { duckFacts } from '../../../data/duckFacts';
 import styled from 'styled-components';
-
+import { SectionTitle } from '../../UILibrary';
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -15,14 +15,6 @@ const Wrapper = styled.div`
   * {
     font-family: "Roboto", sans-serif;
   }
-`;
-
-const DuckFactsTitle = styled.span`
-  font-size: 25px;
-  text-transform: uppercase;
-  font-weight: bold;
-  padding-bottom: 5px;
-  border-bottom: 4px solid #fa741a;
 `;
 
 const InnerWrapper = styled.div`
@@ -71,7 +63,7 @@ const Bubble = styled.div`
 const Title = styled.span`
   font-weight: bold;
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 22px;
 `;
 
 const FactWrapper = styled.div`
@@ -82,20 +74,20 @@ const FactWrapper = styled.div`
 `;
 
 const Header = styled.span`
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 5px;
   text-align: left;
 `;
 
 const Subtext = styled.span`
   text-align: left;
-  font-size: 16px;
+  font-size: 18px;
 `;
 
 const Refresh = styled.button`
   margin-top: 10px;
   font-size: 12px;
-  padding: 5px 10px;
+  padding: 10px;
   border-radius: 30px;
   width: 30%;
   color: white;
@@ -105,8 +97,14 @@ const Refresh = styled.button`
   transition: 200ms ease;
 
   &:hover {
-    background-color: #faa165;
-    transform: scale(0.99);
+    background-color: #ff8432;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -124,7 +122,7 @@ const DuckFacts = () => {
 
   return (
     <Wrapper >
-      <DuckFactsTitle>Duck Facts</DuckFactsTitle>
+      <SectionTitle text="Duck Facts" />
       <InnerWrapper>
         <DuckImg src="/duck.png" alt="duck" />
         <Bubble>
@@ -133,7 +131,7 @@ const DuckFacts = () => {
             <Header>{randomFact.heading}!</Header>
             <Subtext>{randomFact.subtext}</Subtext>
           </FactWrapper>
-          <Refresh onClick={getRandomFact}>Refresh Fact</Refresh>
+          <Refresh onClick={getRandomFact}>New Fact</Refresh>
         </Bubble>
       </InnerWrapper>
     </Wrapper>
