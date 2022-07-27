@@ -1,6 +1,6 @@
 DuckDuckGoods
 
-Color scheme: White and orange #fa741a
+Color scheme: White and orange #fa741a #FFF5F0
 Font: font-family: "Mali", cursive;
 Icons: https://react-icons.github.io/react-icons
 
