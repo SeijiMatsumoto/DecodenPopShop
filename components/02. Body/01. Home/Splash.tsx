@@ -23,6 +23,10 @@ const InnerWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   position: absolute;
+
+  @media screen and (max-width: 1320px) {
+    width: 90%;
+  }
 `;
 
 const Column = styled.div`
@@ -55,7 +59,7 @@ const TextWrapper = styled.div`
 `;
 
 const BigText = styled.span`
-  font-size: 75px;
+  font-size: 5vw;
   font-weight: bold;
 
   @media screen and (max-width: 500px) {
@@ -85,18 +89,27 @@ const ButtonsWrapper = styled.div`
 
 const Button = styled.button`
   width: 48%;
-  padding: 15px 25px;
   font-size: 20px;
-  border-radius: 30px;
   color: white;
   background-color: #fa741a;
   border: none;
   cursor: pointer;
-  transition: 200ms ease;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all .2s;
 
   &:hover {
-    background-color: #faa165;
-    transform: scale(0.99);
+    background-color: #ff8432;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
 
   @media screen and (max-width: 1100px) {
@@ -106,18 +119,18 @@ const Button = styled.button`
 
   @media screen and (max-width: 500px) {
     font-size: 4vw;
-    padding: 5px;
+    padding: 10px;
   }
 `;
 
 const Splash = () => {
 
   const clickHandler = () => {
-    window.alert('Click button 1');
+    console.log('button click')
   }
 
   return (
-    <SplashWrapper>
+    <SplashWrapper >
       <InnerWrapper>
         <Column>
           <TextWrapper>
