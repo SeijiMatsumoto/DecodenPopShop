@@ -16,25 +16,13 @@ class MyDocument extends Document {
             crossOrigin="true"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Mali&family=Roboto&display=swap"
-            rel="stylesheet"
-          />
-          <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Mali&family=Titillium+Web&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Mali&family=Titillium+Web&&family=Roboto&display=swap"
             rel="stylesheet"
           />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap"
-            rel="stylesheet"
-          ></link>
         </Head>
         <body>
           <Main />
