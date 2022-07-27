@@ -30,7 +30,7 @@ const NavInnerWrapper = styled.div`
   align-items: center;
   overflow: hidden;
   @media screen and (max-width: 1320px) {
-    width: 100%;
+    width: 90%;
   }
 `;
 
