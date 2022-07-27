@@ -165,11 +165,11 @@ const Navbar = () => {
       const nav = document.getElementById('navwrapper') || undefined;
       const catNav = document.getElementById('catNav') || undefined;
 
-      if (scrollTop > 40) {
+      if (scrollTop > 100) {
         if (logo) logo.style.height = '40px';
         if (nav) nav.style.backgroundColor = 'white';
         if (catNav) catNav.style.display = 'flex';
-      } else if (scrollTop === 0) {
+      } else if (scrollTop < 101) {
         if (logo) logo.style.height = '50px';
         if (nav) nav.style.backgroundColor = 'transparent';
         if (catNav) catNav.style.display = 'none';
