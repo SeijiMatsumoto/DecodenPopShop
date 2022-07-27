@@ -6,6 +6,8 @@ import Link from 'next/link';
 import Menu from './Menu';
 import { FaShoppingCart } from 'react-icons/fa';
 import CategoryBar from './CategoryBar';
+import anime from 'animejs';
+const inView = require('in-view');
 
 const Wrapper = styled.nav`
   z-index: 5;
@@ -53,6 +55,7 @@ const LinksWrapper = styled.div`
   align-items: center;
   margin: 0 0 0 30px;
 	padding: 0;
+  overflow: hidden;
 
   @media screen and (max-width: 875px) {
     display: none;
@@ -66,6 +69,8 @@ const LinkText = styled.span`
   overflow: hidden;
 	position: relative;
   color: #5a5a5a;
+  opacity: 0;
+  bottom: 0px;
 
   font-family: 'Mali', cursive;
 
@@ -136,8 +141,28 @@ const Navbar = () => {
   const [scrollTop, setScrollTop] = useState<number>(0);
 
   const clickHandler = () => {
-    window.alert("Action");
+    console.log("Action");
   }
+
+  const handleScroll = (e) => {
+    setScrollTop(e.path[0].scrollTop);
+  };
+
+  useEffect(() => {
+    if (document) {
+      document.body.addEventListener('scroll', handleScroll);
+      const links = document.querySelectorAll('.navLink');
+      console.log('hello', links)
+
+      links.forEach(link => {
+        setTimeout(() => {
+          link.classList.add('fade-in');
+        }, 1000)
+      });
+
+      return () => document.body.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
 
   useEffect(() => {
     if (document) {
@@ -150,14 +175,6 @@ const Navbar = () => {
     }
   }, [openMenu]);
 
-  const handleScroll = (e) => { setScrollTop(e.path[0].scrollTop) };
-
-  useEffect(() => {
-    if (document) {
-      document.body.addEventListener('scroll', handleScroll);
-      return () => document.body.removeEventListener('scroll', handleScroll);
-    }
-  }, []);
 
   useEffect(() => {
     if (document) {
@@ -187,10 +204,10 @@ const Navbar = () => {
             <LogoLinkWrapper>
               <Link href="/"><Logo id='logo' src="/Logos/QuackGoods-logos_transparent.png" alt='Logo' /></Link>
               <LinksWrapper>
-                <Link href="/"><LinkText>Home</LinkText></Link>
-                <Link href="/products/all-products"><LinkText>Shop All</LinkText></Link>
-                <Link href="/about"><LinkText>About</LinkText></Link>
-                <Link href="/contact"><LinkText>Contact</LinkText></Link>
+                <Link href="/"><LinkText className="navLink">Home</LinkText></Link>
+                <Link href="/products/all-products"><LinkText className="navLink">Shop All</LinkText></Link>
+                <Link href="/about"><LinkText className="navLink">About</LinkText></Link>
+                <Link href="/contact"><LinkText className="navLink">Contact</LinkText></Link>
               </LinksWrapper>
             </LogoLinkWrapper>
             <ButtonsWrapper>
