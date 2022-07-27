@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import buttonStyle from "../styles/00. Components/Button/Button.module.css";
 import cardStyle from "../styles/00. Components/Card/Card.module.css";
 import expandListStyle from "../styles/00. Components/ExpandList/ExpandList.module.css";
-
+import titleStyle from "../styles/00. Components/Title/Title.module.css";
 // https://getcssscan.com/css-box-shadow-examples
 
 export const Button = ({ action, buttonText }) => {
@@ -56,5 +56,11 @@ export const ExpandList = ({ mainItem, subItems, callback }) => {
         })}
       </div>}
     </div>
+  )
+}
+
+export const SectionTitle = ({ text }) => {
+  return (
+    <span className={titleStyle.title}>{text}</span>
   )
 }
