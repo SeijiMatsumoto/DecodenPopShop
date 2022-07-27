@@ -32,7 +32,7 @@ const Col = styled.div`
   color: #dedede;
   width: 30%;
   text-align: center;
-  padding: 30px;
+  padding: 50px;
 
   & > span {
     cursor: default;

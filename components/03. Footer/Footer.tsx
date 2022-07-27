@@ -20,7 +20,7 @@ const InnerWrapper = styled.div`
   display: flex;
   width: 80%;
   max-width: 800px;
-  margin: 20px;
+  margin: 50px;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -48,7 +48,6 @@ const Column = styled.div`
       justify-content: flex-start;
     }
   }
-
 `;
 
 const ColHeader = styled.span`
