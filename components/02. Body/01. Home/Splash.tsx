@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router'
 
 const SplashWrapper = styled.div`
   width: 100vw;
@@ -124,9 +125,9 @@ const Button = styled.button`
 `;
 
 const Splash = () => {
-
+  const router = useRouter()
   const clickHandler = () => {
-    console.log('button click')
+    router.push('/products/all-products');
   }
 
   return (
