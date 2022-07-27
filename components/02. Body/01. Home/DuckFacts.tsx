@@ -123,7 +123,7 @@ const DuckFacts = () => {
   const [randomFact, setFact] = useState({ heading: '', subtext: '' });
 
   const getRandomFact = () => {
-    const rand = Math.floor(Math.random() * duckFacts.length - 1);
+    const rand = Math.floor(Math.random() * duckFacts.length);
     setFact(duckFacts[rand]);
   }
 
@@ -138,10 +138,11 @@ const DuckFacts = () => {
         <DuckImg src="/duck.png" alt="duck" />
         <Bubble>
           <Title>Did you know?</Title>
-          <FactWrapper>
+          {randomFact && <FactWrapper>
             <Header>{randomFact.heading}!</Header>
             <Subtext>{randomFact.subtext}</Subtext>
           </FactWrapper>
+          }
           <Refresh onClick={getRandomFact}>New Fact</Refresh>
         </Bubble>
       </InnerWrapper>
