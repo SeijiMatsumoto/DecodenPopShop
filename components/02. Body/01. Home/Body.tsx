@@ -7,8 +7,8 @@ const Body = () => {
   return (
     <div>
       <Splash />
-      <DuckFacts />
       <Categories />
+      <DuckFacts />
     </div>
   );
 };
