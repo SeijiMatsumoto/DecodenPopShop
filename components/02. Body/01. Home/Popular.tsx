@@ -21,6 +21,21 @@ const InnerWrapper = styled.div`
   flex-direction: column;
 `;
 
+const TitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 15px;
+`;
+
+const BarAroundTitle = styled.span`
+  width: 30%;
+  height: 35%;
+  border-bottom: 1px solid #dadada;
+  margin: 0 30px;
+`;
+
 const CardsWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -32,11 +47,16 @@ const CardsWrapper = styled.div`
 
 const CardWrapper = styled.div`
   width: 380px;
-  margin: 35px;
+  /* margin: 35px; */
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &:active {
+    transform: scale(0.99);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const FlipContainer = styled.div`
@@ -64,7 +84,7 @@ const CardFront = styled.div`
   top: 0;
   left: 0;
   z-index: 2;
-	transform: rotateY(0deg);
+	transform: rotateX(0deg);
 `;
 
 const CardImg = styled.img`
@@ -90,6 +110,7 @@ const CardBack = styled.div`
 const CardBackInner = styled.div`
   width: 250px;
   height: 250px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,7 +144,11 @@ const Popular = () => {
   return (
     <Wrapper>
       <InnerWrapper>
-        <SectionTitle text="Popular Products" />
+        <TitleWrapper>
+          <BarAroundTitle />
+          <SectionTitle text="Popular Products" />
+          <BarAroundTitle />
+        </TitleWrapper>
         <CardsWrapper>
           {popular.map(product => {
             return (
