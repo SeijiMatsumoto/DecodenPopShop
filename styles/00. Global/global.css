@@ -24,10 +24,4 @@ body {
   margin: 20px;
   width: 1320px;
 }
-
-.stickyNav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
 /*# sourceMappingURL=global.css.map */
