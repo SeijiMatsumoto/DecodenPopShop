@@ -22,6 +22,9 @@ const CatInnerWrapper = styled.div`
   align-items: center;
   overflow: hidden;
   transition: 400ms ease;
+  @media screen and (max-width: 400px) {
+    font-size: 12px;
+  }
 `;
 
 const CatTitle = styled.span`
