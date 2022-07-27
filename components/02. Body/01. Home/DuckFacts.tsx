@@ -22,7 +22,7 @@ const DuckFactsTitle = styled.span`
   text-transform: uppercase;
   font-weight: bold;
   padding-bottom: 5px;
-  border-bottom: 2px solid #fa741a;
+  border-bottom: 4px solid #fa741a;
 `;
 
 const InnerWrapper = styled.div`
@@ -123,7 +123,7 @@ const DuckFacts = () => {
   }, [])
 
   return (
-    <Wrapper>
+    <Wrapper >
       <DuckFactsTitle>Duck Facts</DuckFactsTitle>
       <InnerWrapper>
         <DuckImg src="/duck.png" alt="duck" />
