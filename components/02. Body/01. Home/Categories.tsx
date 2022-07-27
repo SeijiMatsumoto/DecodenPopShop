@@ -1,8 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from 'react';
+import styled, { keyframes } from 'styled-components';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import Link from 'next/link';
 import { categories } from '../../../data/categories';
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -27,7 +28,8 @@ const TitleWrapper = styled.div`
   margin: 15px;
   margin-right: 25px;
   padding-bottom: 5px;
-  border-bottom: 2px solid #fa741a;
+  border-bottom: 4px solid #fa741a;
+  cursor: default;
 `;
 
 const Title = styled.span`
@@ -42,6 +44,10 @@ const CardsWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 1320px) {
+    flex-direction: column;
+  }
+
 `;
 
 const Card = styled.div`
@@ -56,12 +62,16 @@ const Card = styled.div`
   margin: 10px;
   padding: 50px 20px;
   cursor: pointer;
-  transition: 500ms ease;
+  transition: 400ms ease;
+  background: linear-gradient(to right, #ffeae0 50%, #FFF5F0 50%);
+  background-size: 200% 200%;
+
+  background-position: right bottom;
 
   color: black;
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: #ffefe8;
+    background-position: left bottom;
 
     h4 {
       color: #fa741a;
@@ -69,6 +79,10 @@ const Card = styled.div`
     h5 {
       left: 3px;
     }
+  }
+
+  @media screen and (max-width: 1320px) {
+    width: 90%;
   }
 `;
 
@@ -102,11 +116,11 @@ const Categories = () => {
     <Wrapper>
       <InnerWrapper>
         <CardsWrapper>
-          <TitleWrapper><Title>Popular Categories:</Title></TitleWrapper>
+          <TitleWrapper><Title>Popular Categories</Title></TitleWrapper>
           {categories.slice(0, 4).map(category => {
             return (
-              <Link key={category + 'component'} href={`/products/${category.toLowerCase()}`}>
-                <Card>
+              <Link key={category + 'component'} href={`/products/${category.toLowerCase()}`} >
+                <Card id='card'>
                   <CardTitle>{category}</CardTitle>
                   <SubWrapper>
                     <SubText>Shop category</SubText>
