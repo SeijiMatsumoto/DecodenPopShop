@@ -4,26 +4,30 @@ import { text } from '../../data/miniNav';
 
 const NavWrapper = styled.nav`
   background-color: #fa741a;
+  position: relative;
+  font-family: 'Mali', cursive;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25px;
-  position: relative;
-  font-family: 'Mali', cursive;
+`;
+
+const InnerWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1320px;
 `;
 
 const Text = styled.span`
   color: white;
   font-size: 13px;
+  padding: 5px;
 `;
 
 const Close = styled.span`
-  position: absolute;
-  right: 20px;
-  bottom: 3px;
   cursor: pointer;
   transition: 0.2s ease-in;
-
+  margin-right: 10px;
   &:hover {
     color: white;
   }
@@ -35,8 +39,11 @@ const MiniNav = () => {
   return (
     <>
       {show && <NavWrapper>
-        <Text>{text}</Text>
-        <Close onClick={() => setShow(false)}>X</Close>
+        <InnerWrapper>
+          <Text></Text>
+          <Text>{text}</Text>
+          <Close onClick={() => setShow(false)}>X</Close>
+        </InnerWrapper>
       </NavWrapper>}
     </>
   );
