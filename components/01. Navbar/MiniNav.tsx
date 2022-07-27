@@ -22,6 +22,7 @@ const Text = styled.span`
   color: white;
   font-size: 13px;
   padding: 5px;
+  cursor: default;
 `;
 
 const Close = styled.span`
