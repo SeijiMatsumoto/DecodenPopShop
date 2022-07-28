@@ -21,7 +21,7 @@ const InnerWrapper = styled.div`
   width: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   margin-top: 20px;
 
@@ -32,8 +32,10 @@ const InnerWrapper = styled.div`
 
 const DuckImg = styled.img`
   height: 200px;
+  transform: scale(1.5);
   margin: 30px;
   position: relative;
+  top: -20px;
   @media screen and (max-width: 1320px) {
     height: 100px;
   }
@@ -92,7 +94,7 @@ const Subtext = styled.span`
 `;
 
 const Refresh = styled.button`
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 12px;
   padding: 10px;
   border-radius: 30px;
@@ -135,7 +137,7 @@ const DuckFacts = () => {
     <Wrapper >
       <SectionTitle text="Duck Facts" />
       <InnerWrapper>
-        <DuckImg src="/duck.png" alt="duck" />
+        <DuckImg src="/duck.jpeg" alt="duck" />
         <Bubble>
           <Title>Did you know?</Title>
           {randomFact && <FactWrapper>
