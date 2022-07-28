@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { SectionTitle } from '../../UILibrary';
 import { popular } from '../../../data/popular';
 import Link from 'next/link';
+import anime from 'animejs';
+const inView = require('in-view');
 
 const Wrapper = styled.div`
   width: 100%;
@@ -60,7 +62,9 @@ const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  opacity: 0;
+  position: relative;
+  top: 300px;
   &:active {
     transform: scale(0.99);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -153,18 +157,57 @@ const ProductLink = styled.a`
 `;
 
 const Popular = () => {
+  const animateIn = (selectors) => {
+    var tl = anime.timeline({
+      easing: 'easeInOutElastic',
+      duration: 1000,
+    });
+
+    tl
+      .add({
+        targets: selectors[0],
+        translateY: -300,
+        opacity: 1,
+      })
+      .add({
+        targets: selectors[1],
+        translateY: -300,
+        opacity: 1,
+      }, '-=800')
+      .add({
+        targets: selectors[2],
+        translateY: -300,
+        opacity: 1,
+      }, '-=800')
+  }
+
+  const checkInView = () => {
+    inView('#popular-title')
+      .on('enter', el => {
+        console.log('in view')
+        animateIn(['#popular-0', '#popular-1', '#popular-2']);
+      });
+  };
+
+  useEffect(() => {
+    if (document) {
+      document.body.addEventListener('scroll', checkInView);
+      return () => document.body.removeEventListener('scroll', checkInView);
+    }
+  }, []);
+
   return (
     <Wrapper>
       <InnerWrapper>
-        <TitleWrapper>
+        <TitleWrapper id="popular-title">
           <BarAroundTitle />
           <SectionTitle text="Popular Products" />
           <BarAroundTitle />
         </TitleWrapper>
         <CardsWrapper>
-          {popular.map(product => {
+          {popular.map((product, i) => {
             return (
-              <CardWrapper key={product.img}>
+              <CardWrapper key={product.img} id={`popular-${i}`}>
                 <FlipContainer>
                   <Flipper>
                     <CardFront>
