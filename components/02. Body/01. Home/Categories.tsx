@@ -73,10 +73,11 @@ const Card = styled.div`
   background: linear-gradient(to right, #ffeae0 50%, #FFF5F0 50%);
   background-size: 200% 200%;
   background-position: right bottom;
-  opacity: 0;
 
+  opacity: 0;
   position: relative;
-  top: -100px;
+  top: 100px;
+
   color: black;
 
   &:hover {
@@ -147,22 +148,22 @@ const Categories = () => {
     tl
       .add({
         targets: selectors[0],
-        translateY: 100,
+        translateY: -100,
         opacity: 1,
       })
       .add({
         targets: selectors[1],
-        translateY: 100,
+        translateY: -100,
         opacity: 1,
       }, '-=400')
       .add({
         targets: selectors[2],
-        translateY: 100,
+        translateY: -100,
         opacity: 1,
       }, '-=400')
       .add({
         targets: selectors[3],
-        translateY: 100,
+        translateY: -100,
         opacity: 1,
       }, '-=400');
   }
