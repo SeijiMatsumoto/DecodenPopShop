@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import Link from 'next/link';
 import { categories } from '../../../data/categories';
