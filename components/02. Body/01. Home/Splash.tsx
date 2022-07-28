@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router'
+import anime from 'animejs';
+const inView = require('in-view');
 
 const SplashWrapper = styled.div`
   width: 100vw;
@@ -23,7 +25,7 @@ const InnerWrapper = styled.div`
   width: 1320px;
   display: flex;
   align-items: flex-start;
-  position: absolute;
+  position: relative;
 
   @media screen and (max-width: 1320px) {
     width: 90%;
@@ -34,6 +36,8 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: absolute;
+  top: 250px;
 
   @media screen and (max-width: 1000px) {
     margin: 15px;
@@ -60,8 +64,9 @@ const TextWrapper = styled.div`
 `;
 
 const BigText = styled.span`
-  font-size: 5vw;
+  font-size: 7vw;
   font-weight: bold;
+  opacity: 0;
 
   @media screen and (max-width: 500px) {
     font-size: 12vw;
@@ -71,6 +76,7 @@ const BigText = styled.span`
 const SubText = styled.span`
   font-size: 20px;
   color: black;
+  opacity: 0;
 
   @media screen and (max-width: 700px) {
     font-size: 4vw;
@@ -81,6 +87,7 @@ const ButtonsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  opacity: 0;
 
   @media screen and (max-width: 1100px) {
     flex-direction: column;
@@ -130,15 +137,54 @@ const Splash = () => {
     router.push('/products/all-products');
   }
 
+  const animateIn = (selectors) => {
+    var tl = anime.timeline({
+      easing: 'easeInOutQuad',
+      duration: 500,
+    });
+
+    tl
+      .add({
+        targets: selectors[0],
+        translateY: -300,
+        opacity: 1,
+      })
+      .add({
+        targets: selectors[1],
+        translateY: -300,
+        opacity: 1,
+      }, '-=400')
+      .add({
+        targets: selectors[2],
+        translateY: -300,
+        opacity: 1,
+      }, '-=400');
+  }
+
+  const checkInView = () => {
+    inView('#splash1')
+      .on('enter', el => {
+        animateIn(['#splash1', '#splash2', '#splash3']);
+      });
+  };
+
+  useEffect(() => {
+    checkInView();
+    if (document) {
+      document.body.addEventListener("scroll", checkInView);
+      return () => document.body.removeEventListener('scroll', checkInView);
+    }
+  }, [])
+
   return (
     <SplashWrapper >
       <InnerWrapper>
         <Column>
           <TextWrapper>
-            <BigText>Quack Goods</BigText>
-            <SubText>One-stop shop for your duck obession</SubText>
+            <BigText id="splash1">Quack Goods</BigText>
+            <SubText id="splash2">One-stop shop for your duck obession</SubText>
           </TextWrapper>
-          <ButtonsWrapper>
+          <ButtonsWrapper id="splash3">
             <Button onClick={clickHandler}>Shop All Products</Button>
           </ButtonsWrapper>
         </Column>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FaLongArrowAltRight } from "react-icons/fa";
@@ -6,7 +7,8 @@ import { categories } from '../../../data/categories';
 import { IoPhonePortraitOutline, IoShirtOutline } from "react-icons/io5";
 import { GiPlasticDuck } from "react-icons/gi";
 import { TbMug } from "react-icons/tb";
-
+import anime from 'animejs';
+const inView = require('in-view');
 
 const Wrapper = styled.div`
   display: flex;
@@ -48,7 +50,7 @@ const CardsWrapper = styled.div`
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   @media screen and (max-width: 1320px) {
     flex-direction: column;
   }
@@ -65,14 +67,18 @@ const Card = styled.div`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   width: 100%;
   margin: 10px;
-  padding: 50px 20px;
+  padding: 70px 20px;
   cursor: pointer;
   transition: 400ms ease;
   background: linear-gradient(to right, #ffeae0 50%, #FFF5F0 50%);
   background-size: 200% 200%;
   background-position: right bottom;
+  opacity: 0;
 
+  position: relative;
+  top: -100px;
   color: black;
+
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-position: left bottom;
@@ -131,6 +137,51 @@ const Icon = styled.span`
 `;
 
 const Categories = () => {
+
+  const animateIn = (selectors) => {
+    var tl = anime.timeline({
+      easing: 'easeInOutElastic(1, .6)',
+      duration: 500,
+    });
+
+    tl
+      .add({
+        targets: selectors[0],
+        translateY: 100,
+        opacity: 1,
+      })
+      .add({
+        targets: selectors[1],
+        translateY: 100,
+        opacity: 1,
+      }, '-=400')
+      .add({
+        targets: selectors[2],
+        translateY: 100,
+        opacity: 1,
+      }, '-=400')
+      .add({
+        targets: selectors[3],
+        translateY: 100,
+        opacity: 1,
+      }, '-=400');
+  }
+
+  const checkInView = () => {
+    inView('#category-title')
+      .on('enter', el => {
+        console.log('in view')
+        animateIn(['#category-card-0', '#category-card-1', '#category-card-2', '#category-card-3']);
+      });
+  };
+
+  useEffect(() => {
+    if (document) {
+      document.body.addEventListener('scroll', checkInView);
+      return () => document.body.removeEventListener('scroll', checkInView);
+    }
+  }, []);
+
   const icons = [
     <IoPhonePortraitOutline key='cases' />,
     <IoShirtOutline key='clothing' />,
@@ -141,11 +192,11 @@ const Categories = () => {
     <Wrapper>
       <InnerWrapper>
         <CardsWrapper>
-          <TitleWrapper><Title>Featured Categories</Title></TitleWrapper>
+          <TitleWrapper id="category-title"><Title>Featured Categories</Title></TitleWrapper>
           {categories.slice(0, 4).map((category, i) => {
             return (
               <Link key={category + 'component'} href={`/products/${category.toLowerCase()}`} >
-                <Card id='card'>
+                <Card id={`category-card-${i}`}>
                   <Icon>{icons[i]}</Icon>
                   <TextWrapper>
                     <CardTitle>{category}</CardTitle>

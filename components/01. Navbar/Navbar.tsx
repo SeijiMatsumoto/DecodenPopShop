@@ -43,6 +43,9 @@ const LogoLinkWrapper = styled.div`
 `;
 
 const Logo = styled.img`
+  position: relative;
+  top: -200px;
+  opacity: 0;
   height: 50px;
   margin: 20px 10px;
   cursor: pointer;
@@ -68,8 +71,9 @@ const LinkText = styled.span`
   cursor: pointer;
   overflow: hidden;
 	position: relative;
-  color: #5a5a5a;
+  top: -200px;
   opacity: 0;
+  color: #5a5a5a;
   bottom: 0px;
 
   font-family: 'Mali', cursive;
@@ -105,6 +109,11 @@ const ButtonsWrapper = styled.div`
   > button {
     margin-left: 10px;
   }
+  div {
+    opacity: 0;
+    position: relative;
+    top: -200px;
+  }
 
   @media screen and (max-width: 875px) {
     display: none;
@@ -133,6 +142,9 @@ const MenuWrapper = styled.div`
 const Cart = styled(FaShoppingCart)`
   margin-left:20px;
   font-size: 20px;
+  opacity: 0;
+  position: relative;
+  top: -200px;
 `;
 
 
@@ -148,19 +160,69 @@ const Navbar = () => {
     setScrollTop(e.path[0].scrollTop);
   };
 
-  useEffect(() => {
-    if (document) {
-      document.body.addEventListener('scroll', handleScroll);
-      const links = document.querySelectorAll('.navLink');
-      console.log('hello', links)
+  const animateIn = (selectors) => {
+    var tl = anime.timeline({
+      easing: 'easeInOutQuad',
+      duration: 500,
+    });
 
-      links.forEach(link => {
-        setTimeout(() => {
-          link.classList.add('fade-in');
-        }, 1000)
+    tl
+      .add({
+        targets: selectors[0],
+        translateY: 200,
+        opacity: 1,
+        duration: 200
+      })
+      .add({
+        targets: selectors[1],
+        translateY: 200,
+        opacity: 1,
+        delay: 200
+      }, '-=400')
+      .add({
+        targets: selectors[2],
+        translateY: 200,
+        opacity: 1,
+      }, '-=400')
+      .add({
+        targets: selectors[3],
+        translateY: 200,
+        opacity: 1,
+      }, '-=400')
+      .add({
+        targets: selectors[4],
+        translateY: 200,
+        opacity: 1,
+      }, '-=400')
+      .add({
+        targets: selectors[5],
+        translateY: 200,
+        opacity: 1,
+      }, '-=400')
+      .add({
+        targets: selectors[6],
+        translateY: 200,
+        opacity: 1,
+      }, '-=400');
+  }
+
+  const checkInView = () => {
+    inView('#navbar')
+      .on('enter', el => {
+        animateIn(['#navLogo', '#nav1', '#nav2', '#nav3', '#nav4', "#nav5", '#nav6']);
       });
+  };
 
-      return () => document.body.removeEventListener('scroll', handleScroll);
+  const actions = (e) => {
+    handleScroll(e);
+    checkInView();
+  }
+
+  useEffect(() => {
+    checkInView();
+    if (document) {
+      document.body.addEventListener('scroll', actions);
+      return () => document.body.removeEventListener('scroll', actions);
     }
   }, []);
 
@@ -178,10 +240,9 @@ const Navbar = () => {
 
   useEffect(() => {
     if (document) {
-      const logo = document.getElementById('logo') || undefined;
+      const logo = document.getElementById('navLogo') || undefined;
       const nav = document.getElementById('navwrapper') || undefined;
       const catNav = document.getElementById('catNav') || undefined;
-
       if (scrollTop > 100) {
         if (logo) logo.style.height = '40px';
         if (nav) nav.style.backgroundColor = 'white';
@@ -202,17 +263,17 @@ const Navbar = () => {
         <NavWrapper id="navwrapper">
           <NavInnerWrapper>
             <LogoLinkWrapper>
-              <Link href="/"><Logo id='logo' src="/Logos/QuackGoods-logos_transparent.png" alt='Logo' /></Link>
+              <Link href="/"><Logo id='navLogo' src="/Logos/QuackGoods-logos_transparent.png" alt='Logo' /></Link>
               <LinksWrapper>
-                <Link href="/"><LinkText className="navLink">Home</LinkText></Link>
-                <Link href="/products/all-products"><LinkText className="navLink">Shop All</LinkText></Link>
-                <Link href="/about"><LinkText className="navLink">About</LinkText></Link>
-                <Link href="/contact"><LinkText className="navLink">Contact</LinkText></Link>
+                <Link href="/"><LinkText id="nav1" className="navLink">Home</LinkText></Link>
+                <Link href="/products/all-products"><LinkText id="nav2" className="navLink">Shop All</LinkText></Link>
+                <Link href="/about"><LinkText id="nav3" className="navLink">About</LinkText></Link>
+                <Link href="/contact"><LinkText id="nav4" className="navLink">Contact</LinkText></Link>
               </LinksWrapper>
             </LogoLinkWrapper>
             <ButtonsWrapper>
-              <Button action={clickHandler} buttonText={'My Account'} />
-              <Cart />
+              <div id="nav5"><Button action={clickHandler} buttonText={'My Account'} /></div>
+              <Cart id="nav6" />
             </ButtonsWrapper>
             <HamburgerMenu src="https://cdn-icons.flaticon.com/png/512/4889/premium/4889159.png?token=exp=1658543209~hmac=10015bef171b4cf8294d6124e9fe4f37" onClick={() => setOpenMenu(!openMenu)} />
           </NavInnerWrapper>
