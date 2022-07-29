@@ -14,6 +14,10 @@ const Wrapper = styled.div`
   * {
     font-family: 'Roboto', sans-serif;
   }
+
+  @media screen and (max-width: 500px) {
+    margin: 50px 0 30px;
+  }
 `;
 
 const InnerWrapper = styled.div`
@@ -37,6 +41,10 @@ const BarAroundTitle = styled.span`
   height: 35%;
   border-bottom: 1px solid #dadada;
   margin: 0 30px;
+
+  @media screen and (max-width: 500px) {
+    width: 20%;
+  }
 `;
 
 const CardsWrapper = styled.div`
@@ -73,6 +81,11 @@ const CardWrapper = styled.div`
   @media screen and (max-width: 1320px) {
     margin-bottom: 50px;
   }
+  @media screen and (max-width: 500px) {
+      opacity: 1;
+      position: relative;
+      top: 0;
+    }
 `;
 
 const FlipContainer = styled.div`
@@ -191,8 +204,12 @@ const Popular = () => {
 
   useEffect(() => {
     if (document) {
-      document.body.addEventListener('scroll', checkInView);
-      return () => document.body.removeEventListener('scroll', checkInView);
+      const width = window.innerWidth;
+      if (width > 500) {
+        console.log('Width:', width);
+        document.body.addEventListener('scroll', checkInView);
+        return () => document.body.removeEventListener('scroll', checkInView);
+      }
     }
   }, []);
 
@@ -207,23 +224,25 @@ const Popular = () => {
         <CardsWrapper>
           {popular.map((product, i) => {
             return (
-              <CardWrapper key={product.img} id={`popular-${i}`}>
-                <FlipContainer>
-                  <Flipper>
-                    <CardFront>
-                      <CardImg src={product.img} alt="product" />
-                      <ProductTitle>{product.title}</ProductTitle>
-                    </CardFront>
-                    <CardBack>
-                      <CardBackInner>
+              <Link href={product.url} key={product.img + '-popular'}>
+                <CardWrapper id={`popular-${i}`}>
+                  <FlipContainer>
+                    <Flipper>
+                      <CardFront>
+                        <CardImg src={product.img} alt="product" />
                         <ProductTitle>{product.title}</ProductTitle>
-                        <ProductPrice>{product.price}</ProductPrice>
-                        <Link href={product.url}><ProductLink>View Product</ProductLink></Link>
-                      </CardBackInner>
-                    </CardBack>
-                  </Flipper>
-                </FlipContainer>
-              </CardWrapper>
+                      </CardFront>
+                      <CardBack>
+                        <CardBackInner>
+                          <ProductTitle>{product.title}</ProductTitle>
+                          <ProductPrice>{product.price}</ProductPrice>
+                          <ProductLink>View Product</ProductLink>
+                        </CardBackInner>
+                      </CardBack>
+                    </Flipper>
+                  </FlipContainer>
+                </CardWrapper>
+              </Link>
             )
           })}
 

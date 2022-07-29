@@ -98,6 +98,13 @@ const Card = styled.div`
   @media screen and (max-width: 1320px) {
     width: 90%;
   }
+
+  @media screen and (max-width: 500px) {
+      opacity: 1;
+      position: relative;
+      top: 0;
+      margin: 10px 0;
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -178,8 +185,11 @@ const Categories = () => {
 
   useEffect(() => {
     if (document) {
-      document.body.addEventListener('scroll', checkInView);
-      return () => document.body.removeEventListener('scroll', checkInView);
+      const width = window.innerWidth;
+      if (width > 500) {
+        document.body.addEventListener('scroll', checkInView);
+        return () => document.body.removeEventListener('scroll', checkInView);
+      }
     }
   }, []);
 

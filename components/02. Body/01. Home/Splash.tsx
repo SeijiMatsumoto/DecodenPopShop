@@ -46,6 +46,7 @@ const Column = styled.div`
   @media screen and (max-width: 500px) {
     width: 100%;
     margin: 0;
+    top: 0;
     &:nth-child(2) {
       margin: 0px;
       width: 0;
@@ -70,6 +71,7 @@ const BigText = styled.span`
 
   @media screen and (max-width: 500px) {
     font-size: 12vw;
+    opacity: 1;
   }
 `;
 
@@ -81,6 +83,10 @@ const SubText = styled.span`
   @media screen and (max-width: 700px) {
     font-size: 4vw;
   }
+
+  @media screen and (max-width: 500px) {
+    opacity: 1;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
@@ -91,6 +97,10 @@ const ButtonsWrapper = styled.div`
 
   @media screen and (max-width: 1100px) {
     flex-direction: column;
+  }
+
+  @media screen and (max-width: 500px) {
+    opacity: 1;
   }
 
 `;
@@ -169,10 +179,13 @@ const Splash = () => {
   };
 
   useEffect(() => {
-    checkInView();
-    if (document) {
-      document.body.addEventListener("scroll", checkInView);
-      return () => document.body.removeEventListener('scroll', checkInView);
+    const width = window.innerWidth;
+    if (width > 500) {
+      if (document) {
+        checkInView();
+        document.body.addEventListener("scroll", checkInView);
+        return () => document.body.removeEventListener('scroll', checkInView);
+      }
     }
   }, [])
 
