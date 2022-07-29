@@ -35,9 +35,9 @@ const InnerWrapper = styled.div`
 `;
 
 const DuckImg = styled.img`
-  height: 200px;
+  height: 100px;
   transform: scale(1.5);
-  margin: 30px;
+  margin: 40px;
   position: relative;
   top: -20px;
   @media screen and (max-width: 1320px) {
@@ -104,13 +104,13 @@ const Refresh = styled.button`
   border-radius: 30px;
   width: 30%;
   color: white;
-  background-color: #fa741a;
+  background-color: #A19DCA;
   border: none;
   cursor: pointer;
   transition: 200ms ease;
 
   &:hover {
-    background-color: #ff8432;
+    background-color: #a6a1da;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
@@ -141,7 +141,7 @@ const DuckFacts = () => {
     <Wrapper >
       <SectionTitle text="Duck Facts" />
       <InnerWrapper>
-        <DuckImg src="/duck.jpeg" alt="duck" />
+        <DuckImg src="/duck.png" alt="duck" />
         <Bubble>
           <Title>Did you know?</Title>
           {randomFact && <FactWrapper>
