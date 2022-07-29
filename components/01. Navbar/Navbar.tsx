@@ -15,8 +15,8 @@ const _ = {
   Wrapper: styled.nav`
     z-index: 5;
     width: 100%;
+    height: 120px;
     position: fixed;
-
     @media screen and (max-width: 500px) {
       background-color: white;
     }
@@ -33,14 +33,14 @@ const _ = {
     }
   `,
   NavInnerWrapper: styled.div`
-    padding: 0 20px;
-    width: 1320px;
+    padding: 0 40px;
+    width: 2560px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    @media screen and (max-width: 1320px) {
+    @media screen and (max-width: 2560px) {
       width: 90%;
     }
   `,
@@ -54,7 +54,7 @@ const _ = {
     top: -200px;
     opacity: 0;
     height: 50px;
-    margin: 20px 10px;
+    margin: 20px 10px 20px 0;
     cursor: pointer;
     object-fit: contain;
     transition: 400ms ease;
@@ -287,7 +287,7 @@ const Navbar = () => {
               <Link href="/"><_.Logo id='navLogo' src="/Logos/QuackGoods-logos_transparent.png" alt='Logo' /></Link>
               <_.LinksWrapper>
                 <Link href="/"><_.LinkText id="nav1" className="navLink">Home</_.LinkText></Link>
-                <Link href="/products/all-products"><_.LinkText id="nav2" className="navLink">Shop All</_.LinkText></Link>
+                <Link href="/products"><_.LinkText id="nav2" className="navLink">Shop All</_.LinkText></Link>
                 <Link href="/about"><_.LinkText id="nav3" className="navLink">About</_.LinkText></Link>
                 <Link href="/contact"><_.LinkText id="nav4" className="navLink">Contact</_.LinkText></Link>
               </_.LinksWrapper>

@@ -15,9 +15,8 @@ const _ = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1320px;
-
-    @media screen and (max-width: 1320px) {
+    width: 2560px;
+    @media screen and (max-width: 2560px) {
       width: 90%;
     }
   `,
@@ -30,7 +29,6 @@ const _ = {
   Close: styled.span`
     cursor: pointer;
     transition: 0.2s ease-in;
-    margin-right: 10px;
     &:hover {
       color: white;
     }
