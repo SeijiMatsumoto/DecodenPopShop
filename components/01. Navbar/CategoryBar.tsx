@@ -24,6 +24,7 @@ const _ = {
     transition: 400ms ease;
     @media screen and (max-width: 500px) {
       font-size: 12px;
+      width: 95%;
     }
   `,
   CatTitle: styled.span`
@@ -40,6 +41,9 @@ const _ = {
 
     &:hover {
       color: white;
+    }
+    @media screen and (max-width: 500px) {
+      padding: 10px 5px;
     }
   `
 }
