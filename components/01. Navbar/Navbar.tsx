@@ -245,7 +245,6 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    console.log(openMenu)
     if (document) {
       const menu = document.getElementById('menuWrapper') || undefined;
       if (openMenu) {
