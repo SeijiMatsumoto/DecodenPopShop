@@ -24,4 +24,9 @@ body {
   margin: 20px;
   width: 1320px;
 }
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
 /*# sourceMappingURL=global.css.map */
