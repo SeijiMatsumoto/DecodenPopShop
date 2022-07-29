@@ -3,61 +3,59 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { categories } from '../../data/categories';
 
-const CatWrapper = styled.div`
-  display: none;
-  padding: 10px;
-  width: 100%;
-  background-color: #719abe;
-  justify-content: center;
+const _ = {
+  CatWrapper: styled.div`
+    display: none;
+    padding: 10px;
+    width: 100%;
+    background-color: #719abe;
+    justify-content: center;
 
-  * {
-    font-family: "Roboto", sans-serif;
-  }
-`;
-
-const CatInnerWrapper = styled.div`
-  width: 1320px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  overflow: hidden;
-  transition: 400ms ease;
-  @media screen and (max-width: 500px) {
-    font-size: 12px;
-  }
-`;
-
-const CatTitle = styled.span`
-  color: white;
-  margin-right: 10px;
-  cursor: default;
-`;
-
-const CategoriesWrapper = styled.div`
-`;
-
-const CategoriesText = styled.span`
-  color: #dedede;
-  padding: 10px;
-  cursor: pointer;
-  transition: 400ms ease;
-
-  &:hover {
+    * {
+      font-family: "Roboto", sans-serif;
+    }
+  `,
+  CatInnerWrapper: styled.div`
+    width: 1320px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    transition: 400ms ease;
+    @media screen and (max-width: 500px) {
+      font-size: 12px;
+    }
+  `,
+  CatTitle: styled.span`
     color: white;
-  }
-`;
+    margin-right: 10px;
+    cursor: default;
+  `,
+  CategoriesWrapper: styled.div``,
+  CategoriesText: styled.span`
+    color: #dedede;
+    padding: 10px;
+    cursor: pointer;
+    transition: 400ms ease;
+
+    &:hover {
+      color: white;
+    }
+  `
+}
+
 const CategoryBar = () => {
   return (
-    <CatWrapper id="catNav">
-      <CatInnerWrapper>
-        <CatTitle>Shop by category:</CatTitle>
-        <CategoriesWrapper>
+    <_.CatWrapper id="catNav">
+      <_.CatInnerWrapper>
+        <_.CatTitle>Shop by category:</_.CatTitle>
+        <_.CategoriesWrapper>
           {categories.map(category => (
-            <Link key={category} href={`/products/${category.toLowerCase()}`}><CategoriesText>{category}</CategoriesText></Link>
+            <Link key={category} href={`/products/${category.toLowerCase()}`}><_.CategoriesText>{category}</_.CategoriesText></Link>
           ))}
-        </CategoriesWrapper>
-      </CatInnerWrapper>
-    </CatWrapper>
+        </_.CategoriesWrapper>
+      </_.CatInnerWrapper>
+    </_.CatWrapper>
   );
 };
 

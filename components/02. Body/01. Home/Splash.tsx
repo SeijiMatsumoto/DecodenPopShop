@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useRouter } from 'next/router'
 import anime from 'animejs';
-const inView = require('in-view');
+import { checkInView } from '../../../helper/checkInView';
 
 const Styles = {
   SplashWrapper: styled.div`
@@ -156,16 +156,15 @@ const WalkingDuck = styled.img`
 `
 
 const Splash = () => {
+  const [isInView, setIsInView] = useState<boolean>(false);
   const router = useRouter()
+
   const clickHandler = () => {
     router.push('/products/all-products');
   }
 
   const animateIn = (selectors) => {
-    var tl = anime.timeline({
-      easing: 'easeInOutQuad',
-      duration: 500,
-    });
+    var tl = anime.timeline({ easing: 'easeInOutQuad', duration: 500 });
 
     tl
       .add({
@@ -185,20 +184,21 @@ const Splash = () => {
       }, '-=400');
   }
 
-  const checkInView = () => {
-    inView('#splash1')
-      .on('enter', el => {
-        animateIn(['#splash1', '#splash2', '#splash3']);
-      });
+  const scrollHandler = () => {
+    if (!isInView) checkInView('#splash1', setIsInView);
   };
+
+  useEffect(() => {
+    if (isInView) animateIn(['#splash1', '#splash2', '#splash3']);
+  }, [isInView])
 
   useEffect(() => {
     const width = window.innerWidth;
     if (width > 500) {
       if (document) {
-        checkInView();
-        document.body.addEventListener("scroll", checkInView);
-        return () => document.body.removeEventListener('scroll', checkInView);
+        scrollHandler();
+        document.body.addEventListener('scroll', scrollHandler);
+        return () => document.body.removeEventListener('scroll', scrollHandler);
       }
     }
   }, [])
