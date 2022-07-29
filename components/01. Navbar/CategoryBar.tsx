@@ -14,6 +14,10 @@ const _ = {
     * {
       font-family: "Roboto", sans-serif;
     }
+
+    @media screen and (max-width: 500px) {
+      display: flex;
+    }
   `,
   CatInnerWrapper: styled.div`
     width: 1320px;
