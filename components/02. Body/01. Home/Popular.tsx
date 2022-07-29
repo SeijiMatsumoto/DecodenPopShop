@@ -6,7 +6,7 @@ import Link from 'next/link';
 import anime from 'animejs';
 import { checkInView } from '../../../helper/checkInView';
 
-const Styles = {
+const _ = {
   Wrapper: styled.div`
     width: 100%;
     margin: 100px 0 140px;
@@ -161,11 +161,7 @@ const Popular = () => {
   const [isInView, setIsInView] = useState<boolean>(false);
 
   const animateIn = (selectors) => {
-    var tl = anime.timeline({
-      easing: 'linear',
-      duration: 500,
-    });
-
+    var tl = anime.timeline({ easing: 'easeInOutElastic(1, .6)', duration: 500 });
     tl
       .add({
         targets: selectors[0],
@@ -176,12 +172,12 @@ const Popular = () => {
         targets: selectors[1],
         translateY: -300,
         opacity: 1,
-      }, '-=300')
+      }, '-=400')
       .add({
         targets: selectors[2],
         translateY: -300,
         opacity: 1,
-      }, '-=300')
+      }, '-=400')
   }
 
   const scrollHandler = () => {
@@ -203,40 +199,40 @@ const Popular = () => {
   }, []);
 
   return (
-    <Styles.Wrapper>
-      <Styles.InnerWrapper>
-        <Styles.TitleWrapper>
-          <Styles.BarAroundTitle id="popular-title" />
+    <_.Wrapper>
+      <_.InnerWrapper>
+        <_.TitleWrapper>
+          <_.BarAroundTitle id="popular-title" />
           <SectionTitle text="Popular Products" />
-          <Styles.BarAroundTitle />
-        </Styles.TitleWrapper>
-        <Styles.CardsWrapper>
+          <_.BarAroundTitle />
+        </_.TitleWrapper>
+        <_.CardsWrapper>
           {popular.map((product, i) => {
             return (
               <Link href={product.url} key={product.img + '-popular'}>
-                <Styles.CardWrapper id={`popular-${i}`}>
-                  <Styles.FlipContainer>
-                    <Styles.Flipper>
-                      <Styles.CardFront>
-                        <Styles.CardImg src={product.img} alt="product" />
-                        <Styles.ProductTitle>{product.title}</Styles.ProductTitle>
-                      </Styles.CardFront>
-                      <Styles.CardBack>
-                        <Styles.CardBackInner>
-                          <Styles.ProductTitle>{product.title}</Styles.ProductTitle>
-                          <Styles.ProductPrice>{product.price}</Styles.ProductPrice>
-                          <Styles.ProductLink>View Product</Styles.ProductLink>
-                        </Styles.CardBackInner>
-                      </Styles.CardBack>
-                    </Styles.Flipper>
-                  </Styles.FlipContainer>
-                </Styles.CardWrapper>
+                <_.CardWrapper id={`popular-${i}`}>
+                  <_.FlipContainer>
+                    <_.Flipper>
+                      <_.CardFront>
+                        <_.CardImg src={product.img} alt="product" />
+                        <_.ProductTitle>{product.title}</_.ProductTitle>
+                      </_.CardFront>
+                      <_.CardBack>
+                        <_.CardBackInner>
+                          <_.ProductTitle>{product.title}</_.ProductTitle>
+                          <_.ProductPrice>{product.price}</_.ProductPrice>
+                          <_.ProductLink>View Product</_.ProductLink>
+                        </_.CardBackInner>
+                      </_.CardBack>
+                    </_.Flipper>
+                  </_.FlipContainer>
+                </_.CardWrapper>
               </Link>
             )
           })}
-        </Styles.CardsWrapper>
-      </Styles.InnerWrapper>
-    </Styles.Wrapper>
+        </_.CardsWrapper>
+      </_.InnerWrapper>
+    </_.Wrapper>
   );
 };
 
