@@ -6,4 +6,10 @@
   border-bottom: 4px solid #fa741a;
   cursor: default;
 }
+
+@media screen and (max-width: 500px) {
+  .title {
+    font-size: 20px;
+  }
+}
 /*# sourceMappingURL=Title.module.css.map */
