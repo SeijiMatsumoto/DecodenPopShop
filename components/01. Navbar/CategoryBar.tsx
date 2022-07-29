@@ -22,7 +22,7 @@ const CatInnerWrapper = styled.div`
   align-items: center;
   overflow: hidden;
   transition: 400ms ease;
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     font-size: 12px;
   }
 `;

@@ -240,19 +240,19 @@ const Navbar = () => {
   };
 
   const actions = (e) => {
+    const width = window.innerWidth;
+    if (width > 500) {
+      checkInView();
+      console.log('Width over 500');
+    }
     handleScroll(e);
-    checkInView();
   }
 
   useEffect(() => {
-    const width = window.innerWidth;
-    if (width > 500) {
-      if (document) {
-        checkInView();
-        console.log('Width over 500');
-        document.body.addEventListener('scroll', actions);
-        return () => document.body.removeEventListener('scroll', actions);
-      }
+    if (document) {
+      if (window.innerWidth > 500) checkInView();
+      document.body.addEventListener('scroll', actions);
+      return () => document.body.removeEventListener('scroll', actions);
     }
   }, []);
 
@@ -273,6 +273,7 @@ const Navbar = () => {
       const logo = document.getElementById('navLogo') || undefined;
       const nav = document.getElementById('navwrapper') || undefined;
       const catNav = document.getElementById('catNav') || undefined;
+
       if (scrollTop > 100) {
         if (logo) logo.style.height = '40px';
         if (nav) nav.style.backgroundColor = 'white';
