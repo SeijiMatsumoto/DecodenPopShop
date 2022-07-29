@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "SchoolBell";
+  src: url("/Fonts/Schoolbell.ttf") format("truetype");
+}
+
 html,
 body {
   margin: 0;
@@ -28,5 +33,9 @@ body {
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
+}
+
+.schoolbell-font {
+  font-family: "SchoolBell";
 }
 /*# sourceMappingURL=global.css.map */
