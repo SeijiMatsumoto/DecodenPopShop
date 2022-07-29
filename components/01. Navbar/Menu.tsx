@@ -1,23 +1,27 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { ExpandList } from '../UILibrary';
 
 const _ = {
   MenuWrapper: styled.div`
-    width: 300px;
+    width: 100vw;
     height: 100vh;
     transition: 0.3s ease-in-out;
-    position: absolute;
+    position: fixed;
+    top: 0;
     left: 100vw;
-    background-color: #d6ecff;
-    z-index: 100;
-    @media screen and (max-width: 875px) {
-      width: 100vw;
+    background-color: #f5f5f5;
+    z-index: 4;
+    display: flex;
+    justify-content: flex-end;
+    * {
+      font-family: 'Roboto', sans-serif;
     }
+    overflow-y: none;
   `,
   InnerWrapper: styled.div`
-    margin: 50px;
+    margin-top: 150px;
+    width: 90%;
   `,
   Title: styled.span`
     font-size: 40px;
@@ -37,14 +41,26 @@ const _ = {
 }
 
 const Menu = ({ setOpenMenu }) => {
+  const checkClick = (e) => {
+    const menu = document.getElementById('menuWrapper') || undefined;
+    if (e.target != document.querySelector("#menuLink")) {
+      if (menu) setOpenMenu(false);
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('mouseup', checkClick);
+    return () => document.body.removeEventListener('scroll', checkClick);
+  }, [])
+
   return (
     <_.MenuWrapper id="menuWrapper">
       <_.InnerWrapper>
-        <_.Title>Menu Title</_.Title>
         <_.LinksWrapper>
-          <Link href="/"><_.LinkText onClick={() => setOpenMenu(false)}>Link1</_.LinkText></Link>
-          <ExpandList mainItem='Link2' subItems={[{ title: 'Sublink1', url: '/' }, { title: 'Sublink2', url: '/' }]} callback={() => setOpenMenu(false)} />
-          <Link href="/"><_.LinkText onClick={() => setOpenMenu(false)}>Link3</_.LinkText></Link>
+          <Link href="/"><_.LinkText id="menuLink" onClick={() => setOpenMenu(false)}>Home</_.LinkText></Link>
+          <Link href="/products"><_.LinkText id="menuLink" onClick={() => setOpenMenu(false)}>All Products</_.LinkText></Link>
+          <Link href="/about"><_.LinkText id="menuLink" onClick={() => setOpenMenu(false)}>About</_.LinkText></Link>
+          <Link href="/contact"><_.LinkText id="menuLink" onClick={() => setOpenMenu(false)}>Contact</_.LinkText></Link>
         </_.LinksWrapper>
       </_.InnerWrapper>
     </_.MenuWrapper>
