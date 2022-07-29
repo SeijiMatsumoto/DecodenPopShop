@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import { IoPhonePortraitOutline, IoShirtOutline } from "react-icons/io5";
 import { GiPlasticDuck } from "react-icons/gi";
 import { TbMug } from "react-icons/tb";
 import anime from 'animejs';
-const inView = require('in-view');
+import { checkInView } from '../../../helper/checkInView';
 
 const Wrapper = styled.div`
   display: flex;
@@ -65,7 +65,6 @@ const Card = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  background-color: #FFF5F0;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   width: 100%;
@@ -148,6 +147,7 @@ const Icon = styled.span`
 `;
 
 const Categories = () => {
+  const [isInView, setIsInView] = useState<boolean>(false);
 
   const animateIn = (selectors) => {
     var tl = anime.timeline({
@@ -178,20 +178,20 @@ const Categories = () => {
       }, '-=400');
   }
 
-  const checkInView = () => {
-    inView('#category-title')
-      .on('enter', el => {
-        console.log('in view')
-        animateIn(['#category-card-0', '#category-card-1', '#category-card-2', '#category-card-3']);
-      });
+  const scrollHandler = () => {
+    if (!isInView) checkInView('#category-title', setIsInView);
   };
+
+  useEffect(() => {
+    if (isInView) animateIn(['#category-card-0', '#category-card-1', '#category-card-2', '#category-card-3']);
+  }, [isInView])
 
   useEffect(() => {
     if (document) {
       const width = window.innerWidth;
       if (width > 500) {
-        document.body.addEventListener('scroll', checkInView);
-        return () => document.body.removeEventListener('scroll', checkInView);
+        document.body.addEventListener('scroll', scrollHandler);
+        return () => document.body.removeEventListener('scroll', scrollHandler);
       }
     }
   }, []);
