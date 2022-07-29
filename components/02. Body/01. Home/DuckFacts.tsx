@@ -15,6 +15,10 @@ const Wrapper = styled.div`
   * {
     font-family: "Roboto", sans-serif;
   }
+
+  @media screen and (max-width: 500px) {
+    padding: 30px 0 40px;
+  }
 `;
 
 const InnerWrapper = styled.div`

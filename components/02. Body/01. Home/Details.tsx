@@ -21,7 +21,7 @@ const InnerWrapper = styled.div`
 
   @media screen and (max-width: 1000px) {
     flex-direction: column;
-    padding: 30px 0;
+    padding: 40px 0;
   }
 `;
 
@@ -29,7 +29,7 @@ const Col = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #dedede;
+  color: #f1f1f1;
   width: 30%;
   text-align: center;
   padding: 50px;
@@ -50,14 +50,23 @@ const Col = styled.div`
 
 const Icon = styled.span`
   font-size: 55px;
+  @media screen and (max-width: 500px) {
+    font-size: 45px;
+  }
 `;
 
 const Title = styled.span`
   font-size: 20px;
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
+  }
 `;
 
 const Subtext = styled.span`
   font-size: 16px;
+  @media screen and (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 const Bar = styled.span`
@@ -74,7 +83,7 @@ const Bar = styled.span`
 const A = styled.a`
   text-decoration: none;
   margin-top: 5px;
-  color: #dedede;
+  color: #f1f1f1;
   transition: 200ms ease;
   &:hover {
     color: white;

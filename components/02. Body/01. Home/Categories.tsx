@@ -19,6 +19,10 @@ const Wrapper = styled.div`
   * {
     font-family: 'Roboto Flex', sans-serif;
   }
+
+  @media screen and (max-width: 500px) {
+    padding: 30px 0;
+  }
 `;
 
 const InnerWrapper = styled.div`
@@ -41,7 +45,6 @@ const TitleWrapper = styled.div`
 
 const Title = styled.span`
   font-size: 25px;
-  text-transform: uppercase;
   font-weight: bold;
 `;
 
