@@ -131,12 +131,12 @@ const Footer = () => {
         <_.Column>
           <_.ColHeader>Categories</_.ColHeader>
           <_.List>
-            <_.ListItem><Link href="/"><_.ListLink>All Products</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/"><_.ListLink>Cases</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/"><_.ListLink>Clothing</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/"><_.ListLink>Toys</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/"><_.ListLink>Kitchenware</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/"><_.ListLink>Other</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products"><_.ListLink>All Products</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products/cases"><_.ListLink>Cases</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products/clothing"><_.ListLink>Clothing</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products/toys"><_.ListLink>Toys</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products/kitchenware"><_.ListLink>Kitchenware</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products/other"><_.ListLink>Other</_.ListLink></Link></_.ListItem>
           </_.List>
         </_.Column>
         <_.Column>
