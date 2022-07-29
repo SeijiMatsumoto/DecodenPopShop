@@ -20,12 +20,16 @@ const _ = {
     }
   `,
   CatInnerWrapper: styled.div`
-    width: 1320px;
+    padding: 0 40px;
+    width: 2560px;
     display: flex;
     flex-direction: row;
     align-items: center;
     overflow: hidden;
     transition: 400ms ease;
+    @media screen and (max-width: 2560px) {
+      width: 90%;
+    }
     @media screen and (max-width: 500px) {
       font-size: 12px;
       width: 95%;
