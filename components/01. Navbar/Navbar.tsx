@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Menu from './Menu';
 import { FaShoppingCart } from 'react-icons/fa';
 import CategoryBar from './CategoryBar';
+import { BiMenu } from "react-icons/bi";
 import anime from 'animejs';
 const inView = require('in-view');
 
@@ -13,6 +14,10 @@ const Wrapper = styled.nav`
   z-index: 5;
   width: 100%;
   position: fixed;
+
+  @media screen and (max-width: 500px) {
+    background-color: white;
+  }
 `;
 
 const NavWrapper = styled.div`
@@ -21,6 +26,10 @@ const NavWrapper = styled.div`
   justify-content: center;
   align-items: center;
   transition: 100ms ease;
+
+  @media screen and (max-width: 500px) {
+    background-color: white;
+  }
 `;
 
 const NavInnerWrapper = styled.div`
@@ -51,6 +60,12 @@ const Logo = styled.img`
   cursor: pointer;
   object-fit: contain;
   transition: 400ms ease;
+
+  @media screen and (max-width: 500px) {
+      opacity: 1;
+      position: relative;
+      top: 0;
+    }
 `;
 
 const LinksWrapper = styled.div`
@@ -80,6 +95,11 @@ const LinkText = styled.span`
 
   text-transform: uppercase;
   letter-spacing: -1px;
+  @media screen and (max-width: 500px) {
+      opacity: 1;
+      position: relative;
+      top: 0;
+  }
 
   &::after {
     content: '';
@@ -113,6 +133,13 @@ const ButtonsWrapper = styled.div`
     opacity: 0;
     position: relative;
     top: -200px;
+
+    @media screen and (max-width: 500px) {
+      opacity: 1;
+      position: relative;
+      top: 0;
+    }
+
   }
 
   @media screen and (max-width: 875px) {
@@ -120,9 +147,8 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-const HamburgerMenu = styled.img`
-  height: 50px;
-  width: 50px;
+const HamburgerMenu = styled.span`
+  font-size: 30px;
   cursor: pointer;
   display: none;
 
@@ -219,10 +245,14 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    checkInView();
-    if (document) {
-      document.body.addEventListener('scroll', actions);
-      return () => document.body.removeEventListener('scroll', actions);
+    const width = window.innerWidth;
+    if (width > 500) {
+      if (document) {
+        checkInView();
+        console.log('Width over 500');
+        document.body.addEventListener('scroll', actions);
+        return () => document.body.removeEventListener('scroll', actions);
+      }
     }
   }, []);
 
@@ -275,7 +305,7 @@ const Navbar = () => {
               <div id="nav5"><Button action={clickHandler} buttonText={'My Account'} /></div>
               <Cart id="nav6" />
             </ButtonsWrapper>
-            <HamburgerMenu src="https://cdn-icons.flaticon.com/png/512/4889/premium/4889159.png?token=exp=1658543209~hmac=10015bef171b4cf8294d6124e9fe4f37" onClick={() => setOpenMenu(!openMenu)} />
+            <HamburgerMenu onClick={() => { }}><BiMenu /></HamburgerMenu>
           </NavInnerWrapper>
         </NavWrapper>
         <CategoryBar />
