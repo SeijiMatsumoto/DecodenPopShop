@@ -20,6 +20,10 @@ const Styles = {
     * {
     font-family: 'Roboto', sans-serif;
     }
+
+    @media screen and (max-width: 500px) {
+      height: 65vh;
+    }
   `,
   InnerWrapper: styled.div`
     width: 1320px;
@@ -146,7 +150,7 @@ const Walk = keyframes`
 
 const WalkingDuck = styled.img`
   position: absolute;
-  bottom: -5px;
+  bottom: -3px;
   right: -30px;
   height: 10vh;
   animation-name: ${Walk};
