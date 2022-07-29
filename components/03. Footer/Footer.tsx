@@ -85,7 +85,7 @@ const _ = {
     width: 50%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 
     @media screen and (max-width: 703px) {
       width: 85%;

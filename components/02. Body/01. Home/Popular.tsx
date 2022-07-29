@@ -33,8 +33,12 @@ const _ = {
     justify-content: center;
     margin-bottom: 15px;
     text-align: center;
+    @media screen and (max-width: 500px) {
+      margin: 0;
+    }
   `,
   BarAroundTitle: styled.span`
+    display: block;
     width: 30%;
     height: 35%;
     border-bottom: 1px solid #dadada;
@@ -42,6 +46,7 @@ const _ = {
 
     @media screen and (max-width: 500px) {
       width: 20%;
+     display: none;
     }
   `,
   CardsWrapper: styled.div`
@@ -81,10 +86,12 @@ const _ = {
         opacity: 1;
         position: relative;
         top: 0;
+        width: 95%;
       }
   `,
   FlipContainer: styled.div`
     position: relative;
+    width: 100%;
 
     &:hover {
       section {
@@ -98,6 +105,7 @@ const _ = {
     transform-style: preserve-3d;
     position: relative;
     transform-origin: 100% 190px;
+    width: 100%;
   `,
   CardFront: styled.div`
     backface-visibility: hidden;
@@ -112,15 +120,14 @@ const _ = {
     border-radius: 5px;
     box-shadow: 0 10px 30px -10px rgb(0 0 0 / 10%);
     height: 380px;
-    width: 380px;
-
+    width: 100%;
+    object-fit: cover;
   `,
   CardBack: styled.div`
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transform: rotateX(180deg);
     background-color: #FFF5F0;
-    width: 380px;
     height: 380px;
     display: flex;
     justify-content: center;
@@ -141,6 +148,11 @@ const _ = {
       a {
         color: #fa741a;
       }
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 90%;
+      height: 90%;
     }
   `,
   ProductTitle: styled.span`

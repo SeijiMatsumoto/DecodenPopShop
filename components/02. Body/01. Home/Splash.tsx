@@ -22,7 +22,7 @@ const Styles = {
     }
 
     @media screen and (max-width: 500px) {
-      height: 65vh;
+      height: 75vh;
     }
   `,
   InnerWrapper: styled.div`
@@ -164,7 +164,7 @@ const Splash = () => {
   const router = useRouter()
 
   const clickHandler = () => {
-    router.push('/products/all-products');
+    router.push('/products');
   }
 
   const animateIn = (selectors) => {

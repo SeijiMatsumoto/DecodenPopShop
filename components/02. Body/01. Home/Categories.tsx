@@ -44,6 +44,9 @@ const _ = {
   Title: styled.span`
     font-size: 25px;
     font-weight: bold;
+    @media screen and (max-width: 500px) {
+      font-size: 20px;
+    }
   `,
   CardsWrapper: styled.div`
     display: flex;
@@ -53,6 +56,7 @@ const _ = {
     align-items: flex-start;
     @media screen and (max-width: 1320px) {
       flex-direction: column;
+      align-items: center;
     }
   `,
   Card: styled.div`
