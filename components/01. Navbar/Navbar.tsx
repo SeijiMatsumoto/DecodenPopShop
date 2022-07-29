@@ -243,7 +243,6 @@ const Navbar = () => {
     const width = window.innerWidth;
     if (width > 500) {
       checkInView();
-      console.log('Width over 500');
     }
     handleScroll(e);
   }
