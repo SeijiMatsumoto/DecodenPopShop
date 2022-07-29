@@ -5,8 +5,9 @@ import MiniNav from './MiniNav';
 import Link from 'next/link';
 import Menu from './Menu';
 import { FaShoppingCart } from 'react-icons/fa';
-import CategoryBar from './CategoryBar';
 import { BiMenu } from "react-icons/bi";
+import { GrClose } from "react-icons/gr";
+import CategoryBar from './CategoryBar';
 import anime from 'animejs';
 import { checkInView } from '../../helper/checkInView';
 
@@ -141,7 +142,7 @@ const _ = {
     }
   `,
   HamburgerMenu: styled.span`
-    font-size: 30px;
+    font-size: 35px;
     cursor: pointer;
     display: none;
 
@@ -244,11 +245,14 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
+    console.log(openMenu)
     if (document) {
       const menu = document.getElementById('menuWrapper') || undefined;
       if (openMenu) {
-        if (menu) menu.style.left = "0px";
+        document.body.classList.add('stop-scrolling');
+        if (menu) menu.style.left = "10vw";
       } else {
+        document.body.classList.remove('stop-scrolling');
         if (menu) menu.style.left = "100vw";
       }
     }
@@ -293,7 +297,7 @@ const Navbar = () => {
               <div id="nav5"><Button action={clickHandler} buttonText={'My Account'} /></div>
               <_.Cart id="nav6" />
             </_.ButtonsWrapper>
-            <_.HamburgerMenu onClick={() => { }}><BiMenu /></_.HamburgerMenu>
+            {!openMenu ? <_.HamburgerMenu onClick={() => { setOpenMenu(true) }}><BiMenu /></_.HamburgerMenu> : <_.HamburgerMenu onClick={() => { setOpenMenu(false) }}><GrClose /></_.HamburgerMenu>}
           </_.NavInnerWrapper>
         </_.NavWrapper>
         <CategoryBar />
