@@ -5,7 +5,6 @@ import { categories } from '../../data/categories';
 
 const _ = {
   CatWrapper: styled.div`
-    display: none;
     padding: 10px;
     width: 100%;
     background-color: #719abe;
@@ -13,10 +12,6 @@ const _ = {
 
     * {
       font-family: "Roboto", sans-serif;
-    }
-
-    @media screen and (max-width: 500px) {
-      display: flex;
     }
   `,
   CatInnerWrapper: styled.div`
