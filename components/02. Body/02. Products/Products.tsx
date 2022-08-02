@@ -4,10 +4,10 @@ import Banner from './Banner';
 import Cards from './Cards';
 import SortBar from './SortBar';
 import { SettingsContext } from '../../Contexts/SettingsContext';
+
 const _ = {
   Wrapper: styled.div`
     width: 100%;
-    height: 200vh;
   `,
 }
 
