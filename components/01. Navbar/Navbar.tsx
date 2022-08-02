@@ -108,7 +108,7 @@ const _ = {
       transition: opacity 300ms, transform 300ms;
       opacity: 1;
       transform: translate3d(-100%, 0, 0);
-  }
+    }
 
     &:hover::after,
     &:focus::after {
@@ -282,8 +282,8 @@ const Navbar = () => {
               <_.LinksWrapper>
                 <Link href="/"><_.LinkText id="nav1" className="navLink">Home</_.LinkText></Link>
                 <Link href="/products"><_.LinkText id="nav2" className="navLink">Shop All</_.LinkText></Link>
-                <Link href="/about"><_.LinkText id="nav3" className="navLink">About</_.LinkText></Link>
-                <Link href="/contact"><_.LinkText id="nav4" className="navLink">Contact</_.LinkText></Link>
+                <Link href="/faq"><_.LinkText id="nav3" className="navLink">FAQ</_.LinkText></Link>
+                <Link href="/contact"><_.LinkText id="nav4" className="navLink">Contact Us</_.LinkText></Link>
               </_.LinksWrapper>
             </_.LogoLinkWrapper>
             <_.ButtonsWrapper>
