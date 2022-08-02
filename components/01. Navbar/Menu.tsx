@@ -40,13 +40,26 @@ const _ = {
   `
 }
 
-const Menu = ({ setOpenMenu }) => {
+const Menu = ({ setOpenMenu, isOpen }) => {
   const checkClick = (e) => {
     const menu = document.getElementById('menuWrapper') || undefined;
     if (e.target != document.querySelector("#menuLink")) {
       if (menu) setOpenMenu(false);
     }
   }
+
+  useEffect(() => {
+    if (document) {
+      const menu = document.getElementById('menuWrapper') || undefined;
+      if (isOpen) {
+        document.body.classList.add('stop-scrolling');
+        if (menu) menu.style.left = "10vw";
+      } else {
+        document.body.classList.remove('stop-scrolling');
+        if (menu) menu.style.left = "100vw";
+      }
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     window.addEventListener('mouseup', checkClick);
