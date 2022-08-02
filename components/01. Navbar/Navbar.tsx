@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Button } from '../UILibrary';
 import MiniNav from './MiniNav';
@@ -10,12 +10,12 @@ import { GrClose } from "react-icons/gr";
 import CategoryBar from './CategoryBar';
 import anime from 'animejs';
 import { checkInView } from '../../helper/checkInView';
+import { SettingsContext } from '../Contexts/SettingsContext';
 
 const _ = {
   Wrapper: styled.nav`
     z-index: 5;
     width: 100%;
-    height: 120px;
     position: fixed;
     @media screen and (max-width: 500px) {
       background-color: white;
@@ -63,7 +63,7 @@ const _ = {
         opacity: 1;
         position: relative;
         top: 0;
-      }
+    }
   `,
   LinksWrapper: styled.div`
     display: flex;
@@ -170,14 +170,11 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [scrollTop, setScrollTop] = useState<number>(0);
   const [isInView, setIsInView] = useState<boolean>(false);
+  const { currentPage, setCurrentPage } = useContext(SettingsContext);
 
   const clickHandler = () => {
     console.log("Action");
   }
-
-  const handleScroll = (e) => {
-    setScrollTop(e.path[0].scrollTop);
-  };
 
   const animateIn = (selectors) => {
     var tl = anime.timeline({ easing: 'easeInOutQuad', duration: 500 });
@@ -222,60 +219,57 @@ const Navbar = () => {
       }, '-=400');
   }
 
-  const checkView = () => {
-    if (!isInView) checkInView('#navbar', setIsInView);
-  };
-
   useEffect(() => {
-    if (isInView) animateIn(['#navLogo', '#nav1', '#nav2', '#nav3', '#nav4', "#nav5", '#nav6']);
+    if (isInView) {
+      animateIn(['#navLogo', '#nav1', '#nav2', '#nav3', '#nav4', "#nav5", '#nav6']);
+    }
   }, [isInView])
 
-  const actions = (e) => {
+
+  useEffect(() => {
+    const nav = document.getElementById('navbar') || undefined;
+    const navWrapper = document.getElementById('navwrapper') || undefined;
+    const logo = document.getElementById('navLogo') || undefined;
+    const catNav = document.getElementById('catNav') || undefined;
+
+    if (currentPage === 'home') {
+      if (nav) nav.style.position = 'fixed';
+      if (scrollTop > 100) {
+        if (navWrapper) navWrapper.style.backgroundColor = 'white';
+        if (logo) logo.style.height = '40px';
+        if (catNav) catNav.style.display = 'flex';
+      } else if (scrollTop < 101) {
+        if (navWrapper) navWrapper.style.backgroundColor = 'transparent';
+        if (logo) logo.style.height = '50px';
+        if (catNav) catNav.style.display = 'none';
+      }
+    } else { // if not home page!!
+      if (nav) nav.style.position = 'relative';
+      if (navWrapper) navWrapper.style.backgroundColor = 'white';
+      if (logo) {
+        logo.style.height = '50px';
+        logo.style.opacity = '1';
+        logo.style.top = '-200px';
+      }
+      if (catNav) catNav.style.display = 'flex';
+    }
+  }, [scrollTop, currentPage])
+
+  const initialActions = (e) => {
     const width = window.innerWidth;
-    if (width > 500) checkView();
-    handleScroll(e);
+    if (width > 500 && !isInView) {
+      checkInView('#navbar', setIsInView);
+    }
+    setScrollTop(e.path[0].scrollTop);
   }
 
   useEffect(() => {
-    if (document) {
-      if (window.innerWidth > 500) checkView();
-      document.body.addEventListener('scroll', actions);
-      return () => document.body.removeEventListener('scroll', actions);
+    if (window.innerWidth > 500) {
+      checkInView('#navbar', setIsInView);
     }
+    document.body.addEventListener('scroll', initialActions);
+    return () => document.body.removeEventListener('scroll', initialActions);
   }, []);
-
-  useEffect(() => {
-    if (document) {
-      const menu = document.getElementById('menuWrapper') || undefined;
-      if (openMenu) {
-        document.body.classList.add('stop-scrolling');
-        if (menu) menu.style.left = "10vw";
-      } else {
-        document.body.classList.remove('stop-scrolling');
-        if (menu) menu.style.left = "100vw";
-      }
-    }
-  }, [openMenu]);
-
-
-  useEffect(() => {
-    if (document) {
-      const logo = document.getElementById('navLogo') || undefined;
-      const nav = document.getElementById('navwrapper') || undefined;
-      const catNav = document.getElementById('catNav') || undefined;
-
-      if (scrollTop > 100) {
-        if (logo) logo.style.height = '40px';
-        if (nav) nav.style.backgroundColor = 'white';
-        if (catNav) catNav.style.display = 'flex';
-      } else if (scrollTop < 101) {
-        if (logo) logo.style.height = '50px';
-        if (nav) nav.style.backgroundColor = 'transparent';
-        if (catNav) catNav.style.display = 'none';
-      }
-    }
-
-  }, [scrollTop])
 
   return (
     <div>
@@ -301,7 +295,7 @@ const Navbar = () => {
         </_.NavWrapper>
         <CategoryBar />
       </_.Wrapper>
-      <_.MenuWrapper><Menu setOpenMenu={setOpenMenu} /></_.MenuWrapper>
+      <_.MenuWrapper><Menu setOpenMenu={setOpenMenu} isOpen={openMenu} /></_.MenuWrapper>
     </div>
   );
 };
