@@ -7,11 +7,10 @@ const _ = {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
   `,
   InnerWrapper: styled.div`
     width: 1320px;
-    padding: 30px;
+    padding-top: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
