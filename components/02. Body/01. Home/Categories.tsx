@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import Link from 'next/link';
 import { categories } from '../../../data/categories';
-import { IoPhonePortraitOutline, IoShirtOutline } from "react-icons/io5";
-import { GiPlasticDuck } from "react-icons/gi";
-import { TbMug } from "react-icons/tb";
+import { IoPhonePortraitOutline } from "react-icons/io5";
+import { AiTwotoneCar } from "react-icons/ai";
+import { BiCustomize } from "react-icons/bi";
+import { GiComb } from "react-icons/gi";
 import anime from 'animejs';
 import { checkInView } from '../../../helper/checkInView';
 
@@ -38,7 +39,7 @@ const _ = {
     margin: 15px;
     margin-right: 25px;
     padding-bottom: 5px;
-    border-bottom: 4px solid #fa741a;
+    border-bottom: 4px solid #B8D4D7;
     cursor: default;
   `,
   Title: styled.span`
@@ -71,7 +72,7 @@ const _ = {
     padding: 70px 20px;
     cursor: pointer;
     transition: 400ms ease;
-    background: linear-gradient(to right, #ffeae0 50%, #FFF5F0 50%);
+    background: linear-gradient(to right, #ff7b8611 50%, #FFF5F0 50%);
     background-size: 200% 200%;
     background-position: right bottom;
 
@@ -86,10 +87,10 @@ const _ = {
       background-position: left bottom;
 
       h4 {
-        color: #fa741a;
+        color: #A19DCA;
       }
       span {
-        color: #fa741a;
+        color: #A19DCA;
       }
       h5 {
         left: 3px;
@@ -137,7 +138,7 @@ const _ = {
     font-size: 40px;
     margin: 5px 20px 0 5px;
     transition: 500ms ease;
-  `
+  `,
 }
 
 const Categories = () => {
@@ -189,10 +190,11 @@ const Categories = () => {
 
   const icons = [
     <IoPhonePortraitOutline key='cases' />,
-    <IoShirtOutline key='clothing' />,
-    <GiPlasticDuck key='toys' />,
-    <TbMug key='accessories' />
+    <GiComb key='hair' />,
+    <AiTwotoneCar key='car' />,
+    <BiCustomize key='custom' />
   ]
+
   return (
     <_.Wrapper>
       <_.InnerWrapper>
