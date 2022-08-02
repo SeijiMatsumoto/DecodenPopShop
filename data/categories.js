@@ -1,1 +1,6 @@
-export const categories = ["Cases", "Clothing", "Toys", "Kitchenware", "Other"];
+export const categories = [
+  "Phone Cases",
+  "Hair Clips",
+  "Car Accessories",
+  "Custom Items",
+];
