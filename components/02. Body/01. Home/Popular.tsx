@@ -127,7 +127,7 @@ const _ = {
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transform: rotateX(180deg);
-    background-color: #FFF5F0;
+    background-color: #ff7b8611;
     height: 380px;
     display: flex;
     justify-content: center;
@@ -146,7 +146,7 @@ const _ = {
 
     &:hover {
       a {
-        color: #fa741a;
+        color: #A19DCA;
       }
     }
 
