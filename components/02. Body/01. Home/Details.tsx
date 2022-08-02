@@ -11,7 +11,7 @@ const _ = {
     * {
       font-family: 'Roboto', sans-serif;
     }
-    background-color: #fa741a;
+    background-color: #A19DCA;
   `,
   InnerWrapper: styled.div`
     width: 1320px;
