@@ -1,0 +1,95 @@
+/* Cloud default button starts */
+
+.default-button {
+  background-color: #ff7b86;
+  text-decoration: none;
+  border: 5px solid #ff7b86;
+  border-radius: 100px;
+  transition: all 0.2s;
+  font-family: "Mali", cursive;
+}
+
+/* Default button ends */
+
+/* Cloud animation starts */
+
+.animation-cloud-parts {
+  position: relative;
+  display: block;
+  height: 100%;
+}
+
+.animation-cloud-btn-inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  border-radius: 100px;
+}
+
+.animation-cloud-part {
+  position: absolute;
+  top: 0;
+  width: 25%;
+  height: 100%;
+  background: #e98d94;
+  border-radius: 100%;
+  transform: translate3d(0, 150%, 0) scale(1.7);
+  transition: transform 0.45s;
+}
+
+.animation-cloud-part:nth-child(1) {
+  left: 0;
+  transition-delay: 0s;
+}
+
+.animation-cloud-part:nth-child(2) {
+  left: 30%;
+  transition-delay: 80ms;
+}
+
+.animation-cloud-part:nth-child(3) {
+  left: 60%;
+  transition-delay: 0.16s;
+}
+
+.animation-cloud-part:nth-child(4) {
+  left: 90%;
+  transition-delay: 0.24s;
+}
+
+.animation-cloud-btn {
+  position: relative;
+}
+
+.animation-cloud-btn:hover .animation-cloud-part {
+  transform: translate3d(0, 0%, 0) scale(1.7);
+}
+
+.animation-cloud-btn:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.animation-cloud-btn:active {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+span.cloud-button-content {
+  z-index: 10;
+  position: relative;
+  color: #fff;
+  font-size: 20px;
+}
+
+.animation-cloud-btn {
+  border: none;
+  padding: 1.1rem 3.5rem;
+}
+
+/* Cloud animation ends */

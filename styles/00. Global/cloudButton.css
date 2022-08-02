@@ -1,49 +1,4 @@
-@font-face {
-  font-family: "SchoolBell";
-  src: url("/Fonts/Schoolbell.ttf") format("truetype");
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  overflow-x: hidden;
-}
-
-#layout {
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  min-height: 100vh;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.wrapper {
-  margin: 20px;
-  width: 1320px;
-}
-
-.stop-scrolling {
-  height: 100%;
-  overflow: hidden;
-}
-
-.schoolbell-font {
-  font-family: "SchoolBell";
-}
-
-.active-nav {
-  font-weight: bold;
-}
-
-/* Cloud efault button starts */
+/* Cloud default button starts */
 .default-button {
   background-color: #ff7b86;
   text-decoration: none;
@@ -149,4 +104,4 @@ span.cloud-button-content {
 }
 
 /* Cloud animation ends */
-/*# sourceMappingURL=global.css.map */
+/*# sourceMappingURL=cloudButton.css.map */
