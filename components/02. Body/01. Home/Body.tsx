@@ -18,7 +18,7 @@ const Body = () => {
       <Splash />
       <Categories />
       <Popular />
-      <DuckFacts />
+      {/* <DuckFacts /> */}
       <Details />
     </div>
   );
