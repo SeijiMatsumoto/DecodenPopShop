@@ -10,7 +10,7 @@ export const SettingsProvider = ({ children }) => {
   const [currentPage, setCurrentPage] = useState<string>('home');
 
   useEffect(() => {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 500) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
@@ -25,7 +25,25 @@ export const SettingsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log('Current page:', currentPage);
+    const home = document.getElementById('nav1');
+    const products = document.getElementById('nav2');
+    const faq = document.getElementById('nav3');
+    const contact = document.getElementById('nav4');
+
+    home?.classList.remove('active-nav');
+    products?.classList.remove('active-nav');
+    faq?.classList.remove('active-nav');
+    contact?.classList.remove('active-nav');
+
+    if (currentPage === 'home') {
+      home?.classList.add('active-nav');
+    } else if (currentPage === 'products') {
+      products?.classList.add('active-nav');
+    } else if (currentPage === 'faq') {
+      faq?.classList.add('active-nav');
+    } else if (currentPage === 'contact') {
+      contact?.classList.add('active-nav');
+    }
 
   }, [currentPage])
   return (
