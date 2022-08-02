@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import Banner from './Banner';
 import Cards from './Cards';
 import SortBar from './SortBar';
-import Navbar from '../../01. Navbar/Navbar';
 
 const _ = {
   Wrapper: styled.div`
+    position: relative;
+    top: 120px;
     width: 100%;
     height: 200vh;
   `,
@@ -15,7 +16,6 @@ const _ = {
 const Products = () => {
   return (
     <_.Wrapper>
-      <Navbar />
       <Banner />
       <SortBar />
       <Cards />
