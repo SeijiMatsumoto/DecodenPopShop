@@ -4,7 +4,7 @@ import { text } from '../../data/miniNav';
 
 const _ = {
   NavWrapper: styled.nav`
-    background-color: #fa741a;
+    background-color: #ff7b86;;
     position: relative;
     font-family: 'Mali', cursive;
     display: flex;
