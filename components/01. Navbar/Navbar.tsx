@@ -78,7 +78,7 @@ const _ = {
   `,
   LinkText: styled.span`
     margin: 5px 25px 0 0;
-    font-size: 18px;
+    font-size: 22px;
     cursor: pointer;
     overflow: hidden;
     position: relative;
@@ -293,7 +293,7 @@ const Navbar = () => {
             {!openMenu ? <_.HamburgerMenu onClick={() => { setOpenMenu(true) }}><BiMenu /></_.HamburgerMenu> : <_.HamburgerMenu onClick={() => { setOpenMenu(false) }}><GrClose /></_.HamburgerMenu>}
           </_.NavInnerWrapper>
         </_.NavWrapper>
-        <CategoryBar />
+        {/* <CategoryBar /> */}
       </_.Wrapper>
       <_.MenuWrapper><Menu setOpenMenu={setOpenMenu} isOpen={openMenu} /></_.MenuWrapper>
     </div>
