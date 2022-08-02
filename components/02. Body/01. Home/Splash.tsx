@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useRouter } from 'next/router'
 import anime from 'animejs';
 import { checkInView } from '../../../helper/checkInView';
-
+import { SettingsContext } from '../../Contexts/SettingsContext';
 const Styles = {
   SplashWrapper: styled.div`
     width: 100vw;
@@ -162,6 +162,7 @@ const WalkingDuck = styled.img`
 const Splash = () => {
   const [isInView, setIsInView] = useState<boolean>(false);
   const router = useRouter()
+  const { currentPage } = useContext(SettingsContext);
 
   const clickHandler = () => {
     router.push('/products');
@@ -197,6 +198,10 @@ const Splash = () => {
   }, [isInView])
 
   useEffect(() => {
+    if (currentPage === 'home') animateIn(['#splash1', '#splash2', '#splash3']);
+  }, [currentPage])
+
+  useEffect(() => {
     const width = window.innerWidth;
     if (width > 500) {
       if (document) {
@@ -212,8 +217,8 @@ const Splash = () => {
       <Styles.InnerWrapper>
         <Styles.Column>
           <Styles.TextWrapper>
-            <Styles.BigText id="splash1">Quack Goods</Styles.BigText>
-            <Styles.SubText id="splash2">One-stop shop for your duck obession</Styles.SubText>
+            <Styles.BigText id="splash1">Decoden By Shu</Styles.BigText>
+            <Styles.SubText id="splash2">Handmade cases created by Shu</Styles.SubText>
           </Styles.TextWrapper>
           <Styles.ButtonsWrapper id="splash3">
             <Styles.Button onClick={clickHandler}>Shop All Products</Styles.Button>

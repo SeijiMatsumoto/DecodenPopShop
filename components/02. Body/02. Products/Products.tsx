@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import Banner from './Banner';
 import Cards from './Cards';
 import SortBar from './SortBar';
-
+import { SettingsContext } from '../../Contexts/SettingsContext';
 const _ = {
   Wrapper: styled.div`
-    position: relative;
-    top: 120px;
     width: 100%;
     height: 200vh;
   `,
 }
 
 const Products = () => {
+  const { setCurrentPage } = useContext(SettingsContext);
+
+  useEffect(() => {
+    setCurrentPage('products');
+  }, [])
+
   return (
     <_.Wrapper>
       <Banner />
