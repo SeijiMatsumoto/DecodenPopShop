@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import buttonStyle from "../styles/00. Components/Button/Button.module.css";
 import cardStyle from "../styles/00. Components/Card/Card.module.css";
 import expandListStyle from "../styles/00. Components/ExpandList/ExpandList.module.css";
@@ -62,5 +62,36 @@ export const ExpandList = ({ mainItem, subItems, callback }) => {
 export const SectionTitle = ({ text }) => {
   return (
     <span className={titleStyle.title}>{text}</span>
+  )
+}
+
+export const CloudButton = ({ text, src, callback, target, size }) => {
+  return (
+    <>
+      {!src.length ?
+        <div className="default-button animation-cloud-btn" onClick={callback}>
+          <span className="cloud-button-content">{text}</span>
+          <span className="animation-cloud-btn-inner">
+            <span className="animation-cloud-parts">
+              <span className="animation-cloud-part"></span>
+              <span className="animation-cloud-part"></span>
+              <span className="animation-cloud-part"></span>
+              <span className="animation-cloud-part"></span>
+            </span>
+          </span>
+        </div> :
+        <a className="default-button animation-cloud-btn" href={src} target={target}>
+          <span className="cloud-button-content">{text}</span>
+          <span className="animation-cloud-btn-inner">
+            <span className="animation-cloud-parts">
+              <span className="animation-cloud-part"></span>
+              <span className="animation-cloud-part"></span>
+              <span className="animation-cloud-part"></span>
+              <span className="animation-cloud-part"></span>
+            </span>
+          </span>
+        </a>
+      }
+    </>
   )
 }

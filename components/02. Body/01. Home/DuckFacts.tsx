@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { duckFacts } from '../../../data/duckFacts';
 import styled from 'styled-components';
-import { SectionTitle } from '../../UILibrary';
+import { CloudButton, SectionTitle } from '../../UILibrary';
+import { GiStaplerHeavyDuty } from 'react-icons/gi';
 
 const _ = {
   Wrapper: styled.div`
@@ -71,6 +72,9 @@ const _ = {
       top: 50px;
     }
   `,
+  TextWrapper: styled.div`
+    margin-bottom: 20px;
+  `,
   Title: styled.span`
   font-weight: bold;
   margin-bottom: 10px;
@@ -91,33 +95,6 @@ const _ = {
     text-align: left;
     font-size: 18px;
   `,
-  Refresh: styled.button`
-    margin-top: 20px;
-    font-size: 12px;
-    padding: 10px;
-    border-radius: 30px;
-    width: 30%;
-    color: white;
-    background-color: #fa741a;
-    border: none;
-    cursor: pointer;
-    transition: 200ms ease;
-
-    &:hover {
-      background-color: #ff8432;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    &:active {
-      transform: translateY(-1px);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    @media screen and (max-width: 1320px) {
-      width: 70%;
-    }
-  `,
 }
 
 const DuckFacts = () => {
@@ -130,6 +107,7 @@ const DuckFacts = () => {
 
   useEffect(() => {
     getRandomFact();
+
   }, [])
 
   return (
@@ -138,13 +116,15 @@ const DuckFacts = () => {
       <_.InnerWrapper>
         <_.DuckImg src="/duck.png" alt="duck" />
         <_.Bubble>
-          <_.Title>Did you know?</_.Title>
-          {randomFact && <_.FactWrapper>
-            <_.Header>{randomFact.heading}!</_.Header>
-            <_.Subtext>{randomFact.subtext}</_.Subtext>
-          </_.FactWrapper>
-          }
-          <_.Refresh onClick={getRandomFact}>New Fact</_.Refresh>
+          <_.TextWrapper>
+            <_.Title>Did you know?</_.Title>
+            {randomFact && <_.FactWrapper>
+              <_.Header>{randomFact.heading}!</_.Header>
+              <_.Subtext>{randomFact.subtext}</_.Subtext>
+            </_.FactWrapper>
+            }
+          </_.TextWrapper>
+          <CloudButton text="New Fact" src="" callback={getRandomFact} target="_self" size="s" />
         </_.Bubble>
       </_.InnerWrapper>
     </_.Wrapper>
