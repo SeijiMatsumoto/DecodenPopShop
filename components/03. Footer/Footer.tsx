@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { MdAlternateEmail, MdPhone, } from "react-icons/md";
 import { BsTwitter, BsInstagram } from "react-icons/bs";
+import { CloudButton } from '../UILibrary';
 
 const _ = {
   FooterWrapper: styled.div`
@@ -92,30 +93,6 @@ const _ = {
     }
   `,
   CreatedByText: styled.span``,
-  CreatedByButton: styled.button`
-    font-size: 14px;
-    color: white;
-    background-color: #fa741a;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 5px 10px;
-    display: inline-block;
-    border-radius: 100px;
-    transition: all .2s;
-
-    &:hover {
-      background-color: #ff8432;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    &:active {
-      transform: translateY(-1px);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
-  `
 }
 
 const Footer = () => {
@@ -151,7 +128,6 @@ const Footer = () => {
       </_.InnerWrapper>
       <_.CreatedByWrapper>
         <_.CreatedByText>Created by SejStudios</_.CreatedByText>
-        <Link href=""><_.CreatedByButton>GitHub</_.CreatedByButton></Link>
       </_.CreatedByWrapper>
     </_.FooterWrapper>
   );
