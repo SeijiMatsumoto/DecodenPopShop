@@ -15,7 +15,7 @@ const _ = {
     margin-top: auto;
 
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    background-color: #FFF5F0;
+    /* background-color: #FFF5F0; */
 
     * {
       font-family: 'Mali', cursive;
@@ -109,20 +109,19 @@ const Footer = () => {
           <_.ColHeader>Categories</_.ColHeader>
           <_.List>
             <_.ListItem><Link href="/products"><_.ListLink>All Products</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/products/cases"><_.ListLink>Cases</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/products/clothing"><_.ListLink>Clothing</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/products/toys"><_.ListLink>Toys</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/products/kitchenware"><_.ListLink>Kitchenware</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/products/other"><_.ListLink>Other</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products/cases"><_.ListLink>Phone Cases</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products/hair"><_.ListLink>Hair Clips</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products/car"><_.ListLink>Car Accessories</_.ListLink></Link></_.ListItem>
+            <_.ListItem><Link href="/products/custom"><_.ListLink>Custom Items</_.ListLink></Link></_.ListItem>
           </_.List>
         </_.Column>
         <_.Column>
           <_.ColHeader>Contact Us</_.ColHeader>
           <_.List>
-            <_.ListItem><_.Icon><MdAlternateEmail /></_.Icon><Link href="/"><_.ListLink>Email: support@quackgoods.com</_.ListLink></Link></_.ListItem>
+            <_.ListItem><_.Icon><MdAlternateEmail /></_.Icon><Link href="/"><_.ListLink>Email: support@decodenbyshu.com</_.ListLink></Link></_.ListItem>
             <_.ListItem><_.Icon><MdPhone /></_.Icon><Link href="/"><_.ListLink>Phone: 999-999-9999</_.ListLink></Link></_.ListItem>
-            <_.ListItem><_.Icon><BsInstagram /></_.Icon><Link href="/"><_.ListLink>Instagram: @QuackGoods</_.ListLink></Link></_.ListItem>
-            <_.ListItem><_.Icon><BsTwitter /></_.Icon><Link href="/"><_.ListLink>Twitter: @QuackGoods</_.ListLink></Link></_.ListItem>
+            <_.ListItem><_.Icon><BsInstagram /></_.Icon><Link href="/"><_.ListLink>Instagram: @DecodenByShu</_.ListLink></Link></_.ListItem>
+            <_.ListItem><_.Icon><BsTwitter /></_.Icon><Link href="/"><_.ListLink>Twitter: @DecodenByShu</_.ListLink></Link></_.ListItem>
           </_.List>
         </_.Column>
       </_.InnerWrapper>
