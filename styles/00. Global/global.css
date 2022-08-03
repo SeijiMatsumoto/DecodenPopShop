@@ -14,11 +14,9 @@ body {
 }
 
 #layout {
-  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 100vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -43,110 +41,14 @@ body {
   font-weight: bold;
 }
 
-/* Cloud efault button starts */
-.default-button {
-  background-color: #ff7b86;
-  text-decoration: none;
-  border: 5px solid #ff7b86;
-  border-radius: 100px;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  font-family: "Mali", cursive;
+.no-select {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }
-
-/* Default button ends */
-/* Cloud animation starts */
-.animation-cloud-parts {
-  position: relative;
-  display: block;
-  height: 100%;
-}
-
-.animation-cloud-btn-inner {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-  border-radius: 100px;
-}
-
-.animation-cloud-part {
-  position: absolute;
-  top: 0;
-  width: 25%;
-  height: 100%;
-  background: #e98d94;
-  border-radius: 100%;
-  -webkit-transform: translate3d(0, 150%, 0) scale(1.7);
-          transform: translate3d(0, 150%, 0) scale(1.7);
-  -webkit-transition: -webkit-transform 0.45s;
-  transition: -webkit-transform 0.45s;
-  transition: transform 0.45s;
-  transition: transform 0.45s, -webkit-transform 0.45s;
-}
-
-.animation-cloud-part:nth-child(1) {
-  left: 0;
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
-}
-
-.animation-cloud-part:nth-child(2) {
-  left: 30%;
-  -webkit-transition-delay: 80ms;
-          transition-delay: 80ms;
-}
-
-.animation-cloud-part:nth-child(3) {
-  left: 60%;
-  -webkit-transition-delay: 0.16s;
-          transition-delay: 0.16s;
-}
-
-.animation-cloud-part:nth-child(4) {
-  left: 90%;
-  -webkit-transition-delay: 0.24s;
-          transition-delay: 0.24s;
-}
-
-.animation-cloud-btn {
-  position: relative;
-}
-
-.animation-cloud-btn:hover .animation-cloud-part {
-  -webkit-transform: translate3d(0, 0%, 0) scale(1.7);
-          transform: translate3d(0, 0%, 0) scale(1.7);
-}
-
-.animation-cloud-btn:hover {
-  opacity: 1;
-  -webkit-transform: translateY(-3px);
-          transform: translateY(-3px);
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.animation-cloud-btn:active {
-  -webkit-transform: translateY(-2px);
-          transform: translateY(-2px);
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-span.cloud-button-content {
-  z-index: 10;
-  position: relative;
-  color: #fff;
-  font-size: 20px;
-}
-
-.animation-cloud-btn {
-  border: none;
-  padding: 1.1rem 3.5rem;
-}
-
-/* Cloud animation ends */
 /*# sourceMappingURL=global.css.map */
