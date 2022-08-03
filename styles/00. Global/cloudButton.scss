@@ -3,10 +3,10 @@
 .default-button {
   background-color: #ff7b86;
   text-decoration: none;
-  border: 5px solid #ff7b86;
   border-radius: 100px;
   transition: all 0.2s;
   font-family: "Mali", cursive;
+  z-index: 20;
 }
 
 /* Default button ends */
@@ -90,6 +90,10 @@ span.cloud-button-content {
 .animation-cloud-btn {
   border: none;
   padding: 1.1rem 3.5rem;
+
+  @media screen and (max-width: 500px) {
+    padding: 1rem 1rem;
+  }
 }
 
 /* Cloud animation ends */
