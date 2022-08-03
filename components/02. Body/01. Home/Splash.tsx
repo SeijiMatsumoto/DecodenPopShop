@@ -4,68 +4,58 @@ import { useRouter } from 'next/router'
 import anime from 'animejs';
 import { checkInView } from '../../../helper/checkInView';
 import { SettingsContext } from '../../Contexts/SettingsContext';
-import Link from 'next/link';
-import { CloudButton } from '../../UILibrary';
+// import Link from 'next/link';
+import { CloudBackground, CloudButton } from '../../UILibrary';
 
 const Styles = {
   SplashWrapper: styled.div`
     width: 100vw;
-    height: 90vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
-    position: relative;
-    background-image: url("/WATERCOLOR2.jpg");
-    background-size: cover;
 
     @media screen and (max-width: 500px) {
-      height: 75vh;
+      height: 70vh;
     }
   `,
+  Background: styled.div`
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("/WATERCOLOR2.jpg");
+    background-size: cover;
+  `,
   InnerWrapper: styled.div`
+    top: 10%;
     width: 1320px;
+    height: 100%;
     display: flex;
     align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
-
     @media screen and (max-width: 1320px) {
       width: 90%;
     }
   `,
-  Column: styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    top: 200px;
-
-    @media screen and (max-width: 1000px) {
-      margin: 15px;
-    }
-
-    @media screen and (max-width: 500px) {
-      width: 100%;
-      margin: 0;
-      top: 0;
-      &:nth-child(2) {
-        margin: 0px;
-        width: 0;
-      }
-    }
-  `,
   TextWrapper: styled.div`
     display: flex;
+    position: relative;
     flex-direction: column;
-    margin-bottom: 20px;
-    `,
+    justify-content: center;
+    margin: 20px 0;
+  `,
   BigText: styled.span`
     color: #A19DCA;
     font-size: 8vw;
     text-shadow: 1px 1px #000000;
     font-weight: bold;
     opacity: 0;
+    position: relative;
+    top: 300px;
     @media screen and (max-width: 500px) {
       font-size: 12vw;
       opacity: 1;
@@ -76,8 +66,10 @@ const Styles = {
     top: -10px;
     font-size: 25px;
     color: black;
-    opacity: 0;
     font-family: 'Mali', cursive;
+    opacity: 0;
+    position: relative;
+    top: 300px;
 
     @media screen and (max-width: 700px) {
       font-size: 4vw;
@@ -89,41 +81,10 @@ const Styles = {
   `,
   ButtonsWrapper: styled.div`
     display: flex;
+    opacity: 0;
+    position: relative;
+    top: 300px;
   `,
-  Button: styled.button`
-    font-size: 20px;
-    color: black;
-    background-color: #E6BABE;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 15px 50px;
-    display: inline-block;
-    border-radius: 100px;
-    transition: all .2s;
-
-    &:hover {
-      background-color: #ff8432;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    &:active {
-      transform: translateY(-1px);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    @media screen and (max-width: 1100px) {
-      margin-bottom: 10px;
-      width: 50%;
-    }
-
-    @media screen and (max-width: 500px) {
-      font-size: 4vw;
-      padding: 10px;
-    }
-  `
 }
 
 const Walk = keyframes`
@@ -201,16 +162,16 @@ const Splash = () => {
 
   return (
     <Styles.SplashWrapper >
+      <Styles.Background />
+      <CloudBackground />
       <Styles.InnerWrapper>
-        <Styles.Column>
-          <Styles.TextWrapper>
-            <Styles.BigText id="splash1" className="schoolbell-font">Decoden By Shu</Styles.BigText>
-            <Styles.SubText id="splash2">Handmade cases created by Shu</Styles.SubText>
-          </Styles.TextWrapper>
-          <Styles.ButtonsWrapper id="splash3">
-            <CloudButton text="Shop All Products" src="/products" callback={() => { }} target="_self" size="l" />
-          </Styles.ButtonsWrapper>
-        </Styles.Column>
+        <Styles.TextWrapper className='no-select'>
+          <Styles.BigText id="splash1" className="schoolbell-font">Decoden By Shu</Styles.BigText>
+          <Styles.SubText id="splash2">Handmade cases created by Shu</Styles.SubText>
+        </Styles.TextWrapper>
+        <Styles.ButtonsWrapper id="splash3">
+          <CloudButton text="Shop All Products" src="/products" callback={() => { }} target="_self" size="l" />
+        </Styles.ButtonsWrapper>
       </Styles.InnerWrapper>
       <WalkingDuck src="/walkingDuck.gif" />
     </Styles.SplashWrapper>
