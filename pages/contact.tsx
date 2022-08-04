@@ -1,9 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { SettingsContext } from '../components/Contexts/SettingsContext'
+import ContactMain from '../components/02. Body/04. Contact/ContactMain';
+import { scrollToTop } from '../helper/scrollToTop';
 
 const Wrapper = styled.div`
-  padding: 20px;
   display: flex;
   justify-content: center;
 `;
@@ -13,11 +14,12 @@ const Contact = () => {
 
   useEffect(() => {
     setCurrentPage('contact');
+    scrollToTop();
   }, [])
 
   return (
     <Wrapper>
-      Contact
+      <ContactMain />
     </Wrapper>
   );
 };

@@ -1,9 +1,9 @@
-import Products from '../../components/02. Body/02. Products/Products';
+import ProductsMain from '../../components/02. Body/02. Products/ProductsMain';
 
 export default function index() {
   return (
     <div>
-      <Products />
+      <ProductsMain />
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
+import FaqMain from '../components/02. Body/03. FAQ/FaqMain';
 import { SettingsContext } from '../components/Contexts/SettingsContext'
+import { scrollToTop } from '../helper/scrollToTop';
 
 const Wrapper = styled.div`
-  padding: 20px;
   display: flex;
   justify-content: center;
 `;
@@ -13,9 +14,14 @@ const FAQ = () => {
 
   useEffect(() => {
     setCurrentPage('faq');
+    scrollToTop();
   }, [])
 
-  return <Wrapper>FAQ us</Wrapper>;
+  return (
+    <Wrapper>
+      <FaqMain />
+    </Wrapper>
+  )
 };
 
 export default FAQ;
