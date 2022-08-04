@@ -17,6 +17,12 @@ const _ = {
     @media screen and (max-width: 450px) {
       width: 95%;
     }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
   `,
   CardImgWrapper: styled.div`
     width: 100%;
@@ -29,10 +35,6 @@ const _ = {
     object-fit: cover;
     transition: 1s ease-in;
     overflow: hidden;
-
-    &:hover {
-      transform: scale(1.1);
-    }
   `,
   TextWrapper: styled.div`
     display: flex;
