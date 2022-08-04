@@ -86,13 +86,10 @@ const _ = {
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       background-position: left bottom;
 
-      h4 {
-        color: #A19DCA;
-      }
       span {
         color: #A19DCA;
       }
-      h5 {
+      h3 {
         left: 3px;
       }
     }
@@ -112,12 +109,12 @@ const _ = {
     display: flex;
     flex-direction: column;
   `,
-  CardTitle: styled.h3`
+  CardTitle: styled.div`
     margin: 0;
     font-size: 25px;
     font-weight: bold;
   `,
-  SubWrapper: styled.h4`
+  SubWrapper: styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -127,7 +124,7 @@ const _ = {
     font-size: 16px;
     transition: 500ms ease;
   `,
-  SubArrow: styled.h5`
+  SubArrow: styled.h3`
     position: relative;
     margin: 5px 0 0 5px;
     position: relative;
