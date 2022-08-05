@@ -6,7 +6,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="description" content="" />
-          <meta name="title" property="og:title" content="" />
+          <meta name="title" property="og:title" content="Decoden By Shu" />
           <meta name="image" property="og:image" content="" />
           <link rel="icon" href="" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,6 +22,18 @@ class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Mali&family=Titillium+Web&&family=Roboto&display=swap"
             rel="stylesheet"
+          />
+          <link
+            href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+            rel="stylesheet"
+          />
+          <script
+            src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"
+            async
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
         </Head>
         <body>
