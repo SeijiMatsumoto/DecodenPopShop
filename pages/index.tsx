@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Quack Goods</title>
+        <title>Decoden By Shu</title>
       </Head>
       <Body />
     </>
