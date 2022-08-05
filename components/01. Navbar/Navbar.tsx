@@ -7,10 +7,12 @@ import Menu from './Menu';
 import { FaShoppingCart } from 'react-icons/fa';
 import { BiMenu } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
-import CategoryBar from './CategoryBar';
 import anime from 'animejs';
 import { checkInView } from '../../helper/checkInView';
 import { SettingsContext } from '../Contexts/SettingsContext';
+import { MDCMenu } from '@material/menu';
+import Dropdown from './Dropdown';
+
 
 const _ = {
   Wrapper: styled.nav`
@@ -39,7 +41,7 @@ const _ = {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    overflow: hidden;
+
     @media screen and (max-width: 2560px) {
       width: 90%;
     }
@@ -48,6 +50,7 @@ const _ = {
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
   `,
   Logo: styled.img`
     position: relative;
@@ -70,7 +73,6 @@ const _ = {
     align-items: center;
     margin: 0 0 0 30px;
     padding: 0;
-    overflow: hidden;
 
     @media screen and (max-width: 875px) {
       display: none;
@@ -86,11 +88,10 @@ const _ = {
     opacity: 0;
     color: #5a5a5a;
     bottom: 0px;
-
     font-family: 'Mali', cursive;
-
     text-transform: uppercase;
     letter-spacing: -1px;
+
     @media screen and (max-width: 500px) {
         opacity: 1;
         position: relative;
@@ -115,6 +116,21 @@ const _ = {
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }
+  `,
+  ProductsWrapper: styled.div`
+    color: #5a5a5a;
+    margin: 5px 25px 0 0;
+    font-size: 22px;
+    cursor: pointer;
+    position: relative;
+    top: -200px;
+    opacity: 0;
+    font-family: 'Mali', cursive;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  `,
+  ProductLinkText: styled.span`
+    opacity: 1;
   `,
   ButtonsWrapper: styled.div`
     display: flex;
@@ -170,10 +186,26 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [scrollTop, setScrollTop] = useState<number>(0);
   const [isInView, setIsInView] = useState<boolean>(false);
-  const { currentPage, setCurrentPage } = useContext(SettingsContext);
+  const { currentPage } = useContext(SettingsContext);
 
   const clickHandler = () => {
     console.log("Action");
+  }
+
+  const openDropdown = (e) => {
+    e.preventDefault();
+    const menu = new MDCMenu(document.querySelector('.mdc-menu') as Element);
+    menu.open = true;
+    const menuEl = document.getElementById('menu-dropdown');
+    if (menuEl) menuEl.style.display = "flex";
+  }
+
+  const closeDropdown = (e) => {
+    e.preventDefault();
+    const menu = new MDCMenu(document.querySelector('.mdc-menu') as Element);
+    menu.open = false;
+    const menuEl = document.getElementById('menu-dropdown');
+    if (menuEl) menuEl.style.display = "none";
   }
 
   const animateIn = (selectors) => {
@@ -231,6 +263,7 @@ const Navbar = () => {
     const navWrapper = document.getElementById('navwrapper') || undefined;
     const logo = document.getElementById('navLogo') || undefined;
     const catNav = document.getElementById('catNav') || undefined;
+    const dropdown = document.getElementById('menu-dropdown') || undefined;
 
     if (currentPage === 'home') {
       if (nav) nav.style.position = 'fixed';
@@ -238,10 +271,12 @@ const Navbar = () => {
         if (navWrapper) navWrapper.style.backgroundColor = 'white';
         if (logo) logo.style.height = '40px';
         if (catNav) catNav.style.display = 'flex';
+        if (dropdown) dropdown.style.marginLeft = '265px';
       } else if (scrollTop < 101) {
         if (navWrapper) navWrapper.style.backgroundColor = 'transparent';
         if (logo) logo.style.height = '50px';
         if (catNav) catNav.style.display = 'none';
+        if (dropdown) dropdown.style.marginLeft = '300px';
       }
     } else { // if not home page!!
       if (nav) nav.style.position = 'relative';
@@ -280,10 +315,15 @@ const Navbar = () => {
             <_.LogoLinkWrapper>
               <Link href="/"><_.Logo id='navLogo' src="/Logos/QuackGoods-logos_transparent.png" alt='Logo' /></Link>
               <_.LinksWrapper>
-                <Link href="/"><_.LinkText id="nav1" className="navLink">Home</_.LinkText></Link>
-                <Link href="/products"><_.LinkText id="nav2" className="navLink">Shop All</_.LinkText></Link>
-                <Link href="/faq"><_.LinkText id="nav3" className="navLink">FAQ</_.LinkText></Link>
-                <Link href="/contact"><_.LinkText id="nav4" className="navLink">Contact Us</_.LinkText></Link>
+                <Link href="/"><_.LinkText id="nav1">Home</_.LinkText></Link>
+                <_.ProductsWrapper id="nav2" onMouseEnter={openDropdown} onMouseLeave={closeDropdown}>
+                  <Link href="/products">
+                    <_.ProductLinkText id="nav2-text" >Products</_.ProductLinkText>
+                  </Link>
+                  <Dropdown />
+                </_.ProductsWrapper>
+                <Link href="/faq"><_.LinkText id="nav3">FAQ</_.LinkText></Link>
+                <Link href="/contact"><_.LinkText id="nav4">Contact Us</_.LinkText></Link>
               </_.LinksWrapper>
             </_.LogoLinkWrapper>
             <_.ButtonsWrapper>
@@ -293,7 +333,6 @@ const Navbar = () => {
             {!openMenu ? <_.HamburgerMenu onClick={() => { setOpenMenu(true) }}><BiMenu /></_.HamburgerMenu> : <_.HamburgerMenu onClick={() => { setOpenMenu(false) }}><GrClose /></_.HamburgerMenu>}
           </_.NavInnerWrapper>
         </_.NavWrapper>
-        {/* <CategoryBar /> */}
       </_.Wrapper>
       <_.MenuWrapper><Menu setOpenMenu={setOpenMenu} isOpen={openMenu} /></_.MenuWrapper>
     </div>
