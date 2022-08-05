@@ -10,6 +10,7 @@ const _ = {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
   `,
   InnerWrapper: styled.div`
     display: flex;
