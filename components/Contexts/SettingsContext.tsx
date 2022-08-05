@@ -26,7 +26,7 @@ export const SettingsProvider = ({ children }) => {
 
   useEffect(() => {
     const home = document.getElementById('nav1');
-    const products = document.getElementById('nav2');
+    const products = document.getElementById('nav2-text');
     const faq = document.getElementById('nav3');
     const contact = document.getElementById('nav4');
 
