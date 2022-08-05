@@ -51,4 +51,9 @@ body {
   user-select: none;
   /* Standard */
 }
+
+#menu-dropdown {
+  display: none;
+  min-width: 160px !important;
+}
 /*# sourceMappingURL=global.css.map */

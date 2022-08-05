@@ -42,3 +42,8 @@ body {
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
+
+#menu-dropdown {
+  display: none;
+  min-width: 160px !important;
+}
