@@ -11,6 +11,8 @@ const Styles = {
   SplashWrapper: styled.div`
     width: 100vw;
     height: 90vh;
+    max-height: 1500px;
+    min-height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
