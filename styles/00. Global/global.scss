@@ -46,4 +46,11 @@ body {
 #menu-dropdown {
   display: none;
   min-width: 160px !important;
+  transition: 400ms ease;
+  margin-top: 28px;
+  margin-left: 0 !important;
+  width: 335px;
+  padding: 10px 15px 20px 10px;
+  display: flex;
+  flex-direction: row;
 }

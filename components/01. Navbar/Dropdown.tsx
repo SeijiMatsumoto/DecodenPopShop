@@ -5,15 +5,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const _ = {
-  DropdownWrapper: styled.div`
-    transition: 400ms ease;
-    margin-top: 28px;
-    margin-left: 0;
-    width: 335px;
-    padding: 10px 15px 20px 10px;
-    display: flex;
-    flex-direction: row;
-  `,
+  DropdownWrapper: styled.div``,
   DropdownTitle: styled.span`
     font-family: var(--mdc-typography-subtitle1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
     font-weight: bold;
