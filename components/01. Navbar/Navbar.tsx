@@ -56,7 +56,7 @@ const _ = {
     position: relative;
     top: -200px;
     opacity: 0;
-    height: 50px;
+    width: 200px;
     margin: 20px 10px 20px 0;
     cursor: pointer;
     object-fit: contain;
@@ -313,7 +313,7 @@ const Navbar = () => {
         <_.NavWrapper id="navwrapper">
           <_.NavInnerWrapper>
             <_.LogoLinkWrapper>
-              <Link href="/"><_.Logo id='navLogo' src="/Logos/QuackGoods-logos_transparent.png" alt='Logo' /></Link>
+              <Link href="/"><_.Logo id='navLogo' src="/Logos/nav-logo.png" alt='Logo' /></Link>
               <_.LinksWrapper>
                 <Link href="/"><_.LinkText id="nav1">Home</_.LinkText></Link>
                 <_.ProductsWrapper id="nav2" onMouseEnter={openDropdown} onMouseLeave={closeDropdown}>
