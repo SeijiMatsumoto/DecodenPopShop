@@ -21,8 +21,10 @@ const _ = {
     height: 100%;
     margin: 0 30px;
     transform: scale(1.05);
-    @media screen and (max-width: 1000px) {
+    position: relative;
+    @media screen and (max-width: 1550px) {
       width: 90%;
+      left: -40px;
     }
   `,
   ChoicesWrapper: styled.div`
@@ -41,6 +43,9 @@ const _ = {
     &:hover {
       font-weight: bold;
     }
+    @media screen and (max-width: 1550px) {
+      padding: 37px 15px;
+    }
   `,
   ChoiceText: styled.span`
     font-size: 20px;
@@ -51,25 +56,31 @@ const _ = {
     background-color: #f5f5f5;
     height: 300px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
   `,
   Item: styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    max-width: 200px;
+    max-width: 250px;
     padding: 20px;
     cursor: pointer;
     transition: 200ms ease;
+    border: 1px solid red;
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+    @media screen and (max-width: 1550px) {
+      padding: 15px;
     }
   `,
   ItemImg: styled.img`
     height: 200px;
     width: 200px;
     object-fit: cover;
+    @media screen and (max-width: 1550px) {
+      width: 173px;
+    }
   `,
   ItemTitle: styled.span`
     font-size: 20px;
