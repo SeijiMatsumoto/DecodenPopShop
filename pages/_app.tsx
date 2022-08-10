@@ -6,8 +6,10 @@ import '../styles/00. Global/cloudBG.css';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <div>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </div>
   )
 }

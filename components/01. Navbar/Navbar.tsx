@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import { Button } from '../UILibrary';
 import MiniNav from './MiniNav';
 import Link from 'next/link';
 import Menu from './Menu';
