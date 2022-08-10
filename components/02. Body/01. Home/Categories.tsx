@@ -187,9 +187,9 @@ const Categories = () => {
 
   const icons = [
     <IoPhonePortraitOutline key='cases' />,
+    <IoPhonePortraitOutline key='cases' />,
     <GiComb key='hair' />,
     <AiTwotoneCar key='car' />,
-    <BiCustomize key='custom' />
   ]
 
   return (
@@ -199,11 +199,11 @@ const Categories = () => {
           <_.TitleWrapper id="category-title"><_.Title>Featured Categories</_.Title></_.TitleWrapper>
           {categories.slice(0, 4).map((category, i) => {
             return (
-              <Link key={category + 'component'} href={`/products/${category.toLowerCase()}`} >
+              <Link key={category.name + 'component'} href={`/products/?category=${category.name}`} >
                 <_.Card id={`category-card-${i}`}>
                   <_.Icon>{icons[i]}</_.Icon>
                   <_.TextWrapper>
-                    <_.CardTitle>{category}</_.CardTitle>
+                    <_.CardTitle>{category.name}</_.CardTitle>
                     <_.SubWrapper>
                       <_.SubText>Shop category</_.SubText>
                       <_.SubArrow><FaLongArrowAltRight /></_.SubArrow>
