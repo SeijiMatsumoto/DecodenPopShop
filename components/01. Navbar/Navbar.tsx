@@ -269,7 +269,7 @@ const Navbar = () => {
                   {!anchorEl ? <_.DownArrow /> : <_.UpArrow />}
                   <Dropdown anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
                 </_.ProductsWrapper>
-                <Link href="/faq"><_.LinkText id="nav3">FAQ</_.LinkText></Link>
+                <Link href="/faq"><_.LinkText id="nav3">Q&A</_.LinkText></Link>
                 <Link href="/contact"><_.LinkText id="nav4">Contact Us</_.LinkText></Link>
               </_.LinksWrapper>
               <_.LogoWrapper>
