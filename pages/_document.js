@@ -24,12 +24,8 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
-            href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
             rel="stylesheet"
-          />
-          <script
-            src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"
-            async
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
           <link
             rel="stylesheet"
