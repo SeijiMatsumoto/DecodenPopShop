@@ -3,31 +3,29 @@ import styled from 'styled-components';
 
 const _ = {
   Wrapper: styled.div`
-    width: 400px;
-    height: 500px;
+    height: 350px;
+    width: 250px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    margin: 30px;
+    margin: 20px 30px;
     overflow: hidden;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 5px;
+    border-radius: 3px;
+
     cursor: pointer;
     @media screen and (max-width: 450px) {
       width: 95%;
+      margin: 15px;
     }
+    transition: 200ms ease-in;
 
-    &:hover {
-      img {
-        transform: scale(1.1);
-      }
-    }
   `,
   CardImgWrapper: styled.div`
     width: 100%;
-    height: 90%;
+    height: 80%;
     overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   `,
   CardImg: styled.img`
     width: 100%;
@@ -40,11 +38,17 @@ const _ = {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 10px;
-    height: 10%;
+    width: 95%;
+    margin: 5px;
+    font-family: "Roboto", sans-serif;
   `,
-  Title: styled.span``,
-  Price: styled.span``
+  Title: styled.span`
+    font-size: 22px;
+  `,
+  Price: styled.span`
+    margin-top: 3px;
+    color: #545454;
+  `
 }
 
 const Card = ({ src, title, price }) => {
