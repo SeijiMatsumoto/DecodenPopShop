@@ -4,27 +4,27 @@ import { Button } from '../UILibrary';
 import MiniNav from './MiniNav';
 import Link from 'next/link';
 import Menu from './Menu';
-import { FaShoppingCart } from 'react-icons/fa';
 import { BiMenu } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 import anime from 'animejs';
 import { checkInView } from '../../helper/checkInView';
-import { SettingsContext } from '../Contexts/SettingsContext';
-import { MDCMenu } from '@material/menu';
 import Dropdown from './Dropdown';
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { SettingsContext } from '../Contexts/SettingsContext';
+import SearchBar from './SearchBar';
 
 const _ = {
   Wrapper: styled.nav`
     z-index: 5;
-    width: 100%;
-    position: fixed;
+    width: 100vw;
+    position: relative;
     @media screen and (max-width: 500px) {
       background-color: white;
     }
   `,
   NavWrapper: styled.div`
-    background-color: transparent;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,41 +45,55 @@ const _ = {
     @media screen and (max-width: 2560px) {
       width: 90%;
     }
-  `,
-  LogoLinkWrapper: styled.div`
+    @media screen and (max-width: 500px) {
+        padding: 0;
+        width: 95%;
+    }
+    `,
+  ThirdsWrapper: styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     position: relative;
+    width: 100%;
+    justify-content: space-between;
+  `,
+  LogoWrapper: styled.div`
+    /* width: 20%; */
+    display: flex;
+    justify-content: center;
   `,
   Logo: styled.img`
     position: relative;
     top: -200px;
     opacity: 0;
     width: 200px;
-    margin: 20px 10px 20px 0;
     cursor: pointer;
     object-fit: contain;
     transition: 400ms ease;
+    @media screen and (max-width: 1300px) {
+      padding: 20px;
+    }
 
     @media screen and (max-width: 500px) {
         opacity: 1;
         position: relative;
         top: 0;
+        width: 100px;
+        padding: 20px 5px;
     }
   `,
   LinksWrapper: styled.div`
     display: flex;
     align-items: center;
-    margin: 0 0 0 30px;
-    padding: 0;
+    width: 40%;
 
-    @media screen and (max-width: 875px) {
+    @media screen and (max-width: 1300px) {
       display: none;
     }
   `,
   LinkText: styled.span`
-    margin: 5px 25px 0 0;
+    margin: 0 15px;
     font-size: 22px;
     cursor: pointer;
     overflow: hidden;
@@ -91,13 +105,11 @@ const _ = {
     font-family: 'Mali', cursive;
     text-transform: uppercase;
     letter-spacing: -1px;
-
     @media screen and (max-width: 500px) {
         opacity: 1;
         position: relative;
         top: 0;
     }
-
     &::after {
       content: '';
       position: absolute;
@@ -110,7 +122,6 @@ const _ = {
       opacity: 1;
       transform: translate3d(-100%, 0, 0);
     }
-
     &:hover::after,
     &:focus::after {
       opacity: 1;
@@ -119,93 +130,79 @@ const _ = {
   `,
   ProductsWrapper: styled.div`
     color: #5a5a5a;
-    margin: 5px 25px 0 0;
+    padding: 20px 0;
+    margin-left: 10px;
     font-size: 22px;
-    cursor: pointer;
     position: relative;
     top: -200px;
     opacity: 0;
     font-family: 'Mali', cursive;
     text-transform: uppercase;
     letter-spacing: -1px;
+    cursor: pointer;
+    &:hover {
+      svg {
+        top: 6px;
+      }
+    }
   `,
   ProductLinkText: styled.span`
-    opacity: 1;
+    margin-right: 5px;
+  `,
+  DownArrow: styled(KeyboardArrowDownIcon)`
+    position: relative;
+    left: -3px;
+    top: 3px;
+    transition: 500ms ease;
+  `,
+  UpArrow: styled(KeyboardArrowUpIcon)`
+    position: relative;
+    left: -3px;
+    top: 3px;
+    transition: 500ms ease;
   `,
   ButtonsWrapper: styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-end;
+    width: 40%;
 
     > button {
       margin-left: 10px;
     }
-    div {
-      opacity: 0;
-      position: relative;
-      top: -200px;
 
-      @media screen and (max-width: 500px) {
-        opacity: 1;
-        position: relative;
-        top: 0;
-      }
-
-    }
-
-    @media screen and (max-width: 875px) {
-      display: none;
+    @media screen and (max-width: 1300px) {
+      width: auto;
     }
   `,
   HamburgerMenu: styled.span`
     font-size: 35px;
+    position: relative;
+    top: 5px;
+    margin-left: 10px;
     cursor: pointer;
     display: none;
-
-    @media screen and (max-width: 875px) {
+    @media screen and (max-width: 1300px) {
       display: block;
     }
   `,
   MenuWrapper: styled.div`
     display: none;
-
-    @media screen and (max-width: 875px) {
+    @media screen and (max-width: 1300px) {
       display: block;
     }
-  `,
-  Cart: styled(FaShoppingCart)`
-    margin-left:20px;
-    font-size: 20px;
-    opacity: 0;
-    position: relative;
-    top: -200px;
-  `,
+  `
 }
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const [scrollTop, setScrollTop] = useState<number>(0);
   const [isInView, setIsInView] = useState<boolean>(false);
-  const { currentPage } = useContext(SettingsContext);
-
-  const clickHandler = () => {
-    console.log("Action");
-  }
+  const { anchorEl, setAnchorEl, isMobile } = useContext(SettingsContext);
 
   const openDropdown = (e) => {
     e.preventDefault();
-    const menu = new MDCMenu(document.querySelector('.mdc-menu') as Element);
-    menu.open = true;
-    const menuEl = document.getElementById('menu-dropdown');
-    if (menuEl) menuEl.style.display = "flex";
-  }
-
-  const closeDropdown = (e) => {
-    e.preventDefault();
-    const menu = new MDCMenu(document.querySelector('.mdc-menu') as Element);
-    menu.open = false;
-    const menuEl = document.getElementById('menu-dropdown');
-    if (menuEl) menuEl.style.display = "none";
+    setAnchorEl(e.currentTarget);
   }
 
   const animateIn = (selectors) => {
@@ -252,58 +249,11 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    if (isInView) {
-      animateIn(['#navLogo', '#nav1', '#nav2', '#nav3', '#nav4', "#nav5", '#nav6']);
-    }
+    if (isInView && !isMobile) { animateIn(['#nav1', '#nav2', '#nav3', '#nav4', '#navLogo', "#nav5", '#nav6']); }
   }, [isInView])
 
-
   useEffect(() => {
-    const nav = document.getElementById('navbar') || undefined;
-    const navWrapper = document.getElementById('navwrapper') || undefined;
-    const logo = document.getElementById('navLogo') || undefined;
-    const catNav = document.getElementById('catNav') || undefined;
-    const dropdown = document.getElementById('menu-dropdown') || undefined;
-
-    if (currentPage === 'home') {
-      if (nav) nav.style.position = 'fixed';
-      if (scrollTop > 100) {
-        if (navWrapper) navWrapper.style.backgroundColor = 'white';
-        if (logo) logo.style.height = '40px';
-        if (catNav) catNav.style.display = 'flex';
-        if (dropdown) dropdown.style.marginLeft = '265px';
-      } else if (scrollTop < 101) {
-        if (navWrapper) navWrapper.style.backgroundColor = 'transparent';
-        if (logo) logo.style.height = '50px';
-        if (catNav) catNav.style.display = 'none';
-        if (dropdown) dropdown.style.marginLeft = '300px';
-      }
-    } else { // if not home page!!
-      if (nav) nav.style.position = 'relative';
-      if (navWrapper) navWrapper.style.backgroundColor = 'white';
-      if (logo) {
-        logo.style.height = '50px';
-        logo.style.opacity = '1';
-        logo.style.top = '-200px';
-      }
-      if (catNav) catNav.style.display = 'flex';
-    }
-  }, [scrollTop, currentPage])
-
-  const initialActions = (e) => {
-    const width = window.innerWidth;
-    if (width > 500 && !isInView) {
-      checkInView('#navbar', setIsInView);
-    }
-    setScrollTop(e.path[0].scrollTop);
-  }
-
-  useEffect(() => {
-    if (window.innerWidth > 500) {
-      checkInView('#navbar', setIsInView);
-    }
-    document.body.addEventListener('scroll', initialActions);
-    return () => document.body.removeEventListener('scroll', initialActions);
+    checkInView('#navbar', setIsInView);
   }, []);
 
   return (
@@ -312,25 +262,25 @@ const Navbar = () => {
         <MiniNav />
         <_.NavWrapper id="navwrapper">
           <_.NavInnerWrapper>
-            <_.LogoLinkWrapper>
-              <Link href="/"><_.Logo id='navLogo' src="/Logos/nav-logo.png" alt='Logo' /></Link>
+            <_.ThirdsWrapper>
               <_.LinksWrapper>
                 <Link href="/"><_.LinkText id="nav1">Home</_.LinkText></Link>
-                <_.ProductsWrapper id="nav2" onMouseEnter={openDropdown} onMouseLeave={closeDropdown}>
-                  <Link href="/products">
-                    <_.ProductLinkText id="nav2-text" >Products</_.ProductLinkText>
-                  </Link>
-                  <Dropdown />
+                <_.ProductsWrapper id="nav2" onClick={openDropdown}>
+                  <_.ProductLinkText id="nav2-text" >Products</_.ProductLinkText>
+                  {!anchorEl ? <_.DownArrow /> : <_.UpArrow />}
+                  <Dropdown anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
                 </_.ProductsWrapper>
                 <Link href="/faq"><_.LinkText id="nav3">FAQ</_.LinkText></Link>
                 <Link href="/contact"><_.LinkText id="nav4">Contact Us</_.LinkText></Link>
               </_.LinksWrapper>
-            </_.LogoLinkWrapper>
-            <_.ButtonsWrapper>
-              <div id="nav5"><Button action={clickHandler} buttonText={'My Account'} /></div>
-              <_.Cart id="nav6" />
-            </_.ButtonsWrapper>
-            {!openMenu ? <_.HamburgerMenu onClick={() => { setOpenMenu(true) }}><BiMenu /></_.HamburgerMenu> : <_.HamburgerMenu onClick={() => { setOpenMenu(false) }}><GrClose /></_.HamburgerMenu>}
+              <_.LogoWrapper>
+                <Link href="/"><_.Logo id='navLogo' src="/Logos/nav-logo.png" alt='Logo' /></Link>
+              </_.LogoWrapper>
+              <_.ButtonsWrapper>
+                <SearchBar />
+                {!openMenu ? <_.HamburgerMenu onClick={() => { setOpenMenu(true) }}><BiMenu /></_.HamburgerMenu> : <_.HamburgerMenu onClick={() => { setOpenMenu(false) }}><GrClose /></_.HamburgerMenu>}
+              </_.ButtonsWrapper>
+            </_.ThirdsWrapper>
           </_.NavInnerWrapper>
         </_.NavWrapper>
       </_.Wrapper>
