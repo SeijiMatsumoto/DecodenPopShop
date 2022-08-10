@@ -21,6 +21,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  min-height: 100vh;
 }
 
 .wrapper {
@@ -68,5 +69,18 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+.selected-choice {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+#simple-select {
+  font-size: 18px;
+}
+
+#select-text {
+  font-size: 22px;
 }
 /*# sourceMappingURL=global.css.map */
