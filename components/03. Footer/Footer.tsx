@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { MdAlternateEmail, MdPhone, } from "react-icons/md";
 import { BsTwitter, BsInstagram } from "react-icons/bs";
-import { CloudButton } from '../UILibrary';
 
 const _ = {
   FooterWrapper: styled.div`
@@ -11,11 +10,11 @@ const _ = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     margin-top: auto;
 
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    /* background-color: #FFF5F0; */
+    background-color: #FFF5F0;
 
     * {
       font-family: 'Mali', cursive;
@@ -77,7 +76,7 @@ const _ = {
     }
   `,
   Logo: styled.img`
-    height: 50px;
+    height: 100px;
     cursor: pointer;
     object-fit: contain;
     margin: 0 0 10px -5px;
@@ -100,9 +99,9 @@ const Footer = () => {
     <_.FooterWrapper>
       <_.InnerWrapper>
         <_.Column>
-          <_.Logo src="/Logos/QuackGoods-logos_transparent.png" alt='Logo' onClick={() => window.open("/", "_self")} />
+          <_.Logo src="/Logos/square-logo.png" alt='Logo' onClick={() => window.open("/", "_self")} />
           <_.List>
-            <_.ListItem>{"You can't buy happiness, but you can buy all things duck-related!"}</_.ListItem>
+            <_.ListItem>{"Handmade products by Shu"}</_.ListItem>
           </_.List>
         </_.Column>
         <_.Column>
