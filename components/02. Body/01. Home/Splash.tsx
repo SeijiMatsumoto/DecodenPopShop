@@ -10,7 +10,7 @@ import { CloudBackground, CloudButton } from '../../UILibrary';
 const Styles = {
   SplashWrapper: styled.div`
     width: 100vw;
-    height: 90vh;
+    height: 80vh;
     max-height: 1500px;
     min-height: 600px;
     display: flex;
