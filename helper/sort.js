@@ -39,7 +39,7 @@ export const sortData = (
       case "Car Accessories":
         sorter(data.carAcc);
         break;
-      case "Other":
+      case "Custom":
         sorter(data.other);
         break;
       default:

@@ -20,7 +20,7 @@ export const categories = [
     url: "/products",
   },
   {
-    name: "Other",
+    name: "Custom",
     img: "https://i.pinimg.com/originals/3f/ab/ce/3fabce918acb4fd31ff3e4c3eaf9396e.jpg",
     url: "/products",
   },
