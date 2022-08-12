@@ -4,13 +4,12 @@ import { useRouter } from 'next/router'
 import anime from 'animejs';
 import { checkInView } from '../../../helper/checkInView';
 import { SettingsContext } from '../../Contexts/SettingsContext';
-// import Link from 'next/link';
 import { CloudBackground, CloudButton } from '../../UILibrary';
 
 const Styles = {
   SplashWrapper: styled.div`
     width: 100vw;
-    height: 80vh;
+    height: 85vh;
     max-height: 1500px;
     min-height: 600px;
     display: flex;
@@ -39,7 +38,7 @@ const Styles = {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    @media screen and (max-width: 1320px) {
+    @media screen and (max-width: 1400px) {
       width: 90%;
     }
   `,
@@ -175,7 +174,7 @@ const Splash = () => {
           <CloudButton text="Shop All Products" src="/products" callback={() => { }} target="_self" size="l" />
         </Styles.ButtonsWrapper>
       </Styles.InnerWrapper>
-      <WalkingDuck src="/walkingDuck.gif" />
+      {/* <WalkingDuck src="/walkingDuck.gif" /> */}
     </Styles.SplashWrapper>
   );
 };
