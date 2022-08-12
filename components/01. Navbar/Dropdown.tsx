@@ -24,7 +24,8 @@ const _ = {
     position: relative;
     @media screen and (max-width: 1550px) {
       width: 90%;
-      left: -40px;
+      left: -30px;
+      margin: 0;
     }
   `,
   ChoicesWrapper: styled.div`
@@ -66,7 +67,6 @@ const _ = {
     padding: 20px;
     cursor: pointer;
     transition: 200ms ease;
-    border: 1px solid red;
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     }
@@ -91,7 +91,7 @@ const _ = {
 
 const Dropdown = ({ anchorEl, setAnchorEl }) => {
   const [selected, setSelected] = useState<number>();
-  const { setSelectedCategory } = useContext(SettingsContext);
+  const { setSelectedCategory, selectedCategory } = useContext(SettingsContext);
   const open = Boolean(anchorEl);
 
   const changeView = (num: number) => {
@@ -111,6 +111,7 @@ const Dropdown = ({ anchorEl, setAnchorEl }) => {
       changeView(selected);
     }
   }, [selected])
+
 
   useEffect(() => {
     setSelected(1);
