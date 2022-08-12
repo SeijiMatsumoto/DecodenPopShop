@@ -25,6 +25,7 @@ export const SettingsContext = createContext({
 export const SettingsProvider = ({ children }) => {
   const { query } = useRouter();
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [screenWidth, setWidth] = useState<number>(1000);
   const [currentPage, setCurrentPage] = useState<string>('home');
   const [anchorEl, setAnchorEl] = useState<any>(null);
   const [selectedCategory, setSelectedCategory] = useState<any>('All Products');
@@ -35,13 +36,23 @@ export const SettingsProvider = ({ children }) => {
   const categoriesSet = new Set(categories.map(cat => cat.name));
   const collectionsSet = new Set(collections.map(col => col.name));
 
-  useEffect(() => {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 500) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
+  const onResize = () => { setWidth(window.innerWidth); }
 
+  useEffect(() => {
+    if (screenWidth < 1300) {
+      setAnchorEl(null);
+    }
+    if (screenWidth < 500) {
+      setIsMobile(true);
+    }
+  }, [screenWidth])
+
+
+  useEffect(() => {
+    console.log('Mobile:', isMobile);
+  }, [isMobile])
+
+  useEffect(() => {
     const all: any = [];
     for (let category in products) {
       for (let items of products[category]) {
@@ -58,6 +69,9 @@ export const SettingsProvider = ({ children }) => {
       setSelectedCategory('');
     }
 
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
   const store = {
@@ -88,7 +102,7 @@ export const SettingsProvider = ({ children }) => {
     searchQuery: searchQuery,
     setQuery: (query: string) => {
       setQuery(query);
-    }
+    },
   };
 
   const filterQuery = () => {
@@ -144,10 +158,6 @@ export const SettingsProvider = ({ children }) => {
       else setProductsToShow(sortData('all', selectedSort, selectedCategory, allProducts, allProducts));
     }
   }, [selectedSort, selectedCategory])
-
-  useEffect(() => {
-    console.log('Show:', productsToShow);
-  }, [productsToShow])
 
   return (
     <SettingsContext.Provider value={store}>
