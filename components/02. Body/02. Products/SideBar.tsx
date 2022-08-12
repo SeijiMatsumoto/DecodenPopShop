@@ -38,7 +38,6 @@ const _ = {
     justify-content: flex-end;
     align-items: flex-start;
     flex-direction: column;
-
   `,
   SectionWrapper: styled.div`
     display: flex;
@@ -49,7 +48,7 @@ const _ = {
   `,
   DropdownOptions: styled.option``,
   Item: styled.span`
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     margin: 5px 0;
     transition: 200ms ease;
@@ -88,7 +87,7 @@ const SideBar = ({ query }) => {
       <_.InnerWrapper>
         <_.SectionWrapper>
           <SectionTitle text='Sort By' />
-          <FormControl sx={{ m: 0, minWidth: 120 }}>
+          <FormControl sx={{ m: 0, minWidth: 100 }}>
             <Select
               id="simple-select"
               value={selectedSort}
