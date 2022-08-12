@@ -58,9 +58,8 @@ const _ = {
     justify-content: space-between;
   `,
   LogoWrapper: styled.div`
-    /* width: 20%; */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   `,
   Logo: styled.img`
     position: relative;
@@ -75,11 +74,7 @@ const _ = {
     }
 
     @media screen and (max-width: 500px) {
-        opacity: 1;
-        position: relative;
-        top: 0;
-        width: 100px;
-        padding: 20px 5px;
+       width: 50%;
     }
   `,
   LinksWrapper: styled.div`
@@ -96,18 +91,25 @@ const _ = {
     font-size: 22px;
     cursor: pointer;
     overflow: hidden;
+
+    // Animation styling
     position: relative;
     top: -200px;
     opacity: 0;
+    // Animation styling
+
     color: #5a5a5a;
     bottom: 0px;
     font-family: 'Mali', cursive;
     text-transform: uppercase;
     letter-spacing: -1px;
+
     @media screen and (max-width: 500px) {
+        // Animation styling
         opacity: 1;
         position: relative;
         top: 0;
+        // Animation styling
     }
     &::after {
       content: '';
@@ -116,7 +118,7 @@ const _ = {
       left: -1px;
       width: 100%;
       height: 0.1em;
-      background-color: #fa741a;
+      background-color: #A19DCA;
       transition: opacity 300ms, transform 300ms;
       opacity: 1;
       transform: translate3d(-100%, 0, 0);
@@ -132,9 +134,13 @@ const _ = {
     padding: 20px 0;
     margin-left: 10px;
     font-size: 22px;
+
+    // Animation styling
     position: relative;
     top: -200px;
     opacity: 0;
+    // Animation styling
+
     font-family: 'Mali', cursive;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -196,6 +202,7 @@ const _ = {
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [animated, setAnimated] = useState<boolean>(false);
   const [isInView, setIsInView] = useState<boolean>(false);
   const { anchorEl, setAnchorEl, isMobile } = useContext(SettingsContext);
 
@@ -245,11 +252,15 @@ const Navbar = () => {
         translateY: 200,
         opacity: 1,
       }, '-=400');
+
+    setAnimated(true);
   }
 
   useEffect(() => {
-    if (isInView && !isMobile) { animateIn(['#nav1', '#nav2', '#nav3', '#nav4', '#navLogo', "#nav5", '#nav6']); }
-  }, [isInView])
+    if (isInView && !isMobile && !animated) {
+      animateIn(['#nav1', '#nav2', '#nav3', '#nav4', '#navLogo', "#nav5", '#nav6']);
+    }
+  }, [isInView, isMobile])
 
   useEffect(() => {
     checkInView('#navbar', setIsInView);
