@@ -31,7 +31,7 @@ const _ = {
     flex-wrap: wrap;
     border-bottom: 1px solid #dadada;
 
-    @media screen and (max-width: 703px) {
+    @media screen and (max-width: 868px) {
       width: 90%;
       margin: 5px;
       flex-direction: column;
@@ -69,10 +69,14 @@ const _ = {
     color: black;
     cursor: pointer;
     margin-left: 5px;
+    transition: 200ms ease;
 
-    transition: all 200ms;
     &:hover {
-      color: #fa741a;
+      color: #A19DCA;
+      transform: translateY(-1px);
+    }
+    &:active {
+      transform: translateY(0);
     }
   `,
   Logo: styled.img`
