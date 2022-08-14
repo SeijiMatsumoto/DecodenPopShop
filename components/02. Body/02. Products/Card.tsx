@@ -57,7 +57,6 @@ const Card = ({ product }) => {
   const { setSelectedProduct } = useContext(SettingsContext);
 
   const goToProduct = () => {
-    console.log(product);
     setSelectedProduct(product);
     Router.push('/products/view?productID=' + product.id);
   }
