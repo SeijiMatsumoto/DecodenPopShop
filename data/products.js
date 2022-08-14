@@ -17,6 +17,8 @@ export const products = [
     price: "$49.99",
     category: "Cream Glue Phone Cases",
     collection: "Rico",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "1",
@@ -29,6 +31,8 @@ export const products = [
     price: "$4.99",
     category: "Cream Glue Phone Cases",
     collection: "Rico",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "2",
@@ -40,6 +44,8 @@ export const products = [
     price: "$69.99",
     category: "Cream Glue Phone Cases",
     collection: "Rico",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "3",
@@ -48,6 +54,8 @@ export const products = [
     price: "$79.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "4",
@@ -56,6 +64,8 @@ export const products = [
     price: "$17.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "5",
@@ -64,6 +74,8 @@ export const products = [
     price: "$10.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "6",
@@ -75,6 +87,8 @@ export const products = [
     price: "$19.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "7",
@@ -83,6 +97,8 @@ export const products = [
     price: "$149.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "8",
@@ -91,6 +107,8 @@ export const products = [
     price: "$559.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "9",
@@ -99,6 +117,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "10",
@@ -107,6 +127,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "11",
@@ -115,6 +137,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "12",
@@ -123,6 +147,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "13",
@@ -131,6 +157,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "14",
@@ -143,6 +171,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "15",
@@ -155,6 +185,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "16",
@@ -163,6 +195,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "17",
@@ -171,6 +205,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "18",
@@ -179,6 +215,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "19",
@@ -187,6 +225,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "20",
@@ -195,6 +235,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "21",
@@ -203,6 +245,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "22",
@@ -211,6 +255,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "23",
@@ -219,6 +265,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "24",
@@ -227,6 +275,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "25",
@@ -235,6 +285,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "26",
@@ -243,6 +295,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "27",
@@ -251,6 +305,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "28",
@@ -259,6 +315,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "29",
@@ -267,6 +325,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "30",
@@ -275,6 +335,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "31",
@@ -283,6 +345,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "32",
@@ -291,6 +355,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "33",
@@ -299,6 +365,8 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
   {
     id: "34",
@@ -307,5 +375,7 @@ export const products = [
     price: "$68.99",
     category: "Cream Glue Phone Cases",
     collection: "",
+    description:
+      'Decoden is a term from the Japanese language and it means to decorate a mobile case! The first series of decoden are generally decoration with crystals & rhinestones and they call it "bling bling case". Today, decoden has evolved to include different types of design/styles and materials!',
   },
 ];
