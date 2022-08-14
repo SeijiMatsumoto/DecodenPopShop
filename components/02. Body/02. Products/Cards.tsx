@@ -69,7 +69,7 @@ const Cards = () => {
         <_.InnerWrapper>
           {productsToShow.map((product: any) => {
             return (
-              <Card key={product.images[0]} src={product.images[0]} title={product.title} price={product.price} />
+              <Card key={product.images[0]} product={product} />
             )
           })}
         </_.InnerWrapper>
