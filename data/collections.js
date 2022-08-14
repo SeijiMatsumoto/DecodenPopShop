@@ -20,7 +20,7 @@ export const collections = [
     url: "/products",
   },
   {
-    name: "Anime",
+    name: "Other",
     img: "https://wallpaperaccess.com/full/8259463.png",
     url: "/products",
   },

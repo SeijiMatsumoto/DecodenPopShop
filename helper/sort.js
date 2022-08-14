@@ -1,10 +1,10 @@
-export const sortData = (
-  type,
-  selectedSort,
-  selectedCategory,
-  data,
-  allProducts
-) => {
+import { categories } from "../data/categories";
+import { collections } from "../data/collections";
+
+export const sortData = (selectedCategory, selectedSort, data) => {
+  const categoriesSet = new Set(categories.map((cat) => cat.name));
+  const collectionsSet = new Set(collections.map((col) => col.name));
+
   let sorted = [];
   const getValue = ({ price }) => +price.slice(1) || 0;
 
@@ -22,51 +22,11 @@ export const sortData = (
     }
   };
 
-  if (type === "categories") {
-    switch (selectedCategory) {
-      case "All Products":
-        sorter(data);
-        break;
-      case "Cream Glue Phone Cases":
-        sorter(data.cgCases);
-        break;
-      case "Epoxy Phone Cases":
-        sorter(data.eCases);
-        break;
-      case "Hair Clips":
-        sorter(data.hairClips);
-        break;
-      case "Car Accessories":
-        sorter(data.carAcc);
-        break;
-      case "Custom":
-        sorter(data.other);
-        break;
-      default:
-        sorter(allProducts);
-        break;
-    }
-  } else if (type === "collections") {
-    switch (selectedCategory) {
-      case "PopMart":
-        sorter(data.filter((each) => each.collection === "PopMart"));
-        break;
-      case "zZton":
-        sorter(data.filter((each) => each.collection === "zZton"));
-        break;
-      case "Rico":
-        sorter(data.filter((each) => each.collection === "Rico"));
-        break;
-      case "Sanori":
-        sorter(data.filter((each) => each.collection === "Sanori"));
-        break;
-      case "Anime":
-        sorter(data.filter((each) => each.collection === "Anime"));
-        break;
-      default:
-        break;
-    }
-  } else {
+  if (categoriesSet.has(selectedCategory)) {
+    sorter(data.filter((product) => product.category === selectedCategory));
+  } else if (collectionsSet.has(selectedCategory)) {
+    sorter(data.filter((product) => product.collection === selectedCategory));
+  } else if (selectedCategory === "") {
     sorter(data);
   }
 
