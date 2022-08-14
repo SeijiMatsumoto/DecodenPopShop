@@ -9,6 +9,10 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { SettingsContext } from '../../Contexts/SettingsContext';
 import Router from 'next/router';
 
+interface FontProps {
+  readonly bold: boolean;
+}
+
 const _ = {
   Wrapper: styled.div`
     display: flex;
@@ -47,12 +51,12 @@ const _ = {
     margin-bottom: 30px;
   `,
   DropdownOptions: styled.option``,
-  Item: styled.span`
+  Item: styled.span<FontProps>`
     font-size: 16px;
     cursor: pointer;
     margin: 5px 0;
     transition: 200ms ease;
-    font-weight: ${props => props.bold ? "bold" : "normal"};
+    font-weight: ${(props) => props.bold === true ? "bold" : "normal"};
     &:hover {
       color: #A19DCA;
       transform: translateY(-1px);
