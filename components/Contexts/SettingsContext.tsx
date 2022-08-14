@@ -1,8 +1,6 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { products } from "../../data/products";
 import { sortData } from '../../helper/sort';
-import { categories } from "../../data/categories";
-import { collections } from "../../data/collections";
 import { useRouter } from "next/router";
 
 export const SettingsContext = createContext({
@@ -19,7 +17,9 @@ export const SettingsContext = createContext({
   selectedSort: 'Best Sellers',
   setSelectedSort: (sort: string) => { },
   searchQuery: '',
-  setQuery: (query: string) => { }
+  setQuery: (query: string) => { },
+  selectedProduct: '',
+  setSelectedProduct: (productId: string) => { },
 });
 
 export const SettingsProvider = ({ children }) => {
@@ -33,8 +33,7 @@ export const SettingsProvider = ({ children }) => {
   const [selectedSort, setSelectedSort] = useState<string>("Best Sellers");
   const [searchQuery, setQuery] = useState<string>("");
   const [allProducts, setAllProducts] = useState<any>([]);
-  const categoriesSet = new Set(categories.map(cat => cat.name));
-  const collectionsSet = new Set(collections.map(col => col.name));
+  const [selectedProduct, setSelectedProduct] = useState<string>('');
 
   const onResize = () => { setWidth(window.innerWidth); }
 
@@ -47,20 +46,9 @@ export const SettingsProvider = ({ children }) => {
     }
   }, [screenWidth])
 
-
   useEffect(() => {
-    console.log('Mobile:', isMobile);
-  }, [isMobile])
+    setAllProducts(products);
 
-  useEffect(() => {
-    const all: any = [];
-    for (let category in products) {
-      for (let items of products[category]) {
-        all.push(items);
-      }
-    }
-
-    setAllProducts(all);
     if (query.category) {
       setSelectedCategory(query.category);
     } else if (query.collection) {
@@ -103,6 +91,10 @@ export const SettingsProvider = ({ children }) => {
     setQuery: (query: string) => {
       setQuery(query);
     },
+    selectedProduct: selectedProduct,
+    setSelectedProduct: (productId: string) => {
+      setSelectedProduct(productId);
+    }
   };
 
   const filterQuery = () => {
@@ -149,14 +141,7 @@ export const SettingsProvider = ({ children }) => {
   }, [currentPage, query])
 
   useEffect(() => {
-    if (categoriesSet.has(selectedCategory)) {
-      setProductsToShow(sortData('categories', selectedSort, selectedCategory, products, allProducts));
-    } else if (collectionsSet.has(selectedCategory)) {
-      setProductsToShow(sortData('collections', selectedSort, selectedCategory, allProducts, allProducts));
-    } else if (selectedCategory === "") {
-      if (query.results) setProductsToShow(sortData('categories', selectedSort, selectedCategory, productsToShow, allProducts));
-      else setProductsToShow(sortData('all', selectedSort, selectedCategory, allProducts, allProducts));
-    }
+    setProductsToShow(sortData(selectedCategory, selectedSort, allProducts));
   }, [selectedSort, selectedCategory])
 
   return (
