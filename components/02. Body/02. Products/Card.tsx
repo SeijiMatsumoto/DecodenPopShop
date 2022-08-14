@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import Router from 'next/router';
+import { SettingsContext } from '../../Contexts/SettingsContext';
 
 const _ = {
   Wrapper: styled.div`
@@ -51,15 +53,23 @@ const _ = {
   `
 }
 
-const Card = ({ src, title, price }) => {
+const Card = ({ product }) => {
+  const { setSelectedProduct } = useContext(SettingsContext);
+
+  const goToProduct = () => {
+    console.log(product);
+    setSelectedProduct(product);
+    Router.push('/products/view?productID=' + product.id);
+  }
+
   return (
-    <_.Wrapper>
+    <_.Wrapper onClick={goToProduct}>
       <_.CardImgWrapper>
-        <_.CardImg src={src} alt='product-card' />
+        <_.CardImg src={product.images[0]} alt='product-card' />
       </_.CardImgWrapper>
       <_.TextWrapper>
-        <_.Title>{title}</_.Title>
-        <_.Price>{price}</_.Price>
+        <_.Title>{product.title}</_.Title>
+        <_.Price>{product.price}</_.Price>
       </_.TextWrapper>
     </_.Wrapper>
   );
