@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,6 +15,12 @@ const _ = {
   Title: styled.span`
     font-size: 40px;
   `,
+  Price: styled.span`
+    font-size: 30px;
+  `,
+  DescriptionWrapper: styled.div`
+    margin: 20px 0;
+  `,
   Section: styled.section`
     display: flex;
     flex-direction: row;
@@ -27,7 +34,6 @@ const _ = {
   SectionName: styled.span`
     font-size: 20px;
   `,
-  MoneyWrapper: styled.div``,
 }
 
 const ProductInfo = ({ product }) => {
@@ -36,12 +42,20 @@ const ProductInfo = ({ product }) => {
     <_.Wrapper>
       <_.Title>{product.title}</_.Title>
       <_.Section>
-        <_.SectionTitle>Collection: </_.SectionTitle>
-        <_.SectionName>{product.collection}</_.SectionName>
+        <_.Price>{product.price} USD</_.Price>
       </_.Section>
       <_.Section>
-        <_.SectionTitle>Price: </_.SectionTitle>
-        <_.SectionName>{product.price}</_.SectionName>
+        <_.DescriptionWrapper>
+          {product.description}
+        </_.DescriptionWrapper>
+      </_.Section>
+      <_.Section>
+        <_.SectionTitle>Category: </_.SectionTitle>
+        <Link href={"/products?category=" + product.category} ><_.SectionName>{product.category}</_.SectionName></Link>
+      </_.Section>
+      <_.Section>
+        <_.SectionTitle>Collection: </_.SectionTitle>
+        <Link href={"/products?collection=" + product.collection} ><_.SectionName>{product.collection}</_.SectionName></Link>
       </_.Section>
     </_.Wrapper>
   );
