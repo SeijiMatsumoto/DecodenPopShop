@@ -274,7 +274,7 @@ const Navbar = () => {
           <_.NavInnerWrapper>
             <_.ThirdsWrapper>
               <_.LinksWrapper>
-                <Link href="/"><_.LinkText id="nav1">Home</_.LinkText></Link>
+                <_.LinkText id="nav1" onClick={() => window.open("/", "_self")}>Home</_.LinkText>
                 <_.ProductsWrapper id="nav2" onClick={openDropdown}>
                   <_.ProductLinkText id="nav2-text" >Products</_.ProductLinkText>
                   {!anchorEl ? <_.DownArrow /> : <_.UpArrow />}
