@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 interface ImageProps {
   readonly active: boolean;
@@ -10,11 +11,12 @@ interface ImageProps {
 const _ = {
   Wrapper: styled.div`
     width: 100vw;
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 30px;
+    padding: 20px;
+
+    position: sticky;
+    top: 0;
   `,
   CarouselAndArrows: styled.div`
     height: 60vh;
@@ -28,15 +30,12 @@ const _ = {
     position: relative;
     height: 100%;
     width: 100%;
-    /* border: 1px solid red; */
-    background-color: #f8f8f8;
+    background-color: #d7d7d7;
     display: flex;
     align-items: center;
-    overflow: visible;
   `,
   ArrowsContainer: styled.div`
     width: 675px;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
     position: absolute;
@@ -61,14 +60,13 @@ const _ = {
     width: 100%;
     object-fit: contain;
   `,
-  OtherImagesWrapper: styled.div`
+  OtherImagesWrapper: styled(ScrollContainer)`
     display: flex;
     flex-direction: row;
     margin: 20px 0;
     height: 100px;
     justify-content: flex-start;
     width: 630px;
-    /* border: 1px solid red; */
     overflow-x: scroll;
     padding-bottom: 2px;
     &:hover {
@@ -113,6 +111,28 @@ const Carousel = ({ product }) => {
     setActiveImage(index);
   }
 
+  function ensureInView(container, element) {
+    let cLeft = container.scrollLeft;
+    let cright = cLeft + container.clientWidth;
+
+    let eLeft = element.offsetLeft;
+    let eRight = eLeft + element.clientWidth;
+
+    if (eLeft < cLeft) {
+      container.scrollLeft -= (cLeft - eLeft);
+    }
+    else if (eRight > cright) {
+      container.scrollLeft += (eRight - cright);
+    }
+  }
+
+  useEffect(() => {
+    const wrapper = document.querySelector('.otherImages');
+    const currImage = document.getElementById('other-' + activeImage);
+    ensureInView(wrapper, currImage);
+
+  }, [activeImage])
+
   return (
     <_.Wrapper>
       <_.CarouselAndArrows>
@@ -121,14 +141,13 @@ const Carousel = ({ product }) => {
           {activeImage < product.images.length - 1 ? <_.Arrow onClick={() => setActiveImage(activeImage + 1)}><ArrowForwardIosIcon /></_.Arrow> : <_.Arrow />}
         </_.ArrowsContainer>
         <_.CarouselContainer>
-          {/* <_.Background src={product.images[activeImage]} alt='main carousel background' /> */}
           <_.Image src={product.images[activeImage]} alt='main carousel image' />
         </_.CarouselContainer>
       </_.CarouselAndArrows>
-      <_.OtherImagesWrapper>
+      <_.OtherImagesWrapper className={"otherImages"}>
         {product.images.map((image, i) => {
           return (
-            <_.OtherImage key={image + '-carousel'} src={image} active={i === activeImage} onClick={() => changeImage(i)} />
+            <_.OtherImage key={image + '-carousel' + (Math.floor(900000 * Math.random()) + 100000)} id={'other-' + i} src={image} active={i === activeImage} onClick={() => changeImage(i)} />
           )
         })}
       </_.OtherImagesWrapper>
