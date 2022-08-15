@@ -1,7 +1,7 @@
 .bannerWrapper {
   width: 100vw;
   height: 150px;
-  background-color: #e6babe;
+  background-color: #d1cfe8;
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15,6 +15,7 @@
   font-size: 60px;
   font-family: "SchoolBell";
   z-index: 10;
+  text-shadow: 2px 2px #ff0000;
 }
 
 @media screen and (max-width: 1000px) {
