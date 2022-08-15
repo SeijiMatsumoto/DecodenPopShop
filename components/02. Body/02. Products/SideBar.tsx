@@ -97,7 +97,7 @@ const SideBar = ({ query }) => {
               value={selectedSort}
               onChange={handleChange}
             >
-              <MenuItem id="select-text" value='Best Sellers'>Best Sellers</MenuItem>
+              <MenuItem id="select-text" value='Relevance'>Relevance</MenuItem>
               <MenuItem id="select-text" value='Price Low to High'>Price Low to High</MenuItem>
               <MenuItem id="select-text" value='Price High to Low'>Price High to Low</MenuItem>
               <MenuItem id="select-text" value='A to Z'>A to Z</MenuItem>

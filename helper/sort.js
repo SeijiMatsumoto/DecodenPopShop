@@ -9,7 +9,7 @@ export const sortData = (selectedCategory, selectedSort, data) => {
   const getValue = ({ price }) => +price.slice(1) || 0;
 
   const sorter = (change) => {
-    if (selectedSort === "Best Sellers") {
+    if (selectedSort === "Relevance") {
       sorted = change.slice();
     } else if (selectedSort === "Price Low to High") {
       sorted = change.sort((a, b) => getValue(a) - getValue(b)).slice();

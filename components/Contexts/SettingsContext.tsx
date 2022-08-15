@@ -14,7 +14,7 @@ export const SettingsContext = createContext({
   setSelectedCategory: (category: string) => { },
   productsToShow: [],
   setProductsToShow: (data: any) => { },
-  selectedSort: 'Best Sellers',
+  selectedSort: 'Relevance',
   setSelectedSort: (sort: string) => { },
   searchQuery: '',
   setQuery: (query: string) => { },
@@ -33,7 +33,7 @@ export const SettingsProvider = ({ children }) => {
   const [anchorEl, setAnchorEl] = useState<any>(null);
   const [selectedCategory, setSelectedCategory] = useState<any>('All Products');
   const [productsToShow, setProductsToShow] = useState<any>([]);
-  const [selectedSort, setSelectedSort] = useState<string>("Best Sellers");
+  const [selectedSort, setSelectedSort] = useState<string>("Relevance");
   const [searchQuery, setQuery] = useState<string>("");
   const [allProducts, setAllProducts] = useState<any>([]);
   const [selectedProduct, setSelectedProduct] = useState<string>('');
