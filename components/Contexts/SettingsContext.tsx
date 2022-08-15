@@ -20,10 +20,13 @@ export const SettingsContext = createContext({
   setQuery: (query: string) => { },
   selectedProduct: '',
   setSelectedProduct: (productId: string) => { },
+  fromProducts: false,
+  setFromProducts: (from: boolean) => { }
 });
 
 export const SettingsProvider = ({ children }) => {
   const { query } = useRouter();
+  const router = useRouter();
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [screenWidth, setWidth] = useState<number>(1000);
   const [currentPage, setCurrentPage] = useState<string>('home');
@@ -34,6 +37,7 @@ export const SettingsProvider = ({ children }) => {
   const [searchQuery, setQuery] = useState<string>("");
   const [allProducts, setAllProducts] = useState<any>([]);
   const [selectedProduct, setSelectedProduct] = useState<string>('');
+  const [fromProducts, setFromProducts] = useState<boolean>(false);
 
   const onResize = () => { setWidth(window.innerWidth); }
 
@@ -94,6 +98,10 @@ export const SettingsProvider = ({ children }) => {
     selectedProduct: selectedProduct,
     setSelectedProduct: (productId: string) => {
       setSelectedProduct(productId);
+    },
+    fromProducts: fromProducts,
+    setFromProducts: (from: boolean) => {
+      setFromProducts(from);
     }
   };
 
@@ -135,7 +143,6 @@ export const SettingsProvider = ({ children }) => {
     } else if (currentPage === 'contact') {
       contact?.classList.add('active-nav');
     }
-
     setAnchorEl(null);
     filterQuery();
   }, [currentPage, query])
