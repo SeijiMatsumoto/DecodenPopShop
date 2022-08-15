@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import { SettingsContext } from '../../Contexts/SettingsContext';
-
+import Link from 'next/link';
 const _ = {
   Wrapper: styled.div`
     padding: 30px 0 20px;
@@ -76,7 +76,7 @@ const Cards = () => {
         :
         <_.NoProductsWrapper>
           <_.NoProductsText>There are no {selectedCategory.indexOf(" ") > -1 ? selectedCategory : selectedCategory + ' products '} currently available. Sorry! :( </_.NoProductsText>
-          <_.ContactButton>Contact us?</_.ContactButton>
+          <Link href="/contact"><_.ContactButton>Contact us?</_.ContactButton></Link>
         </_.NoProductsWrapper>
       }
     </_.Wrapper>
