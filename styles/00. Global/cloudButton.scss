@@ -7,6 +7,9 @@
   transition: all 0.2s;
   font-family: "Mali", cursive;
   z-index: 20;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 }
 
 /* Default button ends */

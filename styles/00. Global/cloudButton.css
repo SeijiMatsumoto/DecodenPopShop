@@ -7,6 +7,13 @@
   transition: all 0.2s;
   font-family: "Mali", cursive;
   z-index: 20;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
 }
 
 /* Default button ends */
