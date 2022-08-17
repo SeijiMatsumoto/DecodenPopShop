@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { Banner } from '../../UILibrary';
@@ -20,11 +21,15 @@ const _ = {
     font-family: "Roboto", sans-serif;
   `,
   InnerWrapper: styled.div`
-    width: 1320px;
-    padding: 30px;
+    width: 900px;
+    padding: 90px 0 50px;
     display: flex;
     flex-direction: column;
     position: relative;
+
+    @media (max-width: 950px) {
+      width: 95%;
+    }
   `,
   Title: styled.span`
     width: 100%;
@@ -44,6 +49,9 @@ const _ = {
     display: flex;
     flex-direction: row;
     align-items: center;
+    @media (max-width: 660px) {
+      flex-direction: column;
+    }
   `,
   InputContainer: styled.div`
     display: flex;
@@ -51,14 +59,27 @@ const _ = {
     width: 100%;
     &:first-child {
       margin-right: 20px;
+      @media (max-width: 660px) {
+        margin: 0;
+      }
     }
   `,
   Label: styled.label`
     margin: 15px 0 5px;
     font-size: 20px;
+
+    @media (max-width: 660px) {
+      font-size: 1rem;
+    }
   `,
   SelectInput: styled(Select)``,
-  BodyInput: styled(TextField)``,
+  BodyInput: styled(TextField)`
+    @media (max-width: 660px) {
+      * {
+        font-size: 1rem;
+      }
+    }
+  `,
   BottomWrapper: styled.div`
     margin: 10px 0;
     width: 100%;
@@ -76,7 +97,7 @@ const _ = {
   `,
   Loading: styled(CircularProgress)`
       position: relative;
-      left: -15px;
+      right: -15px;
   `,
   SubmitBtn: styled(Button)`
     background-color: #63a3aa;
@@ -86,8 +107,9 @@ const _ = {
     }
   `,
   AlertBanner: styled(Collapse)`
-    position: relative;
-    top: -30px;
+    position: absolute;
+    top: 0;
+    width: 100%;
   `
 }
 
@@ -111,6 +133,7 @@ const Contact = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [failed, setFailed] = useState<boolean>(false);
+  const [failMessage, setFailMessage] = useState<string>("");
 
   const resetForm = () => {
     setInquiry("");
@@ -140,17 +163,26 @@ const Contact = () => {
   useEffect(() => {
     if (loading) {
       if (inputsAreValid(valid, setValid, inquiry, name, phone, email, subject, message)) {
-        sendEmail(form, setLoading, setSuccess, setFailed, resetForm);
+        sendEmail(form, setLoading, setSuccess, resetForm, setFailMessage);
       } else {
-        window.alert(`Please check your inputs and try again.`)
+        setFailMessage("Please check your inputs and try again.");
       }
     }
   }, [loading])
 
+  useEffect(() => {
+    if (failMessage.length) {
+      setFailed(true);
+      setLoading(false);
+    } else {
+      setFailed(false);
+    }
+  }, [failMessage])
+
   const submitHandler = () => {
     setLoading(true);
+    setFailMessage("");
   }
-
 
   return (
     <_.Wrapper>
@@ -160,7 +192,7 @@ const Contact = () => {
           <Alert onClose={() => { setSuccess(false) }}>Message has been successfully sent! Please wait up to 24 hours for a response.</Alert>
         </_.AlertBanner>
         <_.AlertBanner in={failed}>
-          <Alert severity="error" onClose={() => { setFailed(false) }}>Error sending message. Please try again later, or choose alternative methods.</Alert>
+          <Alert severity="error" onClose={() => { setFailed(false) }}>{failMessage}</Alert>
         </_.AlertBanner>
         <_.Title>Any questions, concerns, or requests? Send a message!</_.Title>
         <_.Form ref={form} onSubmit={submitHandler} id="contact-form">
@@ -185,6 +217,7 @@ const Contact = () => {
                 <MenuItem value="Request">Request</MenuItem>
                 <MenuItem value="Question">Question</MenuItem>
                 <MenuItem value="Suggestion">Suggestion</MenuItem>
+                <MenuItem value="Complaint">Complaint</MenuItem>
                 <MenuItem value="Other">Other</MenuItem>
               </_.SelectInput>
             </_.InputContainer>
@@ -203,7 +236,7 @@ const Contact = () => {
                   setValid(temp);
                   setName(e.target.value)
                 }}
-                placeholder="Enter valid name"
+                placeholder="Enter name"
               />
             </_.InputContainer>
           </_.Row>
@@ -223,7 +256,7 @@ const Contact = () => {
                   setValid(temp);
                   setPhone(e.target.value)
                 }}
-                placeholder="Enter valid phone (e.g. 222-222-2222)"
+                placeholder="Enter phone (e.g. 222-222-2222)"
               />
             </_.InputContainer>
 
@@ -241,7 +274,7 @@ const Contact = () => {
                   setValid(temp);
                   setEmail(e.target.value)
                 }}
-                placeholder="Enter valid email"
+                placeholder="Enter email"
               />
             </_.InputContainer>
           </_.Row>
@@ -254,7 +287,7 @@ const Contact = () => {
               autoComplete='off'
               value={subject}
               name="subject"
-              placeholder="Enter valid subject of inquiry"
+              placeholder="Enter subject of inquiry"
               onChange={(e) => {
                 let temp = JSON.parse(JSON.stringify(valid));
                 temp.subject = true;
@@ -280,16 +313,16 @@ const Contact = () => {
                 setValid(temp);
                 setMessage(e.target.value)
               }}
-              placeholder="Enter valid message"
+              placeholder="Enter message"
             />
           </_.InputContainer>
 
           <_.BottomWrapper>
-            <span>* Required fields</span>
             <_.ButtonWrapper>
-              {loading && <_.Loading size="1.2rem" />}
               <_.SubmitBtn variant="contained" onClick={submitHandler}>Submit</_.SubmitBtn>
+              {loading && <_.Loading size="1.2rem" />}
             </_.ButtonWrapper>
+            <span>* Required fields</span>
           </_.BottomWrapper>
 
         </_.Form>
