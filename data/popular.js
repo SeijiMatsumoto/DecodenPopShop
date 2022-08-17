@@ -1,7 +1,7 @@
 export const popular = [
   {
-    img: "https://m.media-amazon.com/images/I/511x6-86A6L.jpg",
-    title: "Duck on a Swing",
+    img: "https://i.imgur.com/CAMw6qy.jpg",
+    title: "A case",
     url: "/",
     price: "$14.99",
   },
