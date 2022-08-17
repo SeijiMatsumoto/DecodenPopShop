@@ -4,8 +4,8 @@ export default function sendEmail(
   form,
   setLoading,
   setSuccess,
-  setFailed,
-  resetForm
+  resetForm,
+  setFailMessage
 ) {
   const templateParams = {
     name: name,
@@ -27,7 +27,10 @@ export default function sendEmail(
         resetForm();
       },
       function (error) {
-        setFailed(true);
+        setFailMessage(
+          "Error sending message. Please try again later, or choose alternative methods."
+        );
+        setLoading(false);
         console.log("FAILED...", error);
       }
     );
