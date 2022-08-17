@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { SectionTitle } from '../../UILibrary';
 import { popular } from '../../../data/popular';
+import { products } from '../../../data/products';
 import Link from 'next/link';
 import anime from 'animejs';
 import { checkInView } from '../../../helper/checkInView';
@@ -219,14 +220,14 @@ const Popular = () => {
           <_.BarAroundTitle />
         </_.TitleWrapper>
         <_.CardsWrapper>
-          {popular.map((product, i) => {
+          {products.slice(0, 3).map((product, i) => {
             return (
-              <Link href={product.url} key={product.img + '-popular'}>
+              <Link href={"/products/view?productID=" + product.id} key={product.id + '-popular'}>
                 <_.CardWrapper id={`popular-${i}`}>
                   <_.FlipContainer>
                     <_.Flipper>
                       <_.CardFront>
-                        <_.CardImg src={product.img} alt="product" />
+                        <_.CardImg src={product.images[0]} alt="product" />
                         <_.ProductTitle>{product.title}</_.ProductTitle>
                       </_.CardFront>
                       <_.CardBack>
