@@ -26,10 +26,13 @@ const _ = {
     font-size: 13px;
     padding: 5px;
     cursor: default;
+    text-align: center;
   `,
   Close: styled.span`
     cursor: pointer;
-    transition: 0.2s ease-in;
+    transition: 0.1s ease-in;
+    position: relative;
+    top: -1px;
     &:hover {
       color: white;
     }
