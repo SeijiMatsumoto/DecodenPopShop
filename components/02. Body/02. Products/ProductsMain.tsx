@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import styled from 'styled-components';
 import { Banner } from '../../UILibrary';
@@ -6,6 +6,7 @@ import Cards from './Cards';
 import SideBar from './SideBar';
 import { SettingsContext } from '../../Contexts/SettingsContext';
 import { scrollToTop } from '../../../helper/scrollToTop';
+import SideBarMenu from './SideBarMenu';
 
 const _ = {
   Wrapper: styled.div`
@@ -28,6 +29,7 @@ const _ = {
 }
 
 const Products = () => {
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
   const { query } = useRouter();
   const { setCurrentPage } = useContext(SettingsContext);
 
@@ -47,8 +49,9 @@ const Products = () => {
       <Banner text={text} />
       <_.ContentsWrapper>
         <SideBar query={query} />
-        <Cards />
+        <Cards isOpen={openMenu} setOpenMenu={setOpenMenu} />
       </_.ContentsWrapper>
+      <SideBarMenu isOpen={openMenu} setOpenMenu={setOpenMenu} query={query} />
     </_.Wrapper>
   );
 };
