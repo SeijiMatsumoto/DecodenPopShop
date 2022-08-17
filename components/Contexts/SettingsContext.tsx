@@ -21,7 +21,9 @@ export const SettingsContext = createContext({
   selectedProduct: '',
   setSelectedProduct: (productId: string) => { },
   fromProducts: false,
-  setFromProducts: (from: boolean) => { }
+  setFromProducts: (from: boolean) => { },
+  openMenu: false,
+  setOpenMenu: (open: boolean) => { }
 });
 
 export const SettingsProvider = ({ children }) => {
@@ -38,15 +40,19 @@ export const SettingsProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState<any>([]);
   const [selectedProduct, setSelectedProduct] = useState<string>('');
   const [fromProducts, setFromProducts] = useState<boolean>(false);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   const onResize = () => { setWidth(window.innerWidth); }
 
   useEffect(() => {
+    console.log('check screenwidth')
     if (screenWidth < 1300) {
       setAnchorEl(null);
     }
     if (screenWidth < 500) {
       setIsMobile(true);
+    } else {
+      setIsMobile(false);
     }
   }, [screenWidth])
 
@@ -102,6 +108,10 @@ export const SettingsProvider = ({ children }) => {
     fromProducts: fromProducts,
     setFromProducts: (from: boolean) => {
       setFromProducts(from);
+    },
+    openMenu: openMenu,
+    setOpenMenu: (open: boolean) => {
+      setOpenMenu(open);
     }
   };
 
@@ -144,6 +154,7 @@ export const SettingsProvider = ({ children }) => {
       contact?.classList.add('active-nav');
     }
     setAnchorEl(null);
+    setOpenMenu(false);
     filterQuery();
   }, [currentPage, query])
 
