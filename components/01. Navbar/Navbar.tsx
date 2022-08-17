@@ -172,6 +172,11 @@ const _ = {
     align-items: center;
     justify-content: flex-end;
     width: 40%;
+    // Animation styling
+    position: relative;
+    top: -200px;
+    opacity: 0;
+    // Animation styling
 
     > button {
       margin-left: 10px;
@@ -201,10 +206,8 @@ const _ = {
 }
 
 const Navbar = () => {
-  const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const [animated, setAnimated] = useState<boolean>(false);
   const [isInView, setIsInView] = useState<boolean>(false);
-  const { anchorEl, setAnchorEl, isMobile } = useContext(SettingsContext);
+  const { anchorEl, setAnchorEl, isMobile, openMenu, setOpenMenu } = useContext(SettingsContext);
 
   const openDropdown = (e) => {
     e.preventDefault();
@@ -241,24 +244,25 @@ const Navbar = () => {
         targets: selectors[4],
         translateY: 200,
         opacity: 1,
-      }, '-=400')
+      }, '-=500')
       .add({
         targets: selectors[5],
         translateY: 200,
         opacity: 1,
-      }, '-=400')
-      .add({
-        targets: selectors[6],
-        translateY: 200,
-        opacity: 1,
-      }, '-=400');
-
-    setAnimated(true);
+      })
   }
 
   useEffect(() => {
-    if (isInView && !isMobile && !animated) {
-      animateIn(['#nav1', '#nav2', '#nav3', '#nav4', '#navLogo', "#nav5", '#nav6']);
+    if (isInView && !isMobile) {
+      console.log('animate in');
+      animateIn(['#nav1', '#nav2', '#nav3', '#nav4', '#navLogo', "#nav5"]);
+    }
+    if (isMobile) {
+      const logo = document.getElementById("navLogo");
+      if (logo) {
+        logo.style.top = "-200";
+        logo.style.opacity = "1";
+      }
     }
   }, [isInView, isMobile])
 
@@ -286,7 +290,7 @@ const Navbar = () => {
               <_.LogoWrapper>
                 <Link href="/"><_.Logo id='navLogo' src="/Logos/nav-logo.png" alt='Logo' /></Link>
               </_.LogoWrapper>
-              <_.ButtonsWrapper>
+              <_.ButtonsWrapper id="nav5">
                 <SearchBar />
                 {!openMenu ? <_.HamburgerMenu onClick={() => { setOpenMenu(true) }}><BiMenu /></_.HamburgerMenu> : <_.HamburgerMenu onClick={() => { setOpenMenu(false) }}><GrClose /></_.HamburgerMenu>}
               </_.ButtonsWrapper>
