@@ -39,7 +39,6 @@ const _ = {
     align-items: flex-start;
     flex-direction: column;
     padding: 37px;
-    width: 180px;
     cursor: pointer;
     &:hover {
       font-weight: bold;
@@ -63,7 +62,7 @@ const _ = {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    max-width: 250px;
+    width: 200px;
     padding: 20px;
     cursor: pointer;
     transition: 200ms ease;
@@ -91,7 +90,7 @@ const _ = {
 
 const Dropdown = ({ anchorEl, setAnchorEl }) => {
   const [selected, setSelected] = useState<number>();
-  const { setSelectedCategory, selectedCategory } = useContext(SettingsContext);
+  const { setSelectedCategory } = useContext(SettingsContext);
   const open = Boolean(anchorEl);
 
   const changeView = (num: number) => {
