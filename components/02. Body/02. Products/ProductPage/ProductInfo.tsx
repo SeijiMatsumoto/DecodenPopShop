@@ -77,21 +77,28 @@ const _ = {
     font-weight: bold;
     font-size: 18px;
   `,
-  GiftWrapper: styled.div`
+  ChecboxWrapper: styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     margin: 15px 0 26px;
     align-items: center;
+
+    &:first-child {
+      border: 1px solid red;
+      margin-right: 10px;
+    }
   `,
-  GiftTitle: styled.label`
+  CheckboxTitle: styled.label`
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    margin-right: 10px;
+    margin-right: 5px;
   `,
   Form: styled.form``,
-  Checkbox: styled.input``,
+  Checkbox: styled.input`
+    margin-right: 40px;;
+  `,
 }
 
 const ProductInfo = ({ product }) => {
@@ -100,6 +107,7 @@ const ProductInfo = ({ product }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const [device, setDevice] = useState<string>(devices[0]);
   const [isGift, setIsGift] = useState<boolean>(false);
+  const [includeLanyard, setIncludeLanyard] = useState<boolean>(false);
 
   const [shortDesc, setShortDesc] = useState<string>("");
   const [viewMore, setViewMore] = useState<boolean>(false);
@@ -107,6 +115,7 @@ const ProductInfo = ({ product }) => {
   const addToCart = () => {
     console.log(`Adding ${quantity} ${product.title} for ${device} to cart.`);
     isGift ? console.log('It is a gift.') : console.log('It is not a gift.');
+    includeLanyard ? console.log('Include a lanyard.') : console.log('Do not include a lanyard.');
   }
 
   useEffect(() => {
@@ -136,21 +145,25 @@ const ProductInfo = ({ product }) => {
         </_.CatColWrapper>
 
         {shortDesc ?
-          (
-            <_.Description>{viewMore ? product.description : shortDesc}<_.DescAction onClick={viewDesc}>[View More]</_.DescAction></_.Description>
-          )
+          <_.Description>{viewMore ? product.description : shortDesc}<_.DescAction onClick={() => setViewMore(!viewMore)}>[View More]</_.DescAction></_.Description>
           :
-          <_.Description>{product.description}<_.DescAction onClick={viewDesc}>[View Less]</_.DescAction></_.Description>
+          <_.Description>{product.description}</_.Description>
         }
       </_.TopWrapper>
       <_.BottomWrapper>
         <_.Form>
           <Options title={"Select device"} choices={devices} callback={setDevice} selected={device} />
           <Options title={"Quantity"} choices={maxQuantity} callback={setQuantity} selected={quantity} />
-          <_.GiftWrapper>
-            <_.GiftTitle htmlFor="deviceName" >Buy as gift</_.GiftTitle>
-            <_.Checkbox type="checkbox" name="gift" id="deviceName" onChange={(e) => setIsGift(e.currentTarget.checked)} />
-          </_.GiftWrapper>
+          <_.ChecboxWrapper>
+            <div>
+              <_.CheckboxTitle htmlFor="giftBox" >Buy as gift</_.CheckboxTitle>
+              <_.Checkbox type="checkbox" name="gift" id="giftBox" onChange={(e) => setIsGift(e.currentTarget.checked)} />
+            </div>
+            <div>
+              <_.CheckboxTitle htmlFor="lanyardBox" >Include Lanyard</_.CheckboxTitle>
+              <_.Checkbox type="checkbox" name="lanyard" id="lanyardBox" onChange={(e) => setIncludeLanyard(e.currentTarget.checked)} />
+            </div>
+          </_.ChecboxWrapper>
         </_.Form>
         <CloudButton text={"Add to cart"} src={""} callback={addToCart} target={""} size="" />
       </_.BottomWrapper>
