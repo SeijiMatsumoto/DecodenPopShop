@@ -97,25 +97,20 @@ const Walk = keyframes`
   }
 `;
 
-const WalkingDuck = styled.img`
-  position: absolute;
-  bottom: -3px;
-  right: -30px;
-  height: 10vh;
-  animation-name: ${Walk};
-  animation-duration: 60s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-`
+// const WalkingDuck = styled.img`
+//   position: absolute;
+//   bottom: -3px;
+//   right: -30px;
+//   height: 10vh;
+//   animation-name: ${Walk};
+//   animation-duration: 60s;
+//   animation-iteration-count: infinite;
+//   animation-timing-function: linear;
+// `
 
 const Splash = () => {
   const [isInView, setIsInView] = useState<boolean>(false);
-  const router = useRouter()
   const { currentPage } = useContext(SettingsContext);
-
-  const clickHandler = () => {
-    router.push('/products');
-  }
 
   const animateIn = (selectors) => {
     var tl = anime.timeline({ easing: 'easeInOutQuad', duration: 500 });
@@ -167,14 +162,13 @@ const Splash = () => {
       <CloudBackground />
       <Styles.InnerWrapper>
         <Styles.TextWrapper className='no-select'>
-          <Styles.BigText id="splash1" className="schoolbell-font">Decoden By Shu</Styles.BigText>
-          <Styles.SubText id="splash2">Handmade cases created by Shu</Styles.SubText>
+          <Styles.BigText id="splash1" className="schoolbell-font">Decoden Pop Shop</Styles.BigText>
+          <Styles.SubText id="splash2">Handmade decoden cases created by Shu</Styles.SubText>
         </Styles.TextWrapper>
         <Styles.ButtonsWrapper id="splash3">
           <CloudButton text="Shop All Products" src="/products" callback={() => { }} target="_self" size="l" />
         </Styles.ButtonsWrapper>
       </Styles.InnerWrapper>
-      {/* <WalkingDuck src="/walkingDuck.gif" /> */}
     </Styles.SplashWrapper>
   );
 };
