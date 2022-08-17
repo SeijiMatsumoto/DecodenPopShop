@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import Card from './Card';
 import { SettingsContext } from '../../Contexts/SettingsContext';
 import Link from 'next/link';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 const _ = {
   Wrapper: styled.div`
     padding: 30px 0 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 80%;
     @media (max-width: 1250px) {
       width: 70%;
@@ -18,6 +20,7 @@ const _ = {
     }
     @media (max-width: 550px) {
       width: 95vw;
+      padding-top: 0;
     }
   `,
   InnerWrapper: styled.div`
@@ -35,6 +38,36 @@ const _ = {
       align-items: center;
       flex-direction: column;
     }
+  `,
+  FilterBtnWrapper: styled.div`
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  `,
+  FilterBtn: styled.button`
+    display: none;
+    padding: 10px 10px;
+    font-family: 'Mali', cursive;
+    border: none;
+    background-color: #f0f0f0;
+    font-size: 20px;
+    width: 100vw;
+
+    @media (max-width: 550px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    }
+
+    &:active {
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    }
+  `,
+  FilterText: styled.span`
+    position: relative;
+    margin-right: 5px;
+    top: 1px;
   `,
   NoProductsWrapper: styled.div`
     position: relative;
@@ -60,11 +93,17 @@ const _ = {
   ContactButton: styled.button``,
 }
 
-const Cards = () => {
+const Cards = ({ isOpen, setOpenMenu }) => {
   const { productsToShow, selectedCategory } = useContext(SettingsContext);
 
   return (
     <_.Wrapper>
+      <_.FilterBtnWrapper>
+        <_.FilterBtn onClick={() => setOpenMenu(!isOpen)}>
+          <FilterAltIcon />
+          <_.FilterText>Filter</_.FilterText>
+        </_.FilterBtn>
+      </_.FilterBtnWrapper>
       {productsToShow.length ?
         <_.InnerWrapper>
           {productsToShow.map((product: any) => {
