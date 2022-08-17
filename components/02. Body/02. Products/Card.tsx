@@ -42,7 +42,7 @@ const _ = {
     flex-direction: column;
     width: 95%;
     margin: 5px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Mali', cursive;
   `,
   Title: styled.span`
     font-size: 22px;
