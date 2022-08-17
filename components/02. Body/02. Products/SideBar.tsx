@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { categories } from '../../../data/categories';
 import { collections } from '../../../data/collections';
