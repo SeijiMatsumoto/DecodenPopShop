@@ -81,7 +81,7 @@ const _ = {
 const SearchBar = () => {
   const { searchQuery, setQuery } = useContext(SettingsContext);
 
-  const submitQuery = (e: ChangeEvent<HTMLInputElement>) => {
+  const submitQuery = (e) => {
     e.preventDefault();
     if (searchQuery.length) {
       Router.push('/products/?results=' + searchQuery);
