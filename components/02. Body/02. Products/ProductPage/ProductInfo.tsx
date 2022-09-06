@@ -201,8 +201,8 @@ const ProductInfo = ({ product }) => {
         <CloudButton text={"Add to cart"} src={""} callback={addToCart} target={""} size="" />
         <_.TextWrapper>
           <_.SubTitle>About your order:</_.SubTitle>
-          <_.Paragraph>1. Each and every case is unique and no two cases are identical. The product you order will be made specifically for you :)</_.Paragraph>
-          <_.Paragraph>2. If you have specific requests or changes you'd like to make to this case, please write it in the text box above.</_.Paragraph>
+          <_.Paragraph>1. Each and every case is unique and no two cases are identical. The product you order will be made specifically for you ☺️</_.Paragraph>
+          <_.Paragraph>2. If you have specific requests or changes you would like to make to this case, please write it in the text box above.</_.Paragraph>
           <_.Paragraph>3. Placing an order on this website does not mean your order is complete. We will reach out via email about your order to confirm all of the details so we can give you exactly what you want.</_.Paragraph>
           <_.Paragraph>4. Payment will be accepted at a later time via Zelle, Venmo, or PayPal.</_.Paragraph>
           <_.Paragraph>5. Some orders may take longer than others if supplies are unavailable.</_.Paragraph>
