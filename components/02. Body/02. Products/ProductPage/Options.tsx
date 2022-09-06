@@ -9,7 +9,7 @@ const _ = {
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     height: 50px;
   `,
@@ -22,7 +22,7 @@ const _ = {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    margin-right: 10px;
+    margin-right: 15px;
   `,
 }
 

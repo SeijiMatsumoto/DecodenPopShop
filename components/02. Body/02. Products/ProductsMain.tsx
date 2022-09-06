@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import styled from 'styled-components';
 import { Banner } from '../../UILibrary';
 import Cards from './Cards';
-import SideBar from './SideBar';
 import { SettingsContext } from '../../Contexts/SettingsContext';
 import { scrollToTop } from '../../../helper/scrollToTop';
 import SideBarMenu from './SideBarMenu';
@@ -16,14 +15,14 @@ const _ = {
     align-items: center;
   `,
   ContentsWrapper: styled.div`
-    width: 1320px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
 
-    @media screen and (max-width: 1400px) {
-      width: 95vw;
+    @media (min-width: 2560px) {
+      width: 2560px;
     }
   `,
 }
@@ -48,7 +47,6 @@ const Products = () => {
     <_.Wrapper>
       <Banner text={text} />
       <_.ContentsWrapper>
-        <SideBar query={query} />
         <Cards isOpen={openMenu} setOpenMenu={setOpenMenu} />
       </_.ContentsWrapper>
       <SideBarMenu isOpen={openMenu} setOpenMenu={setOpenMenu} query={query} />

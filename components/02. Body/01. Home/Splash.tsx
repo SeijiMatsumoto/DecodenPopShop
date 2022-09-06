@@ -51,7 +51,7 @@ const Styles = {
   `,
   BigText: styled.span`
     color: #A19DCA;
-    font-size: 8vw;
+    font-size: 7vw;
     text-shadow: 1px 1px #000000;
     font-weight: bold;
     opacity: 0;

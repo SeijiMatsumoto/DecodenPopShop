@@ -27,7 +27,7 @@ const Menu = ({ setOpenMenu, isOpen }) => {
   const [col, setCol] = useState<boolean>(false);
 
   const checkClick = (e) => {
-    const menu = document.getElementById('menuWrapper') || undefined;
+    const menu = document.getElementById('menuWrapper');
     if (e.target != document.querySelector("#menuLink")) {
       if (menu) setOpenMenu(false);
     }

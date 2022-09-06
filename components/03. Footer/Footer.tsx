@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { MdAlternateEmail, MdPhone, } from "react-icons/md";
 import { BsTwitter, BsInstagram } from "react-icons/bs";
+import { categories } from '../../data/categories';
+import { SettingsContext } from '../Contexts/SettingsContext';
 
 const _ = {
   FooterWrapper: styled.div`
@@ -79,6 +81,9 @@ const _ = {
       transform: translateY(0);
     }
   `,
+  A: styled.a`
+    text-decoration: none;
+  `,
   Logo: styled.img`
     height: 100px;
     cursor: pointer;
@@ -99,6 +104,8 @@ const _ = {
 }
 
 const Footer = () => {
+  const { setSelectedCategory } = useContext(SettingsContext);
+
   return (
     <_.FooterWrapper>
       <_.InnerWrapper>
@@ -111,17 +118,17 @@ const Footer = () => {
         <_.Column>
           <_.ColHeader>Categories</_.ColHeader>
           <_.List>
-            <_.ListItem><Link href="/products"><_.ListLink>All Products</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/products/cases"><_.ListLink>Phone Cases</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/products/hair"><_.ListLink>Hair Clips</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/products/car"><_.ListLink>Car Accessories</_.ListLink></Link></_.ListItem>
-            <_.ListItem><Link href="/products/custom"><_.ListLink>Custom Items</_.ListLink></Link></_.ListItem>
+            {categories.map(cat => {
+              return (
+                <_.ListItem key={cat.name} onClick={() => setSelectedCategory(cat.name)}><Link href={"/products?category=" + cat.name}><_.ListLink>{cat.name}</_.ListLink></Link></_.ListItem>
+              )
+            })}
           </_.List>
         </_.Column>
         <_.Column>
           <_.ColHeader>Contact Us</_.ColHeader>
           <_.List>
-            <_.ListItem><_.Icon><MdAlternateEmail /></_.Icon><Link href="/"><_.ListLink>Email: support@decodenbyshu.com</_.ListLink></Link></_.ListItem>
+            <_.ListItem><_.Icon><MdAlternateEmail /></_.Icon><_.A href="mailto:decodenpopshop@gmail.com" target="_blank" rel="noreferrer"><_.ListLink>Email: decodenpopshop@gmail.com</_.ListLink></_.A></_.ListItem>
             <_.ListItem><_.Icon><MdPhone /></_.Icon><Link href="/"><_.ListLink>Phone: 999-999-9999</_.ListLink></Link></_.ListItem>
             <_.ListItem><_.Icon><BsInstagram /></_.Icon><Link href="/"><_.ListLink>Instagram: @DecodenByShu</_.ListLink></Link></_.ListItem>
             <_.ListItem><_.Icon><BsTwitter /></_.Icon><Link href="/"><_.ListLink>Twitter: @DecodenByShu</_.ListLink></Link></_.ListItem>

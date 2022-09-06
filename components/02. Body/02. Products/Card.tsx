@@ -5,27 +5,19 @@ import { SettingsContext } from '../../Contexts/SettingsContext';
 
 const _ = {
   Wrapper: styled.div`
-    height: 350px;
-    width: 250px;
+    max-height: 400px;
+    max-width: 400px;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    margin: 20px 30px;
     overflow: hidden;
-    border-radius: 3px;
-
     cursor: pointer;
-    @media screen and (max-width: 450px) {
-      width: 95%;
-      margin: 15px;
-    }
     transition: 200ms ease-in;
 
   `,
   CardImgWrapper: styled.div`
     width: 100%;
-    height: 80%;
+    height: 90%;
     overflow: hidden;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   `,
@@ -38,10 +30,12 @@ const _ = {
   `,
   TextWrapper: styled.div`
     display: flex;
-    align-items: center;
     flex-direction: column;
-    width: 95%;
-    margin: 5px;
+    align-items: flex-start;
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 5px;
+    margin-left: 20px;
     font-family: 'Mali', cursive;
   `,
   Title: styled.span`
@@ -69,6 +63,7 @@ const Card = ({ product }) => {
       </_.CardImgWrapper>
       <_.TextWrapper>
         <_.Title>{product.title}</_.Title>
+        <_.Price>{product.category} {product.collection ? `| ${product.collection}` : ""}</_.Price>
         <_.Price>{product.price}</_.Price>
       </_.TextWrapper>
     </_.Wrapper>

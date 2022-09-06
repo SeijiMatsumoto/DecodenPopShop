@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import buttonStyle from "../styles/00. Components/Button/Button.module.css";
 import titleStyle from "../styles/00. Components/Title/Title.module.css";
-// https://getcssscan.com/css-box-shadow-examples
 import bannerStyle from "../styles/00. Components/Banner/Banner.module.css";
 
 export const Button = ({ action, buttonText }) => {
