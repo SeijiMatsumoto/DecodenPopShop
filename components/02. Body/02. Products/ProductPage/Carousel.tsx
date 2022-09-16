@@ -10,13 +10,19 @@ interface ImageProps {
 
 const _ = {
   Wrapper: styled.div`
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 20px;
 
     position: sticky;
     top: 0;
+
+    @media (max-width: 1400px) {
+      position: relative;
+      top: 20px;
+      padding: 0;
+    }
   `,
   CarouselAndArrows: styled.div`
     height: 60vh;
@@ -25,6 +31,15 @@ const _ = {
     position: relative;
     display: flex;
     align-items: center;
+
+    @media (max-width: 1400px) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    @media (max-width: 900px) {
+      height: 40vh;
+    }
   `,
   CarouselContainer: styled.div`
     position: relative;
@@ -42,6 +57,10 @@ const _ = {
     margin-left: 2px;
     z-index: 2;
     left: -22px;
+    @media (max-width: 1400px) {
+      width: 100%;
+      left: 0;
+    }
   `,
   Arrow: styled.div`
     color: black;
@@ -81,6 +100,11 @@ const _ = {
       transition: all 0.2s;
       background-color: transparent;
       border-radius: 10px;
+    }
+
+    @media (max-width: 1400px) {
+      width: 100%;
+      height: 70px;
     }
   `,
   OtherImage: styled.img<ImageProps>`

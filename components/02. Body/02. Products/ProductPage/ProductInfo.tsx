@@ -7,13 +7,19 @@ import { TextField } from '@mui/material';
 
 const _ = {
   Wrapper: styled.div`
-    width: 100vw;
+    width: 100%;
     padding: 30px;
     margin-left: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-family: "Roboto", sans-serif;
+
+    @media (max-width: 1400px) {
+      width: 95%;
+      padding: 0;
+      margin-top: 20px;
+    }
   `,
   TopWrapper: styled.div`
     display: flex;
@@ -87,9 +93,17 @@ const _ = {
     margin: 15px 0 26px;
     align-items: center;
 
-    &:first-child {
-      border: 1px solid red;
-      margin-right: 10px;
+    @media (max-width: 600px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    div {
+      @media (max-width: 600px) {
+      margin-bottom: 30px;
+    }
+      &:nth-child(2) {
+        margin-bottom: 0;
+      }
     }
   `,
   SubTitle: styled.label`
@@ -100,7 +114,7 @@ const _ = {
   `,
   Form: styled.form``,
   Checkbox: styled.input`
-    margin-right: 40px;;
+    margin-right: 40px;
   `,
   TextWrapper: styled.div`
     display: flex;
@@ -147,10 +161,6 @@ const ProductInfo = ({ product }) => {
     }
   }, [product])
 
-  const viewDesc = () => {
-    setViewMore(!viewMore);
-  }
-
   return (
     <_.Wrapper>
       <_.TopWrapper>
@@ -162,15 +172,15 @@ const ProductInfo = ({ product }) => {
 
         <_.CatColWrapper>
           <_.Category>{product.category.indexOf(' ') >= 0 ? product.category.slice(0, product.category.length - 1) : product.category}</_.Category>
-          {/* <_.Divider /> */}
-          {/* <_.Collection>{product.collection}</_.Collection> */}
         </_.CatColWrapper>
 
         {shortDesc ?
-          <_.Description>{viewMore ? product.description : shortDesc}<_.DescAction onClick={() => setViewMore(!viewMore)}>[View More]</_.DescAction></_.Description>
-          :
-          <_.Description>{product.description}</_.Description>
-        }
+          <_.Description>{viewMore ? product.description : shortDesc}
+            <_.DescAction onClick={() => setViewMore(!viewMore)}>
+              {viewMore ? <>[View Less]</> : <>[View More]</>}
+            </_.DescAction>
+          </_.Description>
+          : <_.Description>{product.description}</_.Description>}
       </_.TopWrapper>
       <_.BottomWrapper>
         <_.Form>

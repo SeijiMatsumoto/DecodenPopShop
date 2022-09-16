@@ -20,6 +20,9 @@ const _ = {
   BackWrapper: styled.div`
     width: 1320px;
     margin-top: 20px;
+    @media (max-width: 1400px) {
+      width: 95%;
+    }
   `,
   BackBtn: styled.button`
     font-size: 14px;
@@ -53,6 +56,10 @@ const _ = {
     flex-direction: row;
     width: 1320px;
     position: relative;
+    @media (max-width: 1400px) {
+      flex-direction: column;
+      width: 95%;
+    }
   `,
 };
 
